@@ -1,0 +1,47 @@
+Traceback (most recent call last):
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\sqlalchemy\sql\base.py", line 2193, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+AttributeError: type object 'BufeteJuridico' has no attribute 'nombre_bufete_o_razon_social'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\flask\__main__.py", line 3, in <module>
+    main()
+    ~~~~^^
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\flask\cli.py", line 1131, in main
+    cli.main()
+    ~~~~~~~~^^
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\click\core.py", line 1363, in main
+    rv = self.invoke(ctx)
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\click\core.py", line 1830, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\click\core.py", line 1830, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\click\core.py", line 1226, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\click\core.py", line 794, in invoke
+    return callback(*args, **kwargs)
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\click\decorators.py", line 34, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\flask\cli.py", line 400, in decorator
+    return ctx.invoke(f, *args, **kwargs)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\click\core.py", line 794, in invoke
+    return callback(*args, **kwargs)
+  File "C:\Users\Usuario\Mi unidad\Software_Notarios\app\cli.py", line 44, in seed_cli
+    bufete = BufeteJuridico.query.filter_by(nombre_bufete_o_razon_social="PINEDA VON AHN, FIGUEROA Y ASOCIADOS").first()
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\sqlalchemy\orm\query.py", line 1992, in filter_by
+    _entity_namespace_key(from_entity, key) == value
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Usuario\Mi unidad\Software_Notarios\swnot\Lib\site-packages\sqlalchemy\sql\base.py", line 2195, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+        'Entity namespace for "%s" has no property "%s"' % (entity, key)
+    ) from err
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "bufetes_juridicos" has no property "nombre_bufete_o_razon_social"

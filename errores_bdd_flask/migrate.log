@@ -1,0 +1,7 @@
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.autogenerate.compare] Detected added table 'planes'
+INFO  [alembic.autogenerate.compare] Detected added table 'bufetes_juridicos'
+INFO  [alembic.autogenerate.compare] Detected added table 'notarios'
+INFO  [alembic.autogenerate.compare] Detected added table 'procuradores'
+INFO  [alembic.autogenerate.compare] Detected added table 'usuarios_sistema'
