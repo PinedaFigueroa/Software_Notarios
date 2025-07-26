@@ -1,0 +1,1 @@
+eralchemy2 -i "postgresql://postgres:12345678@localhost:5432/software_notarios" -o docs/erd.pdf
