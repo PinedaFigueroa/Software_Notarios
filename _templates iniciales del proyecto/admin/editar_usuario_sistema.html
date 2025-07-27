@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% import "macros/_form_macros.html" as forms %}
+
+{% block content %}
+    <h1 class="mb-4">{{ title }}: {{ usuario.nombre_usuario }}</h1>
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">Editar Datos del Usuario del Sistema</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('admin_bp.editar_usuario_sistema', usuario_id=usuario.id) }}">
+                {{ form.csrf_token }}
+                <div class="mb-3">
+                    {{ forms.render_field(form.nombre_usuario) }}
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.password) }}
+                        <small class="form-text text-muted">Deja en blanco si no deseas cambiar la contraseña.</small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.confirm_password) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.rol) }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.is_active) }}
+                    </div>
+                </div>
+                <hr>
+                <h6 class="mb-3">Información de Contacto Adicional</h6>
+                <div class="mb-3">
+                    {{ forms.render_field(form.direccion_laboral) }}
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.telefono) }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.email) }}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    {{ forms.render_field(form.preferencia_contacto_red_social) }}
+                </div>
+                <hr>
+                <h6 class="mb-3">Asociaciones (Opcional)</h6>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.persona_id) }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.notario_id) }}
+                    </div>
+                </div>
+                {# Añadir el campo de bufete jurídico al formulario de edición también #}
+                <div class="mb-3">
+                    {{ forms.render_field(form.bufete_juridico_id) }}
+                    <small class="form-text text-muted">Asigna este usuario a un Bufete Jurídico principal.</small>
+                </div>
+                
+                <button type="submit" class="btn btn-primary mt-3">{{ form.submit.label }}</button>
+                <a href="{{ url_for('admin_bp.listado_usuarios_sistema') }}" class="btn btn-secondary mt-3 ml-2">Cancelar</a> {# Cambiado ms-2 a ml-2 para Bootstrap 4 #}
+            </form>
+        </div>
+    </div>
+{% endblock content %}

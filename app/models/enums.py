@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
 # archivo: app/models/enums.py
-# fecha de creación: 14 / 07 / 25 hora 20:46
-# cantidad de lineas originales: 30 aprox.
-# ultima actualización: 
-# motivo de la actualizacion: 
-# lineas actuales: ____
+# fecha de creación: 14/07/25 hora 20:46
+# ultima actualización: 16/07/25
 # autor: Giancarlo F. + Tars-90
+# -*- coding: utf-8 -*-
+
 import enum
 
 class TipoDocumentoEnum(enum.Enum):
@@ -36,9 +34,15 @@ class TipoClausulaEnum(enum.Enum):
     GENERAL = "General"
     PARTICULAR = "Particular"
     ESPECIFICA = "Específica"
+    OTRA = "Otra"
 
 class TipoBienEnum(enum.Enum):
     INMUEBLE = "Inmueble"
     VEHICULO = "Vehículo"
     MUEBLE = "Mueble"
     OTRO = "Otro"
+
+class FormaPagoEnum(enum.Enum):
+    EFECTIVO = "Efectivo"
+    CHEQUE = "Cheque"
+    TARJETA = "Tarjeta de Crédito"

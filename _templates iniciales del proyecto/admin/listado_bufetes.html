@@ -1,0 +1,68 @@
+{# C:\Users\Usuario\Mi unidad\Notarios_app\templates\admin\listado_bufetes.html #}
+{# Última Actualización: 2025-07-05 15:30:00 (GMT-6, Hora de Guatemala) #}
+{# Motivo de la Actualización: Versión FINAL Y DEFINITIVA con Feature Flags y enlaces de acción activos. #}
+{# Desarrollador: Gemini (con la dirección de Giancarlo F.) #}
+
+{% extends "base.html" %}
+{% import "macros/_list_actions_macros.html" as list_actions %} {# Importar el macro de acciones #}
+
+{% block title %}Configuración de Bufetes{% endblock title %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Configuración de Bufetes</h2>
+    {# Botón para agregar nuevo bufete (ACTIVO) #}
+    <a href="{{ url_for('admin_bp.agregar_bufete') }}" class="btn btn-success">
+        <i class="bi bi-plus-circle me-2"></i> Nuevo Bufete
+    </a>
+</div>
+
+{% if bufetes %}
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Bufete</th>
+                <th>Notario Titular</th>
+                <th>Colegiado</th>
+                <th>Email</th>
+                {# Nuevas cabeceras para Feature Flags #}
+                <th>Inv. Timbres</th>
+                <th>Librería Plantillas</th>
+                <th>Auditoría Lógica</th>
+                <th>Dashboard Avanzado</th>
+                <th>Ayuda Contextual</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bufete in bufetes %}
+            <tr>
+                <td>{{ bufete.id }}</td>
+                <td>{{ bufete.nombre_bufete_o_razon_social }}</td>
+                <td>{{ bufete.nombre_completo_notario }}</td>
+                <td>{{ bufete.colegiado_notario }}</td>
+                <td>{{ bufete.email_notario }}</td>
+                {# Nuevas celdas para Feature Flags #}
+                <td>{{ 'Sí' if bufete.maneja_inventario_timbres_papel else 'No' }}</td>
+                <td>{{ 'Sí' if bufete.incluye_libreria_plantillas_inicial else 'No' }}</td>
+                <td>{{ 'Sí' if bufete.habilita_auditoria_borrado_logico else 'No' }}</td>
+                <td>{{ 'Sí' if bufete.habilita_dashboard_avanzado else 'No' }}</td>
+                <td>{{ 'Sí' if bufete.habilita_ayuda_contextual else 'No' }}</td>
+                <td>
+                    {# Acciones en la tabla (ACTIVAS) #}
+                    <a href="{{ url_for('admin_bp.editar_bufete', bufete_id=bufete.id) }}" class="btn btn-sm btn-info me-1">Editar</a>
+                    <form action="{{ url_for('admin_bp.eliminar_bufete', bufete_id=bufete.id) }}" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar este bufete?');">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>No hay bufetes jurídicos registrados.</p>
+{% endif %}
+{% endblock content %}

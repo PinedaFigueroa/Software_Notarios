@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import "macros/_form_macros.html" as forms %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm mt-5">
+                <div class="card-header bg-success text-white text-center">
+                    <h4 class="mb-0">{{ title }}</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('main_bp.register') }}">
+                        {{ form.csrf_token }}
+                        <div class="mb-3">
+                            {{ forms.render_field(form.username) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ forms.render_field(form.password) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ forms.render_field(form.confirm_password) }}
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">{{ form.submit.label }}</button>
+                        </div>
+                    </form>
+                    <hr>
+                    <p class="text-center">¿Ya tienes una cuenta? <a href="{{ url_for('main_bp.login') }}">Inicia Sesión aquí</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

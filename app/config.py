@@ -7,6 +7,10 @@
 # autor: Giancarlo + Tars-90
 # -*- coding: utf-8 -*-
 
+"""
+Configuración de la aplicación Flask.
+"""
+
 import os
 
 class Config:

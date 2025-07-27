@@ -1,0 +1,118 @@
+{# C:\Users\Usuario\Mi unidad\Notarios_app\templates\clientes\listado_clientes.html #}
+{# Última Actualización: 2025-07-05 15:15:00 (GMT-6, Hora de Guatemala) #}
+{# Motivo de la Actualización: Activando enlaces de acción para CRUD de Clientes. #}
+{# Desarrollador: Gemini (con la dirección de Giancarlo F.) #}
+
+{% extends "base.html" %}
+
+{% block title %}Gestión de Clientes{% endblock title %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Gestión de Clientes</h2>
+    {# Botones para agregar persona/persona jurídica (AHORA DESCOMENTADOS) #}
+    <a href="{{ url_for('clientes_bp.agregar_persona') }}" class="btn btn-success me-2">
+        <i class="bi bi-person-plus"></i> Nueva Persona Natural
+    </a>
+    <a href="{{ url_for('clientes_bp.agregar_persona_juridica') }}" class="btn btn-primary">
+        <i class="bi bi-building"></i> Nueva Persona Jurídica
+    </a>
+</div>
+
+{% if personas or personas_juridicas %}
+    <ul class="nav nav-tabs mb-3" id="clientesTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="personas-naturales-tab" data-bs-toggle="tab" data-bs-target="#personas-naturales" type="button" role="tab" aria-controls="personas-naturales" aria-selected="true">Personas Naturales</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="personas-juridicas-tab" data-bs-toggle="tab" data-bs-target="#personas-juridicas" type="button" role="tab" aria-controls="personas-juridicas" aria-selected="false">Personas Jurídicas</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="clientesTabContent">
+        <div class="tab-pane fade show active" id="personas-naturales" role="tabpanel" aria-labelledby="personas-naturales-tab">
+            <h3>Personas Naturales</h3>
+            {% if personas %}
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>DPI</th>
+                            <th>NIT</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for persona in personas %}
+                        <tr>
+                            <td>{{ persona.id }}</td>
+                            <td>{{ persona.nombres }}</td>
+                            <td>{{ persona.apellidos }}</td>
+                            <td>{{ persona.dpi_numero }}</td>
+                            <td>{{ persona.nit }}</td>
+                            <td>{{ persona.email }}</td>
+                            <td>{{ persona.telefono }}</td>
+                            <td>
+                                {# Acciones en la tabla (AHORA DESCOMENTADAS) #}
+                                <a href="{{ url_for('clientes_bp.editar_persona', id=persona.id) }}" class="btn btn-sm btn-info me-1">Editar</a>
+                                <form action="{{ url_for('clientes_bp.eliminar_persona', id=persona.id) }}" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar esta persona?');">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p>No hay personas naturales registradas.</p>
+            {% endif %}
+        </div>
+        <div class="tab-pane fade" id="personas-juridicas" role="tabpanel" aria-labelledby="personas-juridicas-tab">
+            <h3>Personas Jurídicas</h3>
+            {% if personas_juridicas %}
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Razón Social</th>
+                            <th>NIT</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pj in personas_juridicas %}
+                        <tr>
+                            <td>{{ pj.id }}</td>
+                            <td>{{ pj.razon_social }}</td>
+                            <td>{{ pj.nit }}</td>
+                            <td>{{ pj.email }}</td>
+                            <td>{{ pj.telefono }}</td>
+                            <td>
+                                {# Acciones en la tabla (AHORA DESCOMENTADAS) #}
+                                <a href="{{ url_for('clientes_bp.editar_persona_juridica', id=pj.id) }}" class="btn btn-sm btn-info me-1">Editar</a>
+                                <form action="{{ url_for('clientes_bp.eliminar_persona_juridica', id=pj.id) }}" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar esta persona jurídica?');">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p>No hay personas jurídicas registradas.</p>
+            {% endif %}
+        </div>
+    </div>
+{% else %}
+<p>No hay clientes registrados en este bufete.</p>
+{% endif %}
+{% endblock content %}

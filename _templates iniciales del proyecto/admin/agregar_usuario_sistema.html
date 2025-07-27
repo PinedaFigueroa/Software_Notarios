@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% import "macros/_form_macros.html" as forms %}
+
+{% block content %}
+    <h1 class="mb-4">{{ title }}</h1>
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Datos del Nuevo Usuario del Sistema</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('admin_bp.agregar_usuario_sistema') }}">
+                {{ form.csrf_token }}
+                <div class="mb-3">
+                    {{ forms.render_field(form.nombre_usuario) }}
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.password) }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.confirm_password) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.rol) }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.is_active) }}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    {{ forms.render_field(form.direccion_laboral) }}
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.telefono) }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.email) }}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    {{ forms.render_field(form.preferencia_contacto_red_social) }}
+                </div>
+                <hr>
+                <h5>Asociación con Persona/Notario y Bufete</h5>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.persona_id) }}
+                        <small class="form-text text-muted">Asocia este usuario a una Persona Natural existente.</small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.notario_id) }}
+                        <small class="form-text text-muted">Asocia este usuario a un Notario existente.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    {# ¡CORRECCIÓN CLAVE AQUÍ! Renderizar el campo de selección de bufete #}
+                    {{ forms.render_field(form.bufete_juridico_id) }} 
+                    <small class="form-text text-muted">Asigna este usuario a un Bufete Jurídico principal.</small>
+                </div>
+                
+                <button type="submit" class="btn btn-success mt-3">{{ form.submit.label }}</button>
+                <a href="{{ url_for('admin_bp.listado_usuarios_sistema') }}" class="btn btn-secondary mt-3 ml-2">Cancelar</a> {# Cambiado ms-2 a ml-2 para Bootstrap 4 #}
+            </form>
+        </div>
+    </div>
+{% endblock content %}

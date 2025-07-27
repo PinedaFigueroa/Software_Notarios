@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% import "macros/_form_macros.html" as forms %}
+
+{% block content %}
+    <h1 class="mb-4">{{ title }}: {{ clausula.nombre_clausula }}</h1>
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">Editar Datos de la Cláusula</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('clausulas_bp.editar_clausula', clausula_id=clausula.id) }}">
+                {{ form.csrf_token }}
+                <div class="mb-3">
+                    {{ forms.render_field(form.nombre_clausula) }}
+                </div>
+                <div class="mb-3">
+                    {{ forms.render_field(form.contenido_base) }}
+                    <small class="form-text text-muted">Aquí puedes usar placeholders como &#123;&#123;nombre_cliente&#125;&#125; para rellenar automáticamente.</small>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.tipo_clausula) }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.tags) }}
+                        <small class="form-text text-muted">Etiquetas separadas por coma (ej. compraventa, hipoteca, generales).</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    {{ forms.render_field(form.editable) }}
+                    <small class="form-text text-muted">Si está marcado, el contenido de esta cláusula podrá ser modificado al ser usada en un documento.</small>
+                </div>
+                <hr>
+                <h5>Fundamentación y Aplicabilidad</h5>
+                <div class="mb-3">
+                    {{ forms.render_field(form.fundamentacion_doctrinal_observaciones) }}
+                    <small class="form-text text-muted">Citas de autores, motivos, solidez doctrinal o notas internas.</small>
+                </div>
+                <div class="mb-3">
+                    {{ forms.render_field(form.fundamentacion_legal_articulos) }}
+                    <small class="form-text text-muted">Artículos de leyes que fundamentan la cláusula (ej. Art. 1681 C.C., Art. 10 Ley X).</small>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.obligatoriedad_sugerencia) }}
+                        <small class="form-text text-muted">Indica si la cláusula es Obligatoria, Sugerida u Opcional para ciertos contratos.</small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.aplica_a_instrumentos_publicos) }}
+                        <small class="form-text text-muted">Tipos de instrumentos públicos donde esta cláusula es importante (separados por coma o salto de línea).</small>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary mt-3">{{ form.submit.label }}</button>
+                <a href="{{ url_for('clausulas_bp.listado_clausulas') }}" class="btn btn-secondary mt-3 ml-2">Cancelar</a> {# Cambiado ms-2 a ml-2 para Bootstrap 4 #}
+            </form>
+        </div>
+    </div>
+{% endblock content %}

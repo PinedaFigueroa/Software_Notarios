@@ -1,3 +1,6 @@
 C:\Users\Usuario\Downloads
 pip install "C:\Users\Usuario\Downloads\pygraphviz-1.14-cp313-cp313-win_amd64.whl"
 pygraphviz-1.14-cp313-cp313-win_amd64.whl
+
+
+pip install --config-settings="--global-option=build_ext" --config-settings="--global-option=-IC:\Program Files\Graphviz\include" --config-settings="--global-option=-LC:\Program Files\Graphviz\lib" pygraphviz

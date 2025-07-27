@@ -1,36 +1,64 @@
-# -*- coding: utf-8 -*-
 # archivo: app/models/planes.py
-# autor: Giancarlo + Tars-90
-# última actualización: 25 / 07 / 25
-# Descripción: Modelo de Planes para definir límites y características contratadas por cada bufete
+# fecha de creación: 16/07/25 hora 09:50
+# cantidad de lineas originales: ~40
+# última actualización: 26/07/25 hora 20:10
+# motivo de la actualización: corrección de importación, expansión del modelo y preparación para planes base
+# autor: Giancarlo F. + Tars-90
+# -*- coding: utf-8 -*-
 
-from sqlalchemy import Column, Integer, String, Boolean
-from sqlalchemy.orm import relationship
 from app import db
+from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime
+from sqlalchemy.orm import relationship
+import datetime
 
 class Plan(db.Model):
     """
-    Modelo que define los planes de suscripción del sistema.
-    Permite controlar límites como usuarios, documentos, almacenamiento, etc.
+    Modelo: Plan
+
+    Representa un plan contratado por un bufete jurídico.
+
+    Campos principales:
+    - nombre: Nombre del plan (ej. Demo, Profesional, Ilimitado)
+    - descripcion: Breve descripción visible en el dashboard
+    - límites: usuarios, documentos, almacenamiento
+    - precio_mensual: Costo en quetzales
+    - es_personalizado: Bandera para planes fuera del catálogo general
+    - activo: Si está disponible para nuevos bufetes
+    - fechas: creación y actualización
+
+    Usos:
+    - Control de acceso según el plan contratado
+    - Facturación y visualización de plan actual
     """
     __tablename__ = 'planes'
 
     id = Column(Integer, primary_key=True)
     nombre = Column(String(100), nullable=False, unique=True)
-    descripcion = Column(String(250), nullable=True)
+    descripcion = Column(String(255), nullable=True)
 
-    # Límites
-    max_notarios = Column(Integer, default=1)
-    max_procuradores = Column(Integer, default=1)
-    max_asistentes = Column(Integer, default=1)
-    max_escrituras_mensuales = Column(Integer, default=10)
-    max_actas_mensuales = Column(Integer, default=10)
-    max_storage_mb = Column(Integer, default=500)
+    max_notarios = Column(Integer, nullable=False, default=1)
+    max_procuradores = Column(Integer, nullable=False, default=1)
+    max_asistentes = Column(Integer, nullable=False, default=0)
+    max_documentos = Column(Integer, nullable=False, default=10)
+    storage_mb = Column(Integer, nullable=False, default=100)
 
+    precio_mensual = Column(Float, nullable=False, default=0.0)
+    es_personalizado = Column(Boolean, default=False)
     activo = Column(Boolean, default=True)
 
-    # Relación inversa: bufetes que usan este plan
-    bufetes = relationship('BufeteJuridico', back_populates='plan')
+    # Auditoría
+    fecha_creacion = Column(DateTime, default=datetime.datetime.utcnow)
+    fecha_actualizacion = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+    bufetes = relationship("BufeteJuridico", back_populates="plan")
+
+    def es_valido_para(self, notarios, procuradores, asistentes, documentos, uso_mb):
+        return (
+            notarios <= self.max_notarios and
+            procuradores <= self.max_procuradores and
+            asistentes <= self.max_asistentes and
+            documentos <= self.max_documentos and
+            uso_mb <= self.storage_mb
+        )
 
     def __repr__(self):
-        return f"<Plan(id={self.id}, nombre='{self.nombre}')>"
+        return f"<Plan {self.nombre} Q{self.precio_mensual}>"

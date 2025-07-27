@@ -1,0 +1,132 @@
+{# c:\Users\Usuario\Mi unidad\Notarios_app\app\templates\main\dashboard_new.html #}
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Dashboard Principal del Sistema Notarial</h1>
+
+<p class="lead">Bienvenido al Sistema Notarial, <strong>{{ current_user.nombres }}</strong>. Utiliza las tarjetas de abajo para acceder a las diferentes secciones.</p>
+
+<div class="row">
+    {# Gestión de Clientes - Visible para SuperAdmin y Admin #}
+    {% if current_user.rol == 'Super Administrador' or current_user.rol == 'Administrador' %}
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-person-bounding-box me-2"></i> Gestión de Clientes</h5>
+                <p class="card-text">Administra la información de personas naturales y jurídicas.</p>
+                <a href="{{ url_for('admin_bp.listado_personas') }}" class="btn btn-primary btn-sm">Personas Naturales</a>
+                <a href="{{ url_for('admin_bp.listado_personas_juridicas') }}" class="btn btn-info btn-sm ms-2">Personas Jurídicas</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {# Gestión de Bienes - Visible para SuperAdmin, Admin, Procurador #}
+    {% if current_user.rol == 'Super Administrador' or current_user.rol == 'Administrador' or current_user.rol == 'Procurador' %}
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-building-fill me-2"></i> Gestión de Bienes</h5>
+                <p class="card-text">Registra y consulta bienes inmuebles y muebles.</p>
+                <a href="{{ url_for('admin_bp.listado_bienes') }}" class="btn btn-primary btn-sm">Ver Bienes</a>
+                <a href="{{ url_for('admin_bp.agregar_inmueble') }}" class="btn btn-success btn-sm ms-2">Agregar Inmueble</a>
+                <a href="{{ url_for('admin_bp.agregar_mueble') }}" class="btn btn-info btn-sm ms-2">Agregar Mueble</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {# Instrumentos Públicos - Placeholder por ahora #}
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-journal-text me-2"></i> Instrumentos Públicos</h5>
+                <p class="card-text">Crea y gestiona escrituras públicas.</p>
+                <a href="#" class="btn btn-primary btn-sm">Crear Documento</a> {# Enlace placeholder #}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {# Biblioteca de Cláusulas - Visible para SuperAdmin, Admin, Notario #}
+    {% if current_user.rol in ('Super Administrador', 'Administrador', 'Notario') %}
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-book-half me-2"></i> Biblioteca de Cláusulas</h5>
+                <p class="card-text">Administra cláusulas reutilizables para tus documentos.</p>
+                <a href="{{ url_for('admin_bp.listado_clausulas') }}" class="btn btn-primary btn-sm">Ver Cláusulas</a>
+                <a href="{{ url_for('admin_bp.agregar_clausula') }}" class="btn btn-success btn-sm ms-2">Agregar Cláusula</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {# Gestión de Usuarios - Visible para SuperAdmin y Admin #}
+    {% if current_user.rol == 'Super Administrador' or current_user.rol == 'Administrador' %}
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-people-fill me-2"></i> Gestión de Usuarios</h5>
+                <p class="card-text">Administra los usuarios y sus roles en el sistema.</p>
+                <a href="{{ url_for('admin_bp.listado_usuarios_sistema') }}" class="btn btn-primary btn-sm">Ir a Usuarios</a>
+                <a href="{{ url_for('admin_bp.agregar_usuario_sistema') }}" class="btn btn-success btn-sm ms-2">Agregar Usuario</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {# Gestión de Notarios - Visible para SuperAdmin y Admin #}
+    {% if current_user.rol == 'Super Administrador' or current_user.rol == 'Administrador' %}
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-person-badge-fill me-2"></i> Gestión de Notarios</h5>
+                <p class="card-text">Administra la información de los notarios.</p>
+                <a href="{{ url_for('admin_bp.listado_notarios') }}" class="btn btn-primary btn-sm">Ver Notarios</a>
+                <a href="{{ url_for('admin_bp.agregar_notario') }}" class="btn btn-success btn-sm ms-2">Agregar Notario</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<div class="row">
+    {# Configuración del Bufete - Visible solo para SuperAdmin #}
+    {% if current_user.rol == 'Super Administrador' %}
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-tools me-2"></i> Configuración del Bufete</h5>
+                <p class="card-text">Gestiona la información general de tu bufete y la aplicación.</p>
+                <a href="{{ url_for('admin_bp.configuracion_bufete') }}" class="btn btn-primary btn-sm">Ir a Configuración</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {# Placeholder para futuros módulos #}
+    {#
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-archive me-2"></i> Inventario de Timbres y Papel</h5>
+                <p class="card-text">Controla el stock de timbres fiscales y papel de protocolo.</p>
+                <a href="#" class="btn btn-primary btn-sm">Ir a Inventario</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-graph-up me-2"></i> Dashboard Avanzado</h5>
+                <p class="card-text">Visualiza estadísticas y recordatorios importantes del sistema.</p>
+                <a href="#" class="btn btn-primary btn-sm">Ver Dashboard</a>
+            </div>
+        </div>
+    </div>
+    #}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import "macros/_form_macros.html" as forms %}
+
+{% block content %}
+    <h1 class="mb-4">{{ title }}</h1>
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">Datos de la Persona Jurídica</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('clientes_bp.agregar_persona_juridica') }}">
+                {{ form.csrf_token }} {# Campo oculto de seguridad para WTForms #}
+                <div class="mb-3">
+                    {{ forms.render_field(form.razon_social) }}
+                </div>
+                <div class="mb-3">
+                    {{ forms.render_field(form.nombre_comercial) }}
+                </div>
+                <div class="mb-3">
+                    {{ forms.render_field(form.nit) }}
+                </div>
+                <div class="mb-3">
+                    {{ forms.render_field(form.datos_inscripcion_registral) }}
+                </div>
+                <div class="mb-3">
+                    {{ forms.render_field(form.direccion_completa) }}
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.telefono) }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ forms.render_field(form.email) }}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">{{ form.submit.label }}</button>
+                <a href="{{ url_for('clientes_bp.listado_clientes') }}" class="btn btn-secondary mt-3 ms-2">Cancelar</a>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

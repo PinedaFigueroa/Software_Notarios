@@ -1,44 +1,44 @@
 # archivo: app/cli.py
-# fecha de creación: 14 / 07 / 25 hora 21:50
-# ultima actualización: 14 / 07 / 25 hora 23:59
-# motivo de la actualizacion: corrección campos que corresponden al notario, no al bufete
+# fecha de actualización: 26 / 07 / 25
+# motivo: agregar numero_colegiado=0 al notario principal y asegurar integridad con modelos
 # autor: Giancarlo F. + Tars-90
 # -*- coding: utf-8 -*-
 
 import click
 from flask.cli import AppGroup
 from app import db
-from app.models.core import BufeteJuridico, Notario, UsuarioSistema
+from app.models.usuarios import BufeteJuridico, Notario, Usuario
 from app.models.planes import Plan
 from app.models.enums import RolUsuarioEnum, EstadoUsuarioEnum
 
 cli = AppGroup('seed-cli')
 
-@cli.command('init')
-def seed_cli():
-    """🌱 Seed inicial: plan Starter, bufete principal, notario y superadmin"""
+def seed_inicial():
     print("🌱 Iniciando seed inicial...")
 
-    # 1️⃣ Plan Starter
-    plan = Plan.query.filter_by(nombre="Starter").first()
-    if not plan:
-        plan = Plan(
-            nombre="Starter",
-            descripcion="Plan inicial con 1 notario, 1 procurador, 1 asistente y 500MB storage",
-            max_notarios=1,
-            max_procuradores=1,
-            max_asistentes=1,
-            max_escrituras_mensuales=20,
-            max_actas_mensuales=20,
-            max_storage_mb=500
-        )
-        db.session.add(plan)
-        db.session.commit()
-        print("✅ Plan Starter creado.")
-    else:
-        print("⚠ Plan Starter ya existe.")
+    # 1️⃣ Planes base
+    planes = [
+        ("Demo", "Acceso limitado de prueba", 1, 1, 1, 5, 50, 0.0),
+        ("Profesional", "Para bufetes pequeños o en crecimiento", 2, 3, 2, 100, 500, 250.0),
+        ("Ilimitado", "Sin límites técnicos", 999, 999, 999, 99999, 100000, 1250.0),
+    ]
 
-    # 2️⃣ Bufete principal (solo datos del bufete)
+    for nombre, descripcion, n, p, a, doc, mb, precio in planes:
+        if not Plan.query.filter_by(nombre=nombre).first():
+            db.session.add(Plan(
+                nombre=nombre,
+                descripcion=descripcion,
+                max_notarios=n,
+                max_procuradores=p,
+                max_asistentes=a,
+                max_documentos=doc,
+                storage_mb=mb,
+                precio_mensual=precio
+            ))
+    db.session.commit()
+    print("✅ Planes base creados.")
+
+    # 2️⃣ Bufete principal
     bufete = BufeteJuridico.query.filter_by(nombre_bufete_o_razon_social="PINEDA VON AHN, FIGUEROA Y ASOCIADOS").first()
     if not bufete:
         bufete = BufeteJuridico(
@@ -47,46 +47,42 @@ def seed_cli():
             email="admin@bufete.com",
             app_copyright="© 2025 Pineda von Ahn Figueroa y Asociados / Hubsa  Todos los derechos reservados.",
             nombre_aplicacion="Sistema Notarial Hubsa",
-            plan_id=plan.id
+            plan_id=Plan.query.filter_by(nombre="Profesional").first().id
         )
         db.session.add(bufete)
         db.session.commit()
-        print(f"✅ Bufete creado: {bufete.nombre_bufete_o_razon_social}")
-    else:
-        print("⚠ Bufete ya existe.")
+        print("✅ Bufete principal creado.")
 
     # 3️⃣ Notario principal
-    notario = Notario.query.filter_by(nombre_completo="Lic. Luis Danilo Pineda von Ahn").first()
-    if not notario:
-        notario = Notario(
-            nombre_completo="Lic. Luis Danilo Pineda von Ahn",
-            colegiado="00000",
-            direccion="Dirección Inicial",
-            telefono="123456",
-            bufete_id=bufete.id,
-            activo=True
-        )
-        db.session.add(notario)
-        db.session.commit()
-        print(f"✅ Notario creado: {notario.nombre_completo}")
-    else:
-        print("⚠ Notario ya existe.")
-
-    # 4️⃣ Superadmin
-    superadmin = UsuarioSistema.query.filter_by(correo="admin@bufete.com").first()
-    if not superadmin:
-        superadmin = UsuarioSistema(
-            nombre_completo="Super Admin",
-            correo="admin@bufete.com",
-            rol=RolUsuarioEnum.SUPERADMIN,
+    if not Notario.query.filter_by(username="notario_pineda").first():
+        db.session.add(Notario(
+            username="notario_pineda",
+            correo="notario@bufete.com",
+            password_hash="hashed_password",  # reemplazar por hash real
+            rol=RolUsuarioEnum.NOTARIO,
             estado=EstadoUsuarioEnum.ACTIVO,
             bufete_id=bufete.id,
-            activo=True
-        )
-        db.session.add(superadmin)
+            numero_colegiado=0
+        ))
         db.session.commit()
-        print(f"✅ Usuario superadmin creado: {superadmin.correo}")
-    else:
-        print("⚠ Superadmin ya existe.")
+        print("✅ Notario principal creado.")
 
-    print("🎉 Seed inicial completado exitosamente.")
+    # 4️⃣ Superadmin
+    if not Usuario.query.filter_by(username="admin").first():
+        db.session.add(Usuario(
+            username="admin",
+            correo="admin@bufete.com",
+            password_hash="admin123",  # reemplazar por hash real
+            rol=RolUsuarioEnum.SUPERADMIN,
+            estado=EstadoUsuarioEnum.ACTIVO,
+            bufete_id=bufete.id
+        ))
+        db.session.commit()
+        print("✅ Superadmin creado.")
+
+    print("🎉 Seed inicial completado.")
+
+@cli.command('init')
+def seed_cli():
+    """🌱 Ejecuta la función seed_inicial con CLI"""
+    seed_inicial()
