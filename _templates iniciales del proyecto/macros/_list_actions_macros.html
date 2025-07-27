@@ -1,7 +1,0 @@
-{# templates/macros/_list_actions_macros.html #}
-{% macro render_list_actions(edit_url, delete_url, item_id, item_name) %}
-    <a href="{{ edit_url }}" class="btn btn-outline-warning btn-sm me-1" title="Editar"><i class="bi bi-pencil"></i></a>
-    <form action="{{ delete_url }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar a {{ item_name }}? Esta acción no se puede deshacer.');">
-        <button type="submit" class="btn btn-outline-danger btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
-    </form>
-{% endmacro %}

@@ -1,5 +1,35 @@
-echo venv/ > .gitignore
-echo __pycache__/ >> .gitignore
-echo *.pyc >> .gitignore
-echo instance/ >> .gitignore
-echo .env >> .gitignore
+# Carpetas de sistema/editor
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Entornos virtuales y binarios
+env/
+venv/
+swnot/
+
+# Archivos temporales y de error
+*.log
+init_error.log
+
+# Archivos de documentación generada
+*.md
+README*
+docs/
+doctest-output/
+
+# Carpetas no deseadas según imagen
+Prompts/
+leyes/
+routes_iniciales del proyecto/
+_templates iniciales del proyecto/
+
+# Archivos ocultos o del sistema
+.DS_Store
+Thumbs.db
+
+# Build y static folders si no son necesarias en control de versiones
+_build/
+_static/
