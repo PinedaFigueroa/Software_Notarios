@@ -1,0 +1,13 @@
+<!-- archivo: app/templates/dashboard/dashboard.html -->
+<!-- motivo: dashboard principal extendiendo base.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Dashboard Bufete{% endblock %}
+
+{% block content %}
+<h1 class="mt-4">Bienvenido al Bufete</h1>
+<p class="lead">Usuario logueado: {{ usuario }} (Rol: {{ rol }})</p>
+<hr>
+<div class="alert alert-info">Aquí aparecerán los datos del bufete, tareas, métricas...</div>
+{% endblock %}

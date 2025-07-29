@@ -1,32 +1,33 @@
 # archivo: app/__init__.py
-# fecha de creación: 14 / 07 / 25
-# cantidad de lineas originales: ____
-# última actualización: 15 / 07 / 25 hora 08:20
-# motivo de la actualización: evitar circular import con cli.py
-# autor: Giancarlo + Tars-90
+# fecha de creación: 26 / 07 / 25
+# cantidad de líneas originales: 40 aprox.
+# última actualización: 27 / 07 / 25 hora 21:40
+# motivo de la actualización: registrar correctamente blueprint del dashboard
+# autor: Giancarlo F. + Tars-90
 # -*- coding: utf-8 -*-
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-
+from flask_login import LoginManager
 
 db = SQLAlchemy()
 migrate = Migrate()
+login_manager = LoginManager()
 
 def create_app():
     app = Flask(__name__)
-
-    # Configuración
     app.config.from_object('app.config.Config')
 
-    # Inicializa extensiones
+    # Registrar blueprints
+    from app.dashboard import dashboard_bp
+    app.register_blueprint(dashboard_bp)
+
+    # Inicializar extensiones
     db.init_app(app)
     migrate.init_app(app, db)
 
-    # Importa y registra blueprints aquí si tienes
-
-    # Importa y registra comandos CLI al final para evitar circular import
+    # Registrar comandos personalizados
     from app.cli import cli
     app.cli.add_command(cli)
 
