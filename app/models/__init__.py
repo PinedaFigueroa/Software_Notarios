@@ -31,3 +31,4 @@ from .enums import (
 
 # Si tienes más modelos (ejemplo: relaciones, auditoria, librería, etc.)
 # los importas aquí igualmente para que los detecte Flask-Migrate
+from .asociaciones import NotarioProcuradorAsociacion # relaciones notarios procuradores asistentes
