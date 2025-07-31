@@ -18,7 +18,7 @@ from .pagos import PagoBufete
 from .cuenta_corriente import MovimientoCuenta
 from .usuarios import Usuario
 from .documentos import DocumentoNotarial
-# from .clausulas_puntos import ClausulaPunto
+from .clausulas_puntos import ClausulasPuntos
 from .enums import (
     FormaPagoEnum,
     EstadoDocumentoEnum,
