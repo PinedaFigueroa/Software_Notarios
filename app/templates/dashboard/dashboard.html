@@ -7,84 +7,96 @@
 <p class="lead">Resumen general de la actividad del sistema</p>
 <hr>
 
-<div class="row text-center">
-
+<div class="row text-center mb-4">
     <div class="col-md-3 mb-4">
-        <div class="card bg-primary text-white shadow">
+        <div class="card bg-primary text-white shadow card-dashboard">
             <div class="card-body">
+                <i class="fas fa-users fa-2x mb-2"></i>
                 <h4>{{ usuarios_totales }}</h4>
                 <p>Usuarios Totales</p>
             </div>
         </div>
     </div>
-
     <div class="col-md-3 mb-4">
-        <div class="card bg-success text-white shadow">
+        <div class="card bg-success text-white shadow card-dashboard">
             <div class="card-body">
+                <i class="fas fa-file-signature fa-2x mb-2"></i>
                 <h4>{{ documentos_totales }}</h4>
                 <p>Documentos Notariales</p>
             </div>
         </div>
     </div>
-
     <div class="col-md-3 mb-4">
-        <div class="card bg-warning text-dark shadow">
+        <div class="card bg-info text-white shadow card-dashboard">
             <div class="card-body">
+                <i class="fas fa-link fa-2x mb-2"></i>
                 <h4>{{ asociaciones_activas }}</h4>
                 <p>Asociaciones Activas</p>
             </div>
         </div>
     </div>
-
     <div class="col-md-3 mb-4">
-        <div class="card bg-info text-white shadow">
+        <div class="card bg-secondary text-white shadow card-dashboard">
             <div class="card-body">
+                <i class="fas fa-user-tie fa-2x mb-2"></i>
                 <h4>{{ notarios }}</h4>
                 <p>Notarios</p>
             </div>
         </div>
     </div>
-
 </div>
 
-<div class="row text-center">
-
+<div class="row text-center mb-4">
     <div class="col-md-3 mb-4">
-        <div class="card bg-secondary text-white shadow">
+        <div class="card bg-secondary text-white shadow card-dashboard">
             <div class="card-body">
+                <i class="fas fa-user fa-2x mb-2"></i>
                 <h4>{{ procuradores }}</h4>
                 <p>Procuradores</p>
             </div>
         </div>
     </div>
-
     <div class="col-md-3 mb-4">
-        <div class="card bg-secondary text-white shadow">
+        <div class="card bg-light text-dark shadow card-dashboard">
             <div class="card-body">
+                <i class="fas fa-user-gear fa-2x mb-2"></i>
                 <h4>{{ asistentes }}</h4>
                 <p>Asistentes</p>
             </div>
         </div>
     </div>
-
     <div class="col-md-3 mb-4">
-        <div class="card bg-dark text-white shadow">
+        <div class="card bg-purple text-white shadow card-dashboard">
             <div class="card-body">
+                <i class="fas fa-user-shield fa-2x mb-2"></i>
                 <h4>{{ admins_local }}</h4>
                 <p>Admins Locales</p>
             </div>
         </div>
     </div>
-
     <div class="col-md-3 mb-4">
-        <div class="card bg-dark text-white shadow">
+        <div class="card bg-darkblue text-white shadow card-dashboard">
             <div class="card-body">
+                <i class="fas fa-crown fa-2x mb-2"></i>
                 <h4>{{ superadmins }}</h4>
                 <p>Superadmins</p>
             </div>
         </div>
     </div>
-
 </div>
+
+{% if avisos_pendientes is defined and avisos_pendientes > 0 %}
+<div class="row text-center mb-4">
+    <div class="col-md-3 mb-4">
+        <div class="card bg-warning text-dark shadow card-dashboard">
+            <div class="card-body">
+                <i class="fas fa-bell fa-2x mb-2"></i>
+                <h4>{{ avisos_pendientes }}</h4>
+                <p>Avisos Pendientes</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 
 {% endblock %}
