@@ -1,31 +1,50 @@
 # Configuration file for the Sphinx documentation builder.
+# -*- coding: utf-8 -*-
+#
+# Software Notarios Documentation
+# Autor: Giancarlo Figueroa + Tars-90
+# Última actualización: 31 / 07 / 25 - 16:00
 
 import os
 import sys
+
+# --- Rutas para autodoc ---
+# Agregar raíz del proyecto y carpeta app para que Sphinx encuentre los módulos
 sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../app'))
+sys.path.insert(0, os.path.abspath('../scripts'))
 
-# -- Project information -----------------------------------------------------
-project = 'Software para Notarios'
-copyright = '2025, Giancarlo E. Figueroa F. / HUBSA'
-author = 'Giancarlo E. Figueroa F.'
-release = '1.0'
+# --- Proyecto ---
+project = 'Software Notarios'
+author = 'Giancarlo Figueroa + Tars-90'
+release = '1.0.0'
 
-# -- General configuration ---------------------------------------------------
+# --- Extensiones ---
 extensions = [
-    'sphinx.ext.autodoc',       # extraer docstrings de los módulos Python
-    'sphinx.ext.napoleon',      # soportar Google y NumPy style docstrings
-    'sphinx.ext.viewcode',      # añadir enlaces al código fuente
+    'sphinx.ext.autodoc',      # Documentación automática de módulos Python
+    'sphinx.ext.napoleon',     # Docstrings estilo Google/NumPy
+    'sphinx.ext.viewcode',     # Muestra el código fuente con enlaces
+    'sphinx.ext.todo',         # Soporte para TODOs
+    'sphinx.ext.githubpages',  # Para publicar en GitHub Pages
+    'myst_parser'              # Para soportar archivos Markdown
 ]
 
-templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+# --- Idioma ---
 language = 'es'
 
-# -- Options for HTML output -------------------------------------------------
-html_theme = 'sphinx_rtd_theme'   # Tema Read The Docs (muy usado)
+# --- Plantilla ---
+templates_path = ['_templates']
+
+# --- Archivos ignorados ---
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+
+# --- Salida HTML ---
+# html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme' # para mejorar la presentación 
 html_static_path = ['_static']
 
-# -- Autodoc settings (opcional, para más control) --------------------------
+# --- Opciones autodoc ---
 autodoc_member_order = 'bysource'
-autodoc_inherit_docstrings = True
+autoclass_content = 'both'
+add_module_names = True

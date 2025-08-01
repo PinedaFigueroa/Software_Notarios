@@ -1,4 +1,4 @@
-# Proyecto: Software Notarios
+# Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints
 ## Bloque 2 – Dashboard y Blueprints (Versión Final)
 **Fecha:** 01/08/2025  
 **Autor:** Giancarlo + Tars-90

@@ -71,3 +71,6 @@ with app.app_context():
 
     db.session.commit()
     print("✅ Seed inicial completado correctamente.")
+
+if __name__ == "__main__":
+    main()
