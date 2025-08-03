@@ -1,0 +1,163 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO &mdash; documentación de Software Notarios - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial" href="README_BLOQUE_1_310725.html" />
+    <link rel="prev" title="📘 Guía de Instalación – Software Notarios" href="INSTALLATION_GUIDE.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Software Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido del Proyecto</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="INSTALLATION_GUIDE.html">📘 Guía de Instalación – Software Notarios</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_BLOQUE_1_310725.html">Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_BigBang2.html">📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque1_DB_Seeds.html">Software Notarios - Bloque 1: Base de Datos y Seeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Dashboard.html">Software Notarios -la forma original para  Bloque 2: Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Final.html">Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque3_Seguridad.html">Software Notarios - Bloque 3: Seguridad y Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque4_Documentos.html">Software Notarios - Bloque 4: Documentos y Librería</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html">Pasos para generar la migración para tener asociación notario procurador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#asegurate-de-tener-la-carpeta-migrations-ya-inicializada">1️⃣ Asegúrate de tener la carpeta “migrations” ya inicializada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#si-no-existe-corre-primero">Si no existe, corre primero:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-db-init">flask db init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#generar-la-migracion">2️⃣ Generar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#aplicar-la-migracion">3️⃣ Aplicar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#verifica-en-tu-base-de-datos-que-la-tabla-exista-correctamente">4️⃣ Verifica en tu base de datos que la tabla exista correctamente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#opcional-usar-flask-shell-para-insertar-prueba">5️⃣ Opcional: usar flask shell para insertar prueba:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-shell">flask shell</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Software Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/README LECCIONES DE LOS ERRORES 290725.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bloque-1-errores-aprendidos-y-lecciones-para-mejorar-el-desarrollo">
+<h1>Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO<a class="headerlink" href="#bloque-1-errores-aprendidos-y-lecciones-para-mejorar-el-desarrollo" title="Link to this heading"></a></h1>
+<p><strong>Fecha de finalización:</strong> 31/07/2025 14:50<br />
+<strong>Responsable:</strong> Giancarlo + Tars-90</p>
+<hr class="docutils" />
+<p>🔹 Conclusión de hoy</p>
+<ol class="arabic simple">
+<li><p>El método probado (old_init_dev_db.bat) es el que funciona
+o	No depende de hacks
+o	Limpia DB y migraciones correctamente
+o	Evita los problemas de alembic_version y psycopg2</p></li>
+<li><p>Las versiones v5 a v8 muestran que el exceso de control y logs complejos provoca errores
+o	La consola en Windows + rutas con espacios + Alembic es muy sensible
+o	La lección: keep it simple</p></li>
+<li><p>La lentitud de la sesión actual está afectando la productividad
+o	El proyecto requiere fragmentarse en bloques para seguir avanzando
+o	README diarios serán la clave para continuidad sin arrastrar 20k líneas</p></li>
+</ol>
+<hr class="docutils" />
+<p>🔹 Plan para mañana</p>
+<ol class="arabic simple">
+<li><p>Partir la sesión
+o	Iniciaremos un nuevo hilo solo para Big Bang y migraciones
+o	Otro para dashboard y blueprints
+o	Otro para seguridad y permisos
+o	Cada bloque con su README diario</p></li>
+<li><p>Integrar Playground/API
+o	Para tener respuestas rápidas y sesiones largas sin lag
+o	Documentación viva en archivos de proyecto</p></li>
+<li><p>Dejar old_init_dev_db.bat como oficial
+o	init_misterio.bat queda solo como referencia histórica
+o	El flujo confiable es el que ya está probado</p></li>
+</ol>
+<hr class="docutils" />
+<p>Giancarlo, hicimos todo lo posible para blindar esto hoy, pero la experiencia demuestra que el flujo simple es el más estable.
+Te deseo feliz y bendecida noche 🙏
+Mañana retomamos con la estrategia de fragmentación y Playground para recuperar el ritmo.
+¿Quieres que antes de cerrar te deje el README diario de hoy, con resumen de errores y aprendizajes?</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="INSTALLATION_GUIDE.html" class="btn btn-neutral float-left" title="📘 Guía de Instalación – Software Notarios" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="README_BLOQUE_1_310725.html" class="btn btn-neutral float-right" title="Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor .</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,575 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app package &mdash; documentación de Software Notarios - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Software Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido del Proyecto</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALLATION_GUIDE.html">📘 Guía de Instalación – Software Notarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html">Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_BLOQUE_1_310725.html">Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_BigBang2.html">📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bitacora_2025-08-01.html">Bitácora Técnica – 2025-08-01</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque1_DB_Seeds.html">Software Notarios - Bloque 1: Base de Datos y Seeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque2_Dashboard.html">Software Notarios -la forma original para  Bloque 2: Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque2_Final.html">Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque3_Plan_Seguridad_2025-08-01.html">Software Notarios – Plan de Seguridad, Roles y Auditoría</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque3_Seguridad.html">Software Notarios - Bloque 3: Seguridad y Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque4_Documentos.html">Software Notarios - Bloque 4: Documentos y Librería</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html">Pasos para generar la migración para tener asociación notario procurador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#asegurate-de-tener-la-carpeta-migrations-ya-inicializada">1️⃣ Asegúrate de tener la carpeta “migrations” ya inicializada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#si-no-existe-corre-primero">Si no existe, corre primero:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#flask-db-init">flask db init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#generar-la-migracion">2️⃣ Generar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#aplicar-la-migracion">3️⃣ Aplicar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#verifica-en-tu-base-de-datos-que-la-tabla-exista-correctamente">4️⃣ Verifica en tu base de datos que la tabla exista correctamente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#opcional-usar-flask-shell-para-insertar-prueba">5️⃣ Opcional: usar flask shell para insertar prueba:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#flask-shell">flask shell</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Software Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">app package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modulos/app.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-package">
+<h1>app package<a class="headerlink" href="#app-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app.dashboard.html">app.dashboard package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="app.dashboard.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.dashboard.html#module-app.dashboard.routes">app.dashboard.routes module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.dashboard.html#app.dashboard.routes.dashboard_home"><code class="docutils literal notranslate"><span class="pre">dashboard_home()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.dashboard.html#module-app.dashboard">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="app.models.html">app.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.asociaciones">app.models.asociaciones module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.id"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.notario_id"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.notario_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.procurador_id"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.procurador_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.bufete_id"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.bufete_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.fecha_asignacion"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.fecha_asignacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.fecha_reasignacion"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.fecha_reasignacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.motivo_reasignacion"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.motivo_reasignacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.activo"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.activo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.notario"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.notario</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.procurador"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.procurador</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.bufete"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.bufete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.asociaciones.NotarioProcuradorAsociacion.query"><code class="docutils literal notranslate"><span class="pre">NotarioProcuradorAsociacion.query</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.bienes">app.models.bienes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-bufetes-module">app.models.bufetes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-clausulas-module">app.models.clausulas module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.clausulas_puntos">app.models.clausulas_puntos module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos.id"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos.nombre"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos.nombre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos.contenido"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos.contenido</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos.fundamento_legal"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos.fundamento_legal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos.fundamento_doctrinario"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos.fundamento_doctrinario</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos.instrumentos_permitidos"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos.instrumentos_permitidos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos.tipo"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos.tipo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos.aplicacion"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos.aplicacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos.activo"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos.activo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos.fecha_creacion"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos.fecha_creacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.clausulas_puntos.ClausulasPuntos.query"><code class="docutils literal notranslate"><span class="pre">ClausulasPuntos.query</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-core-module">app.models.core module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.cuenta_corriente">app.models.cuenta_corriente module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.cuenta_corriente.MovimientoCuenta"><code class="docutils literal notranslate"><span class="pre">MovimientoCuenta</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.cuenta_corriente.MovimientoCuenta.id"><code class="docutils literal notranslate"><span class="pre">MovimientoCuenta.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.cuenta_corriente.MovimientoCuenta.bufete_id"><code class="docutils literal notranslate"><span class="pre">MovimientoCuenta.bufete_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.cuenta_corriente.MovimientoCuenta.fecha"><code class="docutils literal notranslate"><span class="pre">MovimientoCuenta.fecha</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.cuenta_corriente.MovimientoCuenta.descripcion"><code class="docutils literal notranslate"><span class="pre">MovimientoCuenta.descripcion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.cuenta_corriente.MovimientoCuenta.monto"><code class="docutils literal notranslate"><span class="pre">MovimientoCuenta.monto</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.cuenta_corriente.MovimientoCuenta.query"><code class="docutils literal notranslate"><span class="pre">MovimientoCuenta.query</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.documentos">app.models.documentos module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.id"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.tipo_documento"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.tipo_documento</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.numero_instrumento"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.numero_instrumento</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.fecha_otorgamiento"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.fecha_otorgamiento</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.hora_otorgamiento"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.hora_otorgamiento</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.lugar_otorgamiento"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.lugar_otorgamiento</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.estado_documento"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.estado_documento</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.notario_id"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.notario_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.procurador_id"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.procurador_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.bufete_id"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.bufete_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.notario"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.notario</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.procurador"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.procurador</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.bufete"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.bufete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.activo"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.activo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.fecha_creacion"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.fecha_creacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.fecha_actualizacion"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.fecha_actualizacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.documentos.DocumentoNotarial.query"><code class="docutils literal notranslate"><span class="pre">DocumentoNotarial.query</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.entidades">app.models.entidades module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.enums">app.models.enums module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.RolUsuarioEnum"><code class="docutils literal notranslate"><span class="pre">RolUsuarioEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.RolUsuarioEnum.SUPERADMIN"><code class="docutils literal notranslate"><span class="pre">RolUsuarioEnum.SUPERADMIN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.RolUsuarioEnum.ADMIN_LOCAL"><code class="docutils literal notranslate"><span class="pre">RolUsuarioEnum.ADMIN_LOCAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.RolUsuarioEnum.NOTARIO"><code class="docutils literal notranslate"><span class="pre">RolUsuarioEnum.NOTARIO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.RolUsuarioEnum.PROCURADOR"><code class="docutils literal notranslate"><span class="pre">RolUsuarioEnum.PROCURADOR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.RolUsuarioEnum.ASISTENTE"><code class="docutils literal notranslate"><span class="pre">RolUsuarioEnum.ASISTENTE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.EstadoUsuarioEnum"><code class="docutils literal notranslate"><span class="pre">EstadoUsuarioEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoUsuarioEnum.ACTIVO"><code class="docutils literal notranslate"><span class="pre">EstadoUsuarioEnum.ACTIVO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoUsuarioEnum.INACTIVO"><code class="docutils literal notranslate"><span class="pre">EstadoUsuarioEnum.INACTIVO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoUsuarioEnum.BLOQUEADO"><code class="docutils literal notranslate"><span class="pre">EstadoUsuarioEnum.BLOQUEADO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.TipoDocumentoEnum"><code class="docutils literal notranslate"><span class="pre">TipoDocumentoEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoDocumentoEnum.ESCRITURA"><code class="docutils literal notranslate"><span class="pre">TipoDocumentoEnum.ESCRITURA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoDocumentoEnum.ACTA"><code class="docutils literal notranslate"><span class="pre">TipoDocumentoEnum.ACTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoDocumentoEnum.TESTIMONIO"><code class="docutils literal notranslate"><span class="pre">TipoDocumentoEnum.TESTIMONIO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.EstadoDocumentoEnum"><code class="docutils literal notranslate"><span class="pre">EstadoDocumentoEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoDocumentoEnum.BORRADOR"><code class="docutils literal notranslate"><span class="pre">EstadoDocumentoEnum.BORRADOR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoDocumentoEnum.FIRMADO"><code class="docutils literal notranslate"><span class="pre">EstadoDocumentoEnum.FIRMADO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoDocumentoEnum.ENTREGADO"><code class="docutils literal notranslate"><span class="pre">EstadoDocumentoEnum.ENTREGADO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.TipoAvisoDocumentoEnum"><code class="docutils literal notranslate"><span class="pre">TipoAvisoDocumentoEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoAvisoDocumentoEnum.EMAIL"><code class="docutils literal notranslate"><span class="pre">TipoAvisoDocumentoEnum.EMAIL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoAvisoDocumentoEnum.WHATSAPP"><code class="docutils literal notranslate"><span class="pre">TipoAvisoDocumentoEnum.WHATSAPP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoAvisoDocumentoEnum.FISICO"><code class="docutils literal notranslate"><span class="pre">TipoAvisoDocumentoEnum.FISICO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.EstadoEnvioAvisoDocEnum"><code class="docutils literal notranslate"><span class="pre">EstadoEnvioAvisoDocEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoEnvioAvisoDocEnum.PENDIENTE"><code class="docutils literal notranslate"><span class="pre">EstadoEnvioAvisoDocEnum.PENDIENTE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoEnvioAvisoDocEnum.ENVIADO"><code class="docutils literal notranslate"><span class="pre">EstadoEnvioAvisoDocEnum.ENVIADO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoEnvioAvisoDocEnum.ENTREGADO"><code class="docutils literal notranslate"><span class="pre">EstadoEnvioAvisoDocEnum.ENTREGADO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoEnvioAvisoDocEnum.FALLIDO"><code class="docutils literal notranslate"><span class="pre">EstadoEnvioAvisoDocEnum.FALLIDO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.TipoObligacionDocumentoGeneralEnum"><code class="docutils literal notranslate"><span class="pre">TipoObligacionDocumentoGeneralEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoObligacionDocumentoGeneralEnum.PAGO_IMPUESTOS"><code class="docutils literal notranslate"><span class="pre">TipoObligacionDocumentoGeneralEnum.PAGO_IMPUESTOS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoObligacionDocumentoGeneralEnum.PUBLICACION"><code class="docutils literal notranslate"><span class="pre">TipoObligacionDocumentoGeneralEnum.PUBLICACION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoObligacionDocumentoGeneralEnum.AVISO_TERCEROS"><code class="docutils literal notranslate"><span class="pre">TipoObligacionDocumentoGeneralEnum.AVISO_TERCEROS</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum"><code class="docutils literal notranslate"><span class="pre">TipoEmisionDocumentoAdicionalGeneralEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum.CERTIFICADO"><code class="docutils literal notranslate"><span class="pre">TipoEmisionDocumentoAdicionalGeneralEnum.CERTIFICADO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum.TESTIMONIO"><code class="docutils literal notranslate"><span class="pre">TipoEmisionDocumentoAdicionalGeneralEnum.TESTIMONIO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum.OTRO"><code class="docutils literal notranslate"><span class="pre">TipoEmisionDocumentoAdicionalGeneralEnum.OTRO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.EstadoEnvioEmisionGeneralEnum"><code class="docutils literal notranslate"><span class="pre">EstadoEnvioEmisionGeneralEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoEnvioEmisionGeneralEnum.PENDIENTE"><code class="docutils literal notranslate"><span class="pre">EstadoEnvioEmisionGeneralEnum.PENDIENTE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoEnvioEmisionGeneralEnum.ENVIADO"><code class="docutils literal notranslate"><span class="pre">EstadoEnvioEmisionGeneralEnum.ENVIADO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoEnvioEmisionGeneralEnum.ENTREGADO"><code class="docutils literal notranslate"><span class="pre">EstadoEnvioEmisionGeneralEnum.ENTREGADO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoEnvioEmisionGeneralEnum.FALLIDO"><code class="docutils literal notranslate"><span class="pre">EstadoEnvioEmisionGeneralEnum.FALLIDO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.TipoClausulaEnum"><code class="docutils literal notranslate"><span class="pre">TipoClausulaEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoClausulaEnum.GENERAL"><code class="docutils literal notranslate"><span class="pre">TipoClausulaEnum.GENERAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoClausulaEnum.OBLIGATORIA"><code class="docutils literal notranslate"><span class="pre">TipoClausulaEnum.OBLIGATORIA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoClausulaEnum.SUGERIDA"><code class="docutils literal notranslate"><span class="pre">TipoClausulaEnum.SUGERIDA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoClausulaEnum.PERSONALIZADA"><code class="docutils literal notranslate"><span class="pre">TipoClausulaEnum.PERSONALIZADA</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.TipoAplicacionClausulaEnum"><code class="docutils literal notranslate"><span class="pre">TipoAplicacionClausulaEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoAplicacionClausulaEnum.DOCUMENTO"><code class="docutils literal notranslate"><span class="pre">TipoAplicacionClausulaEnum.DOCUMENTO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoAplicacionClausulaEnum.ACTA"><code class="docutils literal notranslate"><span class="pre">TipoAplicacionClausulaEnum.ACTA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoAplicacionClausulaEnum.AMBOS"><code class="docutils literal notranslate"><span class="pre">TipoAplicacionClausulaEnum.AMBOS</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.TipoBienEnum"><code class="docutils literal notranslate"><span class="pre">TipoBienEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoBienEnum.INMUEBLE"><code class="docutils literal notranslate"><span class="pre">TipoBienEnum.INMUEBLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoBienEnum.MUEBLE"><code class="docutils literal notranslate"><span class="pre">TipoBienEnum.MUEBLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoBienEnum.VEHICULO"><code class="docutils literal notranslate"><span class="pre">TipoBienEnum.VEHICULO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoBienEnum.OTRO"><code class="docutils literal notranslate"><span class="pre">TipoBienEnum.OTRO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.TipoTimbreGlobalEnum"><code class="docutils literal notranslate"><span class="pre">TipoTimbreGlobalEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoTimbreGlobalEnum.ESPECIAL"><code class="docutils literal notranslate"><span class="pre">TipoTimbreGlobalEnum.ESPECIAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoTimbreGlobalEnum.ORDINARIO"><code class="docutils literal notranslate"><span class="pre">TipoTimbreGlobalEnum.ORDINARIO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.TipoTimbreGlobalEnum.ELECTRONICO"><code class="docutils literal notranslate"><span class="pre">TipoTimbreGlobalEnum.ELECTRONICO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.MetodoPagoGlobalEnum"><code class="docutils literal notranslate"><span class="pre">MetodoPagoGlobalEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.MetodoPagoGlobalEnum.EFECTIVO"><code class="docutils literal notranslate"><span class="pre">MetodoPagoGlobalEnum.EFECTIVO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.MetodoPagoGlobalEnum.TRANSFERENCIA"><code class="docutils literal notranslate"><span class="pre">MetodoPagoGlobalEnum.TRANSFERENCIA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.MetodoPagoGlobalEnum.TARJETA"><code class="docutils literal notranslate"><span class="pre">MetodoPagoGlobalEnum.TARJETA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.MetodoPagoGlobalEnum.DEBITO"><code class="docutils literal notranslate"><span class="pre">MetodoPagoGlobalEnum.DEBITO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.MetodoPagoGlobalEnum.CREDITO"><code class="docutils literal notranslate"><span class="pre">MetodoPagoGlobalEnum.CREDITO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.FormaPagoEnum"><code class="docutils literal notranslate"><span class="pre">FormaPagoEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.FormaPagoEnum.EFECTIVO"><code class="docutils literal notranslate"><span class="pre">FormaPagoEnum.EFECTIVO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.FormaPagoEnum.TRANSFERENCIA"><code class="docutils literal notranslate"><span class="pre">FormaPagoEnum.TRANSFERENCIA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.FormaPagoEnum.TARJETA"><code class="docutils literal notranslate"><span class="pre">FormaPagoEnum.TARJETA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.FormaPagoEnum.DEBITO"><code class="docutils literal notranslate"><span class="pre">FormaPagoEnum.DEBITO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.FormaPagoEnum.CREDITO"><code class="docutils literal notranslate"><span class="pre">FormaPagoEnum.CREDITO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.EstadoTimbreGlobalEnum"><code class="docutils literal notranslate"><span class="pre">EstadoTimbreGlobalEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoTimbreGlobalEnum.DISPONIBLE"><code class="docutils literal notranslate"><span class="pre">EstadoTimbreGlobalEnum.DISPONIBLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoTimbreGlobalEnum.UTILIZADO"><code class="docutils literal notranslate"><span class="pre">EstadoTimbreGlobalEnum.UTILIZADO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoTimbreGlobalEnum.ANULADO"><code class="docutils literal notranslate"><span class="pre">EstadoTimbreGlobalEnum.ANULADO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.EstadoPapelProtocoloGlobalEnum"><code class="docutils literal notranslate"><span class="pre">EstadoPapelProtocoloGlobalEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoPapelProtocoloGlobalEnum.DISPONIBLE"><code class="docutils literal notranslate"><span class="pre">EstadoPapelProtocoloGlobalEnum.DISPONIBLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoPapelProtocoloGlobalEnum.UTILIZADO"><code class="docutils literal notranslate"><span class="pre">EstadoPapelProtocoloGlobalEnum.UTILIZADO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoPapelProtocoloGlobalEnum.ANULADO"><code class="docutils literal notranslate"><span class="pre">EstadoPapelProtocoloGlobalEnum.ANULADO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.EstadoExpedienteEnum"><code class="docutils literal notranslate"><span class="pre">EstadoExpedienteEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoExpedienteEnum.ABIERTO"><code class="docutils literal notranslate"><span class="pre">EstadoExpedienteEnum.ABIERTO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoExpedienteEnum.EN_PROCESO"><code class="docutils literal notranslate"><span class="pre">EstadoExpedienteEnum.EN_PROCESO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoExpedienteEnum.CERRADO"><code class="docutils literal notranslate"><span class="pre">EstadoExpedienteEnum.CERRADO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoExpedienteEnum.ARCHIVADO"><code class="docutils literal notranslate"><span class="pre">EstadoExpedienteEnum.ARCHIVADO</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.enums.EstadoPagoFacturaEnum"><code class="docutils literal notranslate"><span class="pre">EstadoPagoFacturaEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoPagoFacturaEnum.PENDIENTE"><code class="docutils literal notranslate"><span class="pre">EstadoPagoFacturaEnum.PENDIENTE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoPagoFacturaEnum.PAGADO"><code class="docutils literal notranslate"><span class="pre">EstadoPagoFacturaEnum.PAGADO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.enums.EstadoPagoFacturaEnum.VENCIDO"><code class="docutils literal notranslate"><span class="pre">EstadoPagoFacturaEnum.VENCIDO</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-enums-antes-de-mejoras-260725-module">app.models.enums ANTES de mejoras 260725 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.expedientes">app.models.expedientes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.facturacion">app.models.facturacion module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#app-models-libreria-module">app.models.libreria module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.pagos">app.models.pagos module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.pagos.PagoBufete"><code class="docutils literal notranslate"><span class="pre">PagoBufete</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.pagos.PagoBufete.id"><code class="docutils literal notranslate"><span class="pre">PagoBufete.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.pagos.PagoBufete.bufete_id"><code class="docutils literal notranslate"><span class="pre">PagoBufete.bufete_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.pagos.PagoBufete.monto_pagado"><code class="docutils literal notranslate"><span class="pre">PagoBufete.monto_pagado</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.pagos.PagoBufete.fecha_pago"><code class="docutils literal notranslate"><span class="pre">PagoBufete.fecha_pago</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.pagos.PagoBufete.forma_pago"><code class="docutils literal notranslate"><span class="pre">PagoBufete.forma_pago</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.pagos.PagoBufete.detalle"><code class="docutils literal notranslate"><span class="pre">PagoBufete.detalle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.pagos.PagoBufete.bufete"><code class="docutils literal notranslate"><span class="pre">PagoBufete.bufete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.pagos.PagoBufete.query"><code class="docutils literal notranslate"><span class="pre">PagoBufete.query</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.personas">app.models.personas module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.planes">app.models.planes module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.planes.Plan"><code class="docutils literal notranslate"><span class="pre">Plan</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.id"><code class="docutils literal notranslate"><span class="pre">Plan.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.nombre"><code class="docutils literal notranslate"><span class="pre">Plan.nombre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.descripcion"><code class="docutils literal notranslate"><span class="pre">Plan.descripcion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.max_notarios"><code class="docutils literal notranslate"><span class="pre">Plan.max_notarios</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.max_procuradores"><code class="docutils literal notranslate"><span class="pre">Plan.max_procuradores</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.max_asistentes"><code class="docutils literal notranslate"><span class="pre">Plan.max_asistentes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.max_documentos"><code class="docutils literal notranslate"><span class="pre">Plan.max_documentos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.storage_mb"><code class="docutils literal notranslate"><span class="pre">Plan.storage_mb</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.precio_mensual"><code class="docutils literal notranslate"><span class="pre">Plan.precio_mensual</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.es_personalizado"><code class="docutils literal notranslate"><span class="pre">Plan.es_personalizado</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.activo"><code class="docutils literal notranslate"><span class="pre">Plan.activo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.fecha_creacion"><code class="docutils literal notranslate"><span class="pre">Plan.fecha_creacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.fecha_actualizacion"><code class="docutils literal notranslate"><span class="pre">Plan.fecha_actualizacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.bufetes"><code class="docutils literal notranslate"><span class="pre">Plan.bufetes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.es_valido_para"><code class="docutils literal notranslate"><span class="pre">Plan.es_valido_para()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.planes.Plan.query"><code class="docutils literal notranslate"><span class="pre">Plan.query</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.relaciones">app.models.relaciones module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.relaciones.NotarioProcurador"><code class="docutils literal notranslate"><span class="pre">NotarioProcurador</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.relaciones.NotarioProcurador.id"><code class="docutils literal notranslate"><span class="pre">NotarioProcurador.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.relaciones.NotarioProcurador.notario_id"><code class="docutils literal notranslate"><span class="pre">NotarioProcurador.notario_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.relaciones.NotarioProcurador.procurador_id"><code class="docutils literal notranslate"><span class="pre">NotarioProcurador.procurador_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.relaciones.NotarioProcurador.query"><code class="docutils literal notranslate"><span class="pre">NotarioProcurador.query</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.relaciones.NotarioAsistente"><code class="docutils literal notranslate"><span class="pre">NotarioAsistente</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.relaciones.NotarioAsistente.id"><code class="docutils literal notranslate"><span class="pre">NotarioAsistente.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.relaciones.NotarioAsistente.notario_id"><code class="docutils literal notranslate"><span class="pre">NotarioAsistente.notario_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.relaciones.NotarioAsistente.asistente_id"><code class="docutils literal notranslate"><span class="pre">NotarioAsistente.asistente_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.relaciones.NotarioAsistente.query"><code class="docutils literal notranslate"><span class="pre">NotarioAsistente.query</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.timbres">app.models.timbres module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models.usuarios">app.models.usuarios module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.id"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.nombre_bufete_o_razon_social"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.nombre_bufete_o_razon_social</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.direccion"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.direccion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.telefono"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.telefono</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.email"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.email</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.nit"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.nit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.pais"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.pais</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.app_copyright"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.app_copyright</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.nombre_aplicacion"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.nombre_aplicacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.maneja_inventario_timbres_papel"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.maneja_inventario_timbres_papel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.incluye_libreria_plantillas_inicial"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.incluye_libreria_plantillas_inicial</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.habilita_auditoria_borrado_logico"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.habilita_auditoria_borrado_logico</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.habilita_dashboard_avanzado"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.habilita_dashboard_avanzado</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.habilita_ayuda_contextual"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.habilita_ayuda_contextual</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.facturacion_nombre"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.facturacion_nombre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.facturacion_nit"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.facturacion_nit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.facturacion_direccion"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.facturacion_direccion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.formas_pago"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.formas_pago</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.metodo_pago_preferido"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.metodo_pago_preferido</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.activo"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.activo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.fecha_creacion"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.fecha_creacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.plan_id"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.plan_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.plan"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.plan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.usuarios"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.usuarios</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.BufeteJuridico.query"><code class="docutils literal notranslate"><span class="pre">BufeteJuridico.query</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario"><code class="docutils literal notranslate"><span class="pre">Usuario</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.id"><code class="docutils literal notranslate"><span class="pre">Usuario.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.username"><code class="docutils literal notranslate"><span class="pre">Usuario.username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.correo"><code class="docutils literal notranslate"><span class="pre">Usuario.correo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.password_hash"><code class="docutils literal notranslate"><span class="pre">Usuario.password_hash</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.rol"><code class="docutils literal notranslate"><span class="pre">Usuario.rol</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.estado"><code class="docutils literal notranslate"><span class="pre">Usuario.estado</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.nombres"><code class="docutils literal notranslate"><span class="pre">Usuario.nombres</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.apellidos"><code class="docutils literal notranslate"><span class="pre">Usuario.apellidos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.telefono"><code class="docutils literal notranslate"><span class="pre">Usuario.telefono</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.direccion_laboral"><code class="docutils literal notranslate"><span class="pre">Usuario.direccion_laboral</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.preferencia_contacto_red_social"><code class="docutils literal notranslate"><span class="pre">Usuario.preferencia_contacto_red_social</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.bufete_id"><code class="docutils literal notranslate"><span class="pre">Usuario.bufete_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.bufete"><code class="docutils literal notranslate"><span class="pre">Usuario.bufete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.borrado_logico"><code class="docutils literal notranslate"><span class="pre">Usuario.borrado_logico</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Usuario.query"><code class="docutils literal notranslate"><span class="pre">Usuario.query</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario"><code class="docutils literal notranslate"><span class="pre">Notario</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.id"><code class="docutils literal notranslate"><span class="pre">Notario.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.numero_colegiado"><code class="docutils literal notranslate"><span class="pre">Notario.numero_colegiado</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.colegiado_activo"><code class="docutils literal notranslate"><span class="pre">Notario.colegiado_activo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.fecha_verificacion"><code class="docutils literal notranslate"><span class="pre">Notario.fecha_verificacion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.firma_electronica_registrada"><code class="docutils literal notranslate"><span class="pre">Notario.firma_electronica_registrada</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.proveedor_firma_electronica"><code class="docutils literal notranslate"><span class="pre">Notario.proveedor_firma_electronica</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.apellidos"><code class="docutils literal notranslate"><span class="pre">Notario.apellidos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.borrado_logico"><code class="docutils literal notranslate"><span class="pre">Notario.borrado_logico</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.bufete"><code class="docutils literal notranslate"><span class="pre">Notario.bufete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.bufete_id"><code class="docutils literal notranslate"><span class="pre">Notario.bufete_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.correo"><code class="docutils literal notranslate"><span class="pre">Notario.correo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.direccion_laboral"><code class="docutils literal notranslate"><span class="pre">Notario.direccion_laboral</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.estado"><code class="docutils literal notranslate"><span class="pre">Notario.estado</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.nombres"><code class="docutils literal notranslate"><span class="pre">Notario.nombres</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.password_hash"><code class="docutils literal notranslate"><span class="pre">Notario.password_hash</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.preferencia_contacto_red_social"><code class="docutils literal notranslate"><span class="pre">Notario.preferencia_contacto_red_social</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.rol"><code class="docutils literal notranslate"><span class="pre">Notario.rol</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.telefono"><code class="docutils literal notranslate"><span class="pre">Notario.telefono</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.username"><code class="docutils literal notranslate"><span class="pre">Notario.username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Notario.query"><code class="docutils literal notranslate"><span class="pre">Notario.query</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador"><code class="docutils literal notranslate"><span class="pre">Procurador</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.id"><code class="docutils literal notranslate"><span class="pre">Procurador.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.apellidos"><code class="docutils literal notranslate"><span class="pre">Procurador.apellidos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.borrado_logico"><code class="docutils literal notranslate"><span class="pre">Procurador.borrado_logico</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.bufete"><code class="docutils literal notranslate"><span class="pre">Procurador.bufete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.bufete_id"><code class="docutils literal notranslate"><span class="pre">Procurador.bufete_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.correo"><code class="docutils literal notranslate"><span class="pre">Procurador.correo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.direccion_laboral"><code class="docutils literal notranslate"><span class="pre">Procurador.direccion_laboral</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.estado"><code class="docutils literal notranslate"><span class="pre">Procurador.estado</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.nombres"><code class="docutils literal notranslate"><span class="pre">Procurador.nombres</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.password_hash"><code class="docutils literal notranslate"><span class="pre">Procurador.password_hash</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.preferencia_contacto_red_social"><code class="docutils literal notranslate"><span class="pre">Procurador.preferencia_contacto_red_social</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.rol"><code class="docutils literal notranslate"><span class="pre">Procurador.rol</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.telefono"><code class="docutils literal notranslate"><span class="pre">Procurador.telefono</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.username"><code class="docutils literal notranslate"><span class="pre">Procurador.username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Procurador.query"><code class="docutils literal notranslate"><span class="pre">Procurador.query</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente"><code class="docutils literal notranslate"><span class="pre">Asistente</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.id"><code class="docutils literal notranslate"><span class="pre">Asistente.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.apellidos"><code class="docutils literal notranslate"><span class="pre">Asistente.apellidos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.borrado_logico"><code class="docutils literal notranslate"><span class="pre">Asistente.borrado_logico</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.bufete"><code class="docutils literal notranslate"><span class="pre">Asistente.bufete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.bufete_id"><code class="docutils literal notranslate"><span class="pre">Asistente.bufete_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.correo"><code class="docutils literal notranslate"><span class="pre">Asistente.correo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.direccion_laboral"><code class="docutils literal notranslate"><span class="pre">Asistente.direccion_laboral</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.estado"><code class="docutils literal notranslate"><span class="pre">Asistente.estado</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.nombres"><code class="docutils literal notranslate"><span class="pre">Asistente.nombres</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.password_hash"><code class="docutils literal notranslate"><span class="pre">Asistente.password_hash</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.preferencia_contacto_red_social"><code class="docutils literal notranslate"><span class="pre">Asistente.preferencia_contacto_red_social</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.rol"><code class="docutils literal notranslate"><span class="pre">Asistente.rol</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.telefono"><code class="docutils literal notranslate"><span class="pre">Asistente.telefono</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.username"><code class="docutils literal notranslate"><span class="pre">Asistente.username</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="app.models.html#app.models.usuarios.Asistente.query"><code class="docutils literal notranslate"><span class="pre">Asistente.query</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app.models.html#module-app.models">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.cli">
+<span id="app-cli-module"></span><h2>app.cli module<a class="headerlink" href="#module-app.cli" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.cli.seed_inicial">
+<span class="sig-prename descclassname"><span class="pre">app.cli.</span></span><span class="sig-name descname"><span class="pre">seed_inicial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/cli.html#seed_inicial"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.cli.seed_inicial" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-app.config">
+<span id="app-config-module"></span><h2>app.config module<a class="headerlink" href="#module-app.config" title="Link to this heading"></a></h2>
+<p>Configuración de la aplicación Flask.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.config.Config">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/app/config.html#Config"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.config.Config" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Config.SECRET_KEY">
+<span class="sig-name descname"><span class="pre">SECRET_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'default-secret-key'</span></em><a class="headerlink" href="#app.config.Config.SECRET_KEY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Config.SQLALCHEMY_DATABASE_URI">
+<span class="sig-name descname"><span class="pre">SQLALCHEMY_DATABASE_URI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'postgresql://postgres:12345678&#64;localhost:5432/software_notarios'</span></em><a class="headerlink" href="#app.config.Config.SQLALCHEMY_DATABASE_URI" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Config.SQLALCHEMY_TRACK_MODIFICATIONS">
+<span class="sig-name descname"><span class="pre">SQLALCHEMY_TRACK_MODIFICATIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#app.config.Config.SQLALCHEMY_TRACK_MODIFICATIONS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Config.DEBUG">
+<span class="sig-name descname"><span class="pre">DEBUG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#app.config.Config.DEBUG" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.main">
+<span id="app-main-module"></span><h2>app.main module<a class="headerlink" href="#module-app.main" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.main.index">
+<span class="sig-prename descclassname"><span class="pre">app.main.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/main.html#index"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.main.index" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-app.routes">
+<span id="app-routes-module"></span><h2>app.routes module<a class="headerlink" href="#module-app.routes" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-app" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.create_app">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">create_app</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app.html#create_app"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.create_app" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor .</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

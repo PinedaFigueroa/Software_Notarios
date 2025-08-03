@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>init_big_bang &mdash; documentación de Software Notarios - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Software Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido del Proyecto</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALLATION_GUIDE.html">📘 Guía de Instalación – Software Notarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html">Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_BLOQUE_1_310725.html">Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_BigBang2.html">📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque1_DB_Seeds.html">Software Notarios - Bloque 1: Base de Datos y Seeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque2_Dashboard.html">Software Notarios -la forma original para  Bloque 2: Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque2_Final.html">Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque3_Seguridad.html">Software Notarios - Bloque 3: Seguridad y Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque4_Documentos.html">Software Notarios - Bloque 4: Documentos y Librería</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html">Pasos para generar la migración para tener asociación notario procurador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#asegurate-de-tener-la-carpeta-migrations-ya-inicializada">1️⃣ Asegúrate de tener la carpeta “migrations” ya inicializada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#si-no-existe-corre-primero">Si no existe, corre primero:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#flask-db-init">flask db init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#generar-la-migracion">2️⃣ Generar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#aplicar-la-migracion">3️⃣ Aplicar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#verifica-en-tu-base-de-datos-que-la-tabla-exista-correctamente">4️⃣ Verifica en tu base de datos que la tabla exista correctamente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#opcional-usar-flask-shell-para-insertar-prueba">5️⃣ Opcional: usar flask shell para insertar prueba:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#flask-shell">flask shell</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Software Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">init_big_bang</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para init_big_bang</h1><div class="highlight"><pre>
+<span></span><span class="c1"># archivo: scripts/init_big_bang.py</span>
+<span class="c1"># fecha de creación: 29 / 07 / 25</span>
+<span class="c1"># última actualización: 31 / 07 / 25 hora 18:15</span>
+<span class="c1"># motivo: encapsulación en main() para evitar ejecución al importar</span>
+<span class="c1"># autor: Giancarlo F. + Tars-90</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Inicializador Big Bang definitivo para Software Notarios.</span>
+<span class="sd">- Híbrido Windows/Linux</span>
+<span class="sd">- Limpia migraciones, recrea DB y aplica seed inicial</span>
+<span class="sd">- Genera log por ejecución con timestamp</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">LOG_DIR</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Users\Usuario\Mi unidad\Software_Notarios\errores_bdd_flask&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">LOG_DIR</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">LOG_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">LOG_DIR</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;big_bang_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.log&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="log_event">
+<a class="viewcode-back" href="../modulos/init_big_bang.html#init_big_bang.log_event">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">log_event</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">ts</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">LOG_FILE</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">log</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../modulos/init_big_bang.html#init_big_bang.main">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">IS_WINDOWS</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;windows&quot;</span>
+    <span class="n">CURRENT_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="n">ROUTE_HAS_SPACES</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span> <span class="ow">in</span> <span class="n">CURRENT_PATH</span>
+
+    <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;🚀 Inicializador Big Bang — Software Notarios&quot;</span><span class="p">)</span>
+
+    <span class="c1"># --- Ejecución .BAT si es Windows con espacios ---</span>
+    <span class="k">if</span> <span class="n">IS_WINDOWS</span> <span class="ow">and</span> <span class="n">ROUTE_HAS_SPACES</span><span class="p">:</span>
+        <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;⚠️  Windows detectado con ruta que contiene espacios.&quot;</span><span class="p">)</span>
+        <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;💡 Ejecutando el .bat oficial para evitar errores con psycopg2.&quot;</span><span class="p">)</span>
+        
+        <span class="n">bat_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;init_dev_db.bat&quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">bat_path</span><span class="p">):</span>
+            <span class="n">log_event</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ No se encontró </span><span class="si">{</span><span class="n">bat_path</span><span class="si">}</span><span class="s2">. Coloca el .bat en la raíz del proyecto.&quot;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;cmd.exe&quot;</span><span class="p">,</span> <span class="s2">&quot;/c&quot;</span><span class="p">,</span> <span class="n">bat_path</span><span class="p">],</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">)</span>
+
+    <span class="c1"># --- Configuración de DB ---</span>
+    <span class="n">PG_USER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PG_USER&quot;</span><span class="p">,</span> <span class="s2">&quot;postgres&quot;</span><span class="p">)</span>
+    <span class="n">PG_PASSWORD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PG_PASSWORD&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">PG_HOST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PG_HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">)</span>
+    <span class="n">PG_PORT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PG_PORT&quot;</span><span class="p">,</span> <span class="s2">&quot;5432&quot;</span><span class="p">)</span>
+    <span class="n">PG_DB_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PG_DB_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;software_notarios&quot;</span><span class="p">)</span>
+
+    <span class="n">env</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">PG_PASSWORD</span><span class="p">:</span>
+        <span class="n">env</span><span class="p">[</span><span class="s2">&quot;PGPASSWORD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PG_PASSWORD</span>
+
+    <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;⚙️ Ejecutando Big Bang en modo Python...&quot;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># 1️⃣ Limpieza de migraciones</span>
+        <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;--- PASO 1: Limpieza de migraciones ---&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;migrations/versions&quot;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s2">&quot;migrations/versions&quot;</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
+            <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;✅ Migraciones limpiadas.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;ℹ️ Carpeta migrations/versions no existe o ya está vacía.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 2️⃣ Detección y eliminación de DB previa</span>
+        <span class="n">check_db_cmd</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;psql&quot;</span><span class="p">,</span> <span class="s2">&quot;-U&quot;</span><span class="p">,</span> <span class="n">PG_USER</span><span class="p">,</span> <span class="s2">&quot;-h&quot;</span><span class="p">,</span> <span class="n">PG_HOST</span><span class="p">,</span> <span class="s2">&quot;-p&quot;</span><span class="p">,</span> <span class="n">PG_PORT</span><span class="p">,</span>
+            <span class="s2">&quot;-tAc&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;SELECT 1 FROM pg_database WHERE datname=&#39;</span><span class="si">{</span><span class="n">PG_DB_NAME</span><span class="si">}</span><span class="s2">&#39;;&quot;</span>
+        <span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">check_db_cmd</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+        <span class="n">db_exists</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+
+        <span class="k">if</span> <span class="n">db_exists</span><span class="p">:</span>
+            <span class="n">log_event</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;La base de datos </span><span class="se">\&quot;</span><span class="si">{</span><span class="n">PG_DB_NAME</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2"> EXISTE.&quot;</span><span class="p">)</span>
+            <span class="n">resp</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;¿Deseas eliminarla y recrearla? (s/n): &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">resp</span> <span class="o">!=</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span>
+                <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;Operador canceló el proceso. ❌&quot;</span><span class="p">)</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">drop_db_cmd</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s2">&quot;psql&quot;</span><span class="p">,</span> <span class="s2">&quot;-U&quot;</span><span class="p">,</span> <span class="n">PG_USER</span><span class="p">,</span> <span class="s2">&quot;-h&quot;</span><span class="p">,</span> <span class="n">PG_HOST</span><span class="p">,</span> <span class="s2">&quot;-p&quot;</span><span class="p">,</span> <span class="n">PG_PORT</span><span class="p">,</span>
+                <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;DROP DATABASE </span><span class="si">{</span><span class="n">PG_DB_NAME</span><span class="si">}</span><span class="s2">;&quot;</span><span class="p">,</span> <span class="s2">&quot;postgres&quot;</span>
+            <span class="p">]</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">drop_db_cmd</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log_event</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;La base de datos </span><span class="se">\&quot;</span><span class="si">{</span><span class="n">PG_DB_NAME</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2"> NO existe.&quot;</span><span class="p">)</span>
+            <span class="n">resp</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;¿Deseas crearla y continuar? (s/n): &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">resp</span> <span class="o">!=</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span>
+                <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;Operador canceló la creación. ❌&quot;</span><span class="p">)</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># 3️⃣ Crear DB UTF8 con template0</span>
+        <span class="n">log_event</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creando base de datos </span><span class="se">\&quot;</span><span class="si">{</span><span class="n">PG_DB_NAME</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2"> UTF8 con template0...&quot;</span><span class="p">)</span>
+        <span class="n">create_db_cmd</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;psql&quot;</span><span class="p">,</span> <span class="s2">&quot;-U&quot;</span><span class="p">,</span> <span class="n">PG_USER</span><span class="p">,</span> <span class="s2">&quot;-h&quot;</span><span class="p">,</span> <span class="n">PG_HOST</span><span class="p">,</span> <span class="s2">&quot;-p&quot;</span><span class="p">,</span> <span class="n">PG_PORT</span><span class="p">,</span>
+            <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;CREATE DATABASE </span><span class="si">{</span><span class="n">PG_DB_NAME</span><span class="si">}</span><span class="s2"> WITH ENCODING=&#39;UTF8&#39; LC_COLLATE=&#39;C&#39; LC_CTYPE=&#39;C&#39; TEMPLATE=template0 OWNER </span><span class="si">{</span><span class="n">PG_USER</span><span class="si">}</span><span class="s2">;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;postgres&quot;</span>
+        <span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">create_db_cmd</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">log_event</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error al crear DB: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;✅ Base creada correctamente.&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># 4️⃣ Aplicar migraciones</span>
+        <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;Aplicando migraciones con flask db upgrade...&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;flask&quot;</span><span class="p">,</span> <span class="s2">&quot;db&quot;</span><span class="p">,</span> <span class="s2">&quot;upgrade&quot;</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">log_event</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error en upgrade: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;✅ Migraciones aplicadas correctamente.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 5️⃣ Ejecutar seed inicial</span>
+        <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;Ejecutando seed inicial...&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;scripts.seed_inicial&quot;</span><span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">log_event</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error en seed inicial: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;✅ Seed inicial completado correctamente.&quot;</span><span class="p">)</span>
+
+        <span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;🎉 Big Bang completado sin errores.&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log_event</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Excepción inesperada: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor .</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

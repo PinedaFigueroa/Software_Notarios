@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Notarios - Bloque 3: Seguridad y Roles &mdash; documentación de Software Notarios - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Software Notarios - Bloque 4: Documentos y Librería" href="README_Bloque4_Documentos.html" />
+    <link rel="prev" title="Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints" href="README_Bloque2_Final.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Software Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido del Proyecto</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="INSTALLATION_GUIDE.html">📘 Guía de Instalación – Software Notarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html">Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_BLOQUE_1_310725.html">Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_BigBang2.html">📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque1_DB_Seeds.html">Software Notarios - Bloque 1: Base de Datos y Seeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Dashboard.html">Software Notarios -la forma original para  Bloque 2: Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Final.html">Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Software Notarios - Bloque 3: Seguridad y Roles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fecha-dd-mm-aaaa">Fecha: DD/MM/AAAA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avances">✅ Avances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#errores-y-soluciones">🐞 Errores y Soluciones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#codigo-y-archivos-relevantes">📄 Código y Archivos Relevantes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pendientes">📌 Pendientes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque4_Documentos.html">Software Notarios - Bloque 4: Documentos y Librería</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html">Pasos para generar la migración para tener asociación notario procurador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#asegurate-de-tener-la-carpeta-migrations-ya-inicializada">1️⃣ Asegúrate de tener la carpeta “migrations” ya inicializada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#si-no-existe-corre-primero">Si no existe, corre primero:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-db-init">flask db init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#generar-la-migracion">2️⃣ Generar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#aplicar-la-migracion">3️⃣ Aplicar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#verifica-en-tu-base-de-datos-que-la-tabla-exista-correctamente">4️⃣ Verifica en tu base de datos que la tabla exista correctamente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#opcional-usar-flask-shell-para-insertar-prueba">5️⃣ Opcional: usar flask shell para insertar prueba:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-shell">flask shell</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Software Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Software Notarios - Bloque 3: Seguridad y Roles</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/README_Bloque3_Seguridad.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="software-notarios-bloque-3-seguridad-y-roles">
+<h1>Software Notarios - Bloque 3: Seguridad y Roles<a class="headerlink" href="#software-notarios-bloque-3-seguridad-y-roles" title="Link to this heading"></a></h1>
+<section id="fecha-dd-mm-aaaa">
+<h2>Fecha: DD/MM/AAAA<a class="headerlink" href="#fecha-dd-mm-aaaa" title="Link to this heading"></a></h2>
+<section id="avances">
+<h3>✅ Avances<a class="headerlink" href="#avances" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Integración de Flask-Login</p></li>
+<li><p>Sistema de login y logout funcional</p></li>
+<li><p>Decoradores de permisos (<code class="docutils literal notranslate"><span class="pre">&#64;requires_role</span></code>) implementados</p></li>
+<li><p>Redirección a dashboard según rol</p></li>
+</ul>
+</section>
+<section id="errores-y-soluciones">
+<h3>🐞 Errores y Soluciones<a class="headerlink" href="#errores-y-soluciones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>(Ejemplo) Sesión no persistía → Solución: configurar <code class="docutils literal notranslate"><span class="pre">SECRET_KEY</span></code> en <code class="docutils literal notranslate"><span class="pre">app.config</span></code></p></li>
+<li><p>Ajuste en <code class="docutils literal notranslate"><span class="pre">permisos.py</span></code> para múltiples roles</p></li>
+</ul>
+</section>
+<section id="codigo-y-archivos-relevantes">
+<h3>📄 Código y Archivos Relevantes<a class="headerlink" href="#codigo-y-archivos-relevantes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">app/utils/permisos.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app/dashboard/routes.py</span></code> (rutas protegidas)</p></li>
+<li><p>Configuración de Flask-Login en <code class="docutils literal notranslate"><span class="pre">app/__init__.py</span></code></p></li>
+</ul>
+</section>
+<section id="pendientes">
+<h3>📌 Pendientes<a class="headerlink" href="#pendientes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Protección completa de todos los blueprints</p></li>
+<li><p>Crear formulario de login visual con Bootstrap</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="README_Bloque2_Final.html" class="btn btn-neutral float-left" title="Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="README_Bloque4_Documentos.html" class="btn btn-neutral float-right" title="Software Notarios - Bloque 4: Documentos y Librería" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor .</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

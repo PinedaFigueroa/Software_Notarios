@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos &mdash; documentación de Software Notarios - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Software Notarios - Bloque 1: Base de Datos y Seeds" href="README_Bloque1_DB_Seeds.html" />
+    <link rel="prev" title="Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial" href="README_BLOQUE_1_310725.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Software Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido del Proyecto</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="INSTALLATION_GUIDE.html">📘 Guía de Instalación – Software Notarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html">Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_BLOQUE_1_310725.html">Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#contexto">1. Contexto</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evolucion-de-versiones">Evolución de versiones</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#problemas-historicos-solucionados">2. Problemas históricos solucionados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logs-y-auditoria">3. Logs y Auditoría</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recomendaciones">4. Recomendaciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#archivos-relacionados">5. Archivos relacionados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#historico-de-mejoras">6. Histórico de mejoras</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque1_DB_Seeds.html">Software Notarios - Bloque 1: Base de Datos y Seeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Dashboard.html">Software Notarios -la forma original para  Bloque 2: Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Final.html">Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque3_Seguridad.html">Software Notarios - Bloque 3: Seguridad y Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque4_Documentos.html">Software Notarios - Bloque 4: Documentos y Librería</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html">Pasos para generar la migración para tener asociación notario procurador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#asegurate-de-tener-la-carpeta-migrations-ya-inicializada">1️⃣ Asegúrate de tener la carpeta “migrations” ya inicializada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#si-no-existe-corre-primero">Si no existe, corre primero:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-db-init">flask db init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#generar-la-migracion">2️⃣ Generar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#aplicar-la-migracion">3️⃣ Aplicar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#verifica-en-tu-base-de-datos-que-la-tabla-exista-correctamente">4️⃣ Verifica en tu base de datos que la tabla exista correctamente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#opcional-usar-flask-shell-para-insertar-prueba">5️⃣ Opcional: usar flask shell para insertar prueba:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-shell">flask shell</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Software Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/README_BigBang2.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="big-bang-2-proceso-de-re-inicializacion-de-base-de-datos">
+<h1>📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos<a class="headerlink" href="#big-bang-2-proceso-de-re-inicializacion-de-base-de-datos" title="Link to this heading"></a></h1>
+<section id="contexto">
+<h2>1. Contexto<a class="headerlink" href="#contexto" title="Link to this heading"></a></h2>
+<p>El proceso <strong>Big Bang 2</strong> se diseñó para reinicializar la base de datos de desarrollo
+del proyecto <strong>Software Notarios</strong> de manera <strong>segura, trazable y reproducible</strong>.</p>
+<section id="evolucion-de-versiones">
+<h3>Evolución de versiones<a class="headerlink" href="#evolucion-de-versiones" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>v2</strong> → Primer intento en Python, inspirado en <code class="docutils literal notranslate"><span class="pre">init_dev_db.bat</span></code></p></li>
+<li><p><strong>v3</strong> → Agregó tracking y logs paso a paso</p></li>
+<li><p><strong>v4</strong> → Manejo de decisiones (S/N) y logs de auditoría</p></li>
+<li><p><strong>v5</strong> → Versión híbrida y definitiva:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.bat</span></code> oficial para Windows (probado y confiable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.py</span></code> híbrido que usa el <code class="docutils literal notranslate"><span class="pre">.bat</span></code> si hay rutas con espacios</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="problemas-historicos-solucionados">
+<h2>2. Problemas históricos solucionados<a class="headerlink" href="#problemas-historicos-solucionados" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Errores de codificación (<code class="docutils literal notranslate"><span class="pre">UnicodeDecodeError</span></code>)</strong></p>
+<ul class="simple">
+<li><p>Ocurrían por rutas con espacios (<code class="docutils literal notranslate"><span class="pre">Mi</span> <span class="pre">unidad</span></code>) en Windows</p></li>
+<li><p>Se solucionó usando el <code class="docutils literal notranslate"><span class="pre">.bat</span></code> para evitar <code class="docutils literal notranslate"><span class="pre">psycopg2</span></code> en esa fase</p></li>
+</ul>
+</li>
+<li><p><strong>Conflictos de collate / encoding</strong></p>
+<ul class="simple">
+<li><p>Evitados creando la base con:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">template0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UTF8</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LC_COLLATE='C'</span></code> y <code class="docutils literal notranslate"><span class="pre">LC_CTYPE='C'</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Operadores sin guía clara</strong></p>
+<ul class="simple">
+<li><p>Se implementó tracking paso a paso en consola y logs</p></li>
+</ul>
+</li>
+<li><p><strong>Múltiples pruebas dejaban residuos de migraciones</strong></p>
+<ul class="simple">
+<li><p>Se agregó limpieza automática de <code class="docutils literal notranslate"><span class="pre">migrations/versions</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="logs-y-auditoria">
+<h2>3. Logs y Auditoría<a class="headerlink" href="#logs-y-auditoria" title="Link to this heading"></a></h2>
+<p>Todos los errores y decisiones del operador se registran en:</p>
+<p>Ejemplo de log (<code class="docutils literal notranslate"><span class="pre">big_bang_2_v5.log</span></code>):
+[2025-07-29 20:05:13] La base de datos «software_notarios_dev» EXISTE.
+[2025-07-29 20:05:13] Operador respondió “s”. Se eliminará y recreará la base.
+[2025-07-29 20:05:15] ✅ Base creada correctamente.
+[2025-07-29 20:05:20] ✅ Migraciones aplicadas correctamente.
+[2025-07-29 20:05:22] ✅ Seed inicial completado correctamente.
+[2025-07-29 20:05:23] 🎉 Big Bang 2 v5 completado sin errores.</p>
+</section>
+<hr class="docutils" />
+<section id="recomendaciones">
+<h2>4. Recomendaciones<a class="headerlink" href="#recomendaciones" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Siempre crear la base con <code class="docutils literal notranslate"><span class="pre">template0</span></code></strong> para evitar errores de collation</p></li>
+<li><p><strong>Mantener los logs</strong> para auditoría y diagnóstico</p></li>
+<li><p><strong>Seguir este procedimiento en producción</strong>, nunca crear la DB manualmente desde pgAdmin</p></li>
+<li><p><strong>Guardar archivos <code class="docutils literal notranslate"><span class="pre">.bat</span></code> sin BOM</strong> para evitar problemas de codificación</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="archivos-relacionados">
+<h2>5. Archivos relacionados<a class="headerlink" href="#archivos-relacionados" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">init_big_bang_2_v5.bat</span></code> → Ejecutar en Windows</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/init_big_bang_2_v5.py</span></code> → Ejecutar en Linux/Mac o CI/CD</p></li>
+<li><p>Logs → <code class="docutils literal notranslate"><span class="pre">errores_bdd_flask/big_bang_2_v5.log</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="historico-de-mejoras">
+<h2>6. Histórico de mejoras<a class="headerlink" href="#historico-de-mejoras" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Versión</p></th>
+<th class="head"><p>Mejoras clave</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>v2</p></td>
+<td><p>Primer script en Python, inspirado en el <code class="docutils literal notranslate"><span class="pre">.bat</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>v3</p></td>
+<td><p>Tracking paso a paso y logs</p></td>
+</tr>
+<tr class="row-even"><td><p>v4</p></td>
+<td><p>Registro de decisiones del operador en logs</p></td>
+</tr>
+<tr class="row-odd"><td><p>v5</p></td>
+<td><p>Híbrido: usa <code class="docutils literal notranslate"><span class="pre">.bat</span></code> en Windows y Python en rutas seguras</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="README_BLOQUE_1_310725.html" class="btn btn-neutral float-left" title="Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="README_Bloque1_DB_Seeds.html" class="btn btn-neutral float-right" title="Software Notarios - Bloque 1: Base de Datos y Seeds" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor .</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -24,13 +24,14 @@ init_error.log
 # Documentación y Sphinx
 # (Ignora solo la build, NO la fuente)
 # ===============================
-docs_build/
-docs/_build/
-docs/doctest-output/
+# docs_build/
+# docs/_build/
+# docs/doctest-output/
 docs_build/doctrees/
 docs_build/html/_sources/
 docs_build/html/_static/
-
+# ✅ Permitir la build HTML final
+!docs/_build/html/
 # ===============================
 # Archivos de documentación
 # (NO ignoramos .md ni README para conservar bitácoras)

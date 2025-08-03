@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📘 Guía de Instalación – Software Notarios &mdash; documentación de Software Notarios - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO" href="README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html" />
+    <link rel="prev" title="Software Notarios Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Software Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido del Proyecto</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">📘 Guía de Instalación – Software Notarios</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requisitos">1. Requisitos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inicializacion-en-windows-recomendada">2. Inicialización en Windows (Recomendada)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inicializacion-en-linux-mac">3. Inicialización en Linux/Mac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#produccion">4. Producción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logs-y-soporte">5. Logs y soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#consejos-finales">6. Consejos finales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html">Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_BLOQUE_1_310725.html">Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_BigBang2.html">📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque1_DB_Seeds.html">Software Notarios - Bloque 1: Base de Datos y Seeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Dashboard.html">Software Notarios -la forma original para  Bloque 2: Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Final.html">Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque3_Seguridad.html">Software Notarios - Bloque 3: Seguridad y Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque4_Documentos.html">Software Notarios - Bloque 4: Documentos y Librería</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html">Pasos para generar la migración para tener asociación notario procurador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#asegurate-de-tener-la-carpeta-migrations-ya-inicializada">1️⃣ Asegúrate de tener la carpeta “migrations” ya inicializada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#si-no-existe-corre-primero">Si no existe, corre primero:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-db-init">flask db init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#generar-la-migracion">2️⃣ Generar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#aplicar-la-migracion">3️⃣ Aplicar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#verifica-en-tu-base-de-datos-que-la-tabla-exista-correctamente">4️⃣ Verifica en tu base de datos que la tabla exista correctamente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#opcional-usar-flask-shell-para-insertar-prueba">5️⃣ Opcional: usar flask shell para insertar prueba:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-shell">flask shell</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Software Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">📘 Guía de Instalación – Software Notarios</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/INSTALLATION_GUIDE.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="guia-de-instalacion-software-notarios">
+<h1>📘 Guía de Instalación – Software Notarios<a class="headerlink" href="#guia-de-instalacion-software-notarios" title="Link to this heading"></a></h1>
+<p>Esta guía explica cómo inicializar la base de datos para <strong>desarrollo o producción</strong>.</p>
+<hr class="docutils" />
+<section id="requisitos">
+<h2>1. Requisitos<a class="headerlink" href="#requisitos" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>PostgreSQL 17+</p></li>
+<li><p>Python 3.10+</p></li>
+<li><p>Variables de entorno configuradas:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PG_USER</span></code> (ej: <code class="docutils literal notranslate"><span class="pre">postgres</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PG_PASSWORD</span></code> (si aplica)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PG_HOST</span></code> (ej: <code class="docutils literal notranslate"><span class="pre">localhost</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PG_PORT</span></code> (ej: <code class="docutils literal notranslate"><span class="pre">5432</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PG_DB_NAME</span></code> (ej: <code class="docutils literal notranslate"><span class="pre">software_notarios_dev</span></code>)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="inicializacion-en-windows-recomendada">
+<h2>2. Inicialización en Windows (Recomendada)<a class="headerlink" href="#inicializacion-en-windows-recomendada" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Ejecutar <strong>como Administrador</strong>:</p></li>
+<li><p>Seguir los pasos en pantalla:</p>
+<ul class="simple">
+<li><p>Confirmar con <strong>S/s</strong> si desea reinicializar</p></li>
+<li><p>Si la base existe, decidir si eliminarla</p></li>
+</ul>
+</li>
+<li><p>Verificar el log en <code class="docutils literal notranslate"><span class="pre">errores_bdd_flask</span></code></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="inicializacion-en-linux-mac">
+<h2>3. Inicialización en Linux/Mac<a class="headerlink" href="#inicializacion-en-linux-mac" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Activar el entorno virtual y ejecutar:</p></li>
+</ol>
+<p>python scripts/init_big_bang_2_v5.py</p>
+<ol class="arabic simple" start="2">
+<li><p>Confirmar pasos S/N en consola</p></li>
+<li><p>Revisar logs en <code class="docutils literal notranslate"><span class="pre">errores_bdd_flask</span></code></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="produccion">
+<h2>4. Producción<a class="headerlink" href="#produccion" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>No usar pgAdmin para crear la DB manualmente</strong></p></li>
+<li><p>Usar el mismo procedimiento del <code class="docutils literal notranslate"><span class="pre">.bat</span></code> o <code class="docutils literal notranslate"><span class="pre">.py</span></code> para garantizar:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">UTF8</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LC_COLLATE='C'</span></code> y <code class="docutils literal notranslate"><span class="pre">LC_CTYPE='C'</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="logs-y-soporte">
+<h2>5. Logs y soporte<a class="headerlink" href="#logs-y-soporte" title="Link to this heading"></a></h2>
+<p>Todos los errores y decisiones del operador se registran en:</p>
+<p>C:\Users\Usuario\Mi unidad\Software_Notarios\errores_bdd_flask</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">drop.log</span></code> → Eliminación de DB</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">create.log</span></code> → Creación de DB</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">upgrade.log</span></code> → Migraciones</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seed.log</span></code> → Seed inicial</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">big_bang_2_v5.log</span></code> → Bitácora completa del proceso</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="consejos-finales">
+<h2>6. Consejos finales<a class="headerlink" href="#consejos-finales" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Ejecutar los scripts desde la raíz del proyecto</p></li>
+<li><p>Mantener backups de la carpeta <code class="docutils literal notranslate"><span class="pre">errores_bdd_flask</span></code> para auditoría</p></li>
+<li><p>Validar siempre que la DB quede en <code class="docutils literal notranslate"><span class="pre">UTF8</span> <span class="pre">|</span> <span class="pre">C</span> <span class="pre">|</span> <span class="pre">C</span></code> usando <code class="docutils literal notranslate"><span class="pre">\l</span></code> en <code class="docutils literal notranslate"><span class="pre">psql</span></code></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="index.html" class="btn btn-neutral float-left" title="Software Notarios Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html" class="btn btn-neutral float-right" title="Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor .</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

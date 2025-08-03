@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitácora Técnica – 2025-08-01 &mdash; documentación de Software Notarios - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Software Notarios - Bloque 1: Base de Datos y Seeds" href="README_Bloque1_DB_Seeds.html" />
+    <link rel="prev" title="📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos" href="README_BigBang2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Software Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido del Proyecto</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="INSTALLATION_GUIDE.html">📘 Guía de Instalación – Software Notarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html">Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_BLOQUE_1_310725.html">Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_BigBang2.html">📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bitácora Técnica – 2025-08-01</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#resumen-de-actividades">📌 Resumen de actividades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lecciones-de-los-errores">⚠️ Lecciones de los errores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estado-final-del-dia">✅ Estado final del día</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pendientes-para-manana-bloque-3">🔮 Pendientes para mañana (Bloque 3)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque1_DB_Seeds.html">Software Notarios - Bloque 1: Base de Datos y Seeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Dashboard.html">Software Notarios -la forma original para  Bloque 2: Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Final.html">Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque3_Plan_Seguridad_2025-08-01.html">Software Notarios – Plan de Seguridad, Roles y Auditoría</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque3_Seguridad.html">Software Notarios - Bloque 3: Seguridad y Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque4_Documentos.html">Software Notarios - Bloque 4: Documentos y Librería</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html">Pasos para generar la migración para tener asociación notario procurador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#asegurate-de-tener-la-carpeta-migrations-ya-inicializada">1️⃣ Asegúrate de tener la carpeta “migrations” ya inicializada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#si-no-existe-corre-primero">Si no existe, corre primero:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-db-init">flask db init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#generar-la-migracion">2️⃣ Generar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#aplicar-la-migracion">3️⃣ Aplicar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#verifica-en-tu-base-de-datos-que-la-tabla-exista-correctamente">4️⃣ Verifica en tu base de datos que la tabla exista correctamente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#opcional-usar-flask-shell-para-insertar-prueba">5️⃣ Opcional: usar flask shell para insertar prueba:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-shell">flask shell</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Software Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Bitácora Técnica – 2025-08-01</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/README_Bitacora_2025-08-01.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bitacora-tecnica-2025-08-01">
+<h1>Bitácora Técnica – 2025-08-01<a class="headerlink" href="#bitacora-tecnica-2025-08-01" title="Link to this heading"></a></h1>
+<p><strong>Proyecto:</strong> Software Notarios<br />
+<strong>Autor:</strong> Giancarlo + Tars-90<br />
+<strong>Bloque trabajado:</strong> 2 – Dashboard y Blueprints<br />
+<strong>Estado:</strong> Completado ✅</p>
+<hr class="docutils" />
+<section id="resumen-de-actividades">
+<h2>📌 Resumen de actividades<a class="headerlink" href="#resumen-de-actividades" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Finalización de Bloque 2</strong></p>
+<ul class="simple">
+<li><p>Dashboard profesional con:</p>
+<ul>
+<li><p>Navbar con <code class="docutils literal notranslate"><span class="pre">logo.png</span></code></p></li>
+<li><p>Cards con métricas de usuarios, documentos, asociaciones</p></li>
+<li><p>Íconos FontAwesome y colores profesionales</p></li>
+<li><p>Tarjeta amarilla dinámica para avisos pendientes</p></li>
+</ul>
+</li>
+<li><p>Archivos finales:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">app/templates/base.html</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app/templates/dashboard/dashboard.html</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app/dashboard/routes.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app/static/css/styles.css</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app/static/img/logo.png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/README_Bloque2_Final.md</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Documentación con Sphinx</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gen_docs.py</span></code> mejorado para incluir:</p>
+<ul>
+<li><p>Todos los <code class="docutils literal notranslate"><span class="pre">.md</span></code> diarios y de bloques</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modulos/*</span></code> y <code class="docutils literal notranslate"><span class="pre">source/*</span></code> en el <code class="docutils literal notranslate"><span class="pre">toctree</span></code></p></li>
+</ul>
+</li>
+<li><p>Generación de HTML exitosa con <code class="docutils literal notranslate"><span class="pre">sphinx_rtd_theme</span></code></p></li>
+<li><p>Warnings <code class="docutils literal notranslate"><span class="pre">[toc.not_included]</span></code> identificados y plan para reducción en Bloque 3</p></li>
+</ul>
+</li>
+<li><p><strong>Control de versiones (Git)</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> corregido para ignorar <code class="docutils literal notranslate"><span class="pre">_build/</span></code> y archivos temporales</p></li>
+<li><p>Limpieza de repositorio con <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span> <span class="pre">--cached</span></code></p></li>
+<li><p>Commit final y <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> con Bloque 2 estable</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="lecciones-de-los-errores">
+<h2>⚠️ Lecciones de los errores<a class="headerlink" href="#lecciones-de-los-errores" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Warnings de Sphinx</strong></p>
+<ul class="simple">
+<li><p>Causados por Markdown sin título o <code class="docutils literal notranslate"><span class="pre">.rst</span></code> fuera del toctree</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code></strong></p>
+<ul class="simple">
+<li><p>Subió archivos no deseados hasta que <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> fue corregido</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> en Windows</strong></p>
+<ul class="simple">
+<li><p>Falló por archivos bloqueados en <code class="docutils literal notranslate"><span class="pre">_build/doctrees</span></code></p></li>
+<li><p>Solución: borrar manualmente o usar <code class="docutils literal notranslate"><span class="pre">rmdir</span> <span class="pre">/s</span> <span class="pre">/q</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="estado-final-del-dia">
+<h2>✅ Estado final del día<a class="headerlink" href="#estado-final-del-dia" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Bloque 2 funcional y documentado</p></li>
+<li><p>Repositorio limpio y organizado</p></li>
+<li><p>Documentación en HTML generada correctamente</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="pendientes-para-manana-bloque-3">
+<h2>🔮 Pendientes para mañana (Bloque 3)<a class="headerlink" href="#pendientes-para-manana-bloque-3" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Subpáginas para <strong>Usuarios</strong> y <strong>Documentos</strong></p></li>
+<li><p>Dashboard de <strong>Superadmin</strong></p></li>
+<li><p>Primera integración real de <strong>tabla Avisos</strong></p></li>
+<li><p>Reducción de warnings de Sphinx a &lt;50</p></li>
+<li><p>Integración de <code class="docutils literal notranslate"><span class="pre">gen_docs.py</span></code> con flujo de CI/CD (opcional)</p></li>
+</ol>
+<hr class="docutils" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="README_BigBang2.html" class="btn btn-neutral float-left" title="📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="README_Bloque1_DB_Seeds.html" class="btn btn-neutral float-right" title="Software Notarios - Bloque 1: Base de Datos y Seeds" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor .</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

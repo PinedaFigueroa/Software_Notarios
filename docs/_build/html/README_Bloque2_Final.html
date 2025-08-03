@@ -1,0 +1,213 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints &mdash; documentación de Software Notarios - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Software Notarios - Bloque 3: Seguridad y Roles" href="README_Bloque3_Seguridad.html" />
+    <link rel="prev" title="Software Notarios -la forma original para Bloque 2: Dashboard y Blueprints" href="README_Bloque2_Dashboard.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Software Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido del Proyecto</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="INSTALLATION_GUIDE.html">📘 Guía de Instalación – Software Notarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html">Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_BLOQUE_1_310725.html">Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_BigBang2.html">📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque1_DB_Seeds.html">Software Notarios - Bloque 1: Base de Datos y Seeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Dashboard.html">Software Notarios -la forma original para  Bloque 2: Dashboard y Blueprints</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bloque-2-dashboard-y-blueprints-version-final">Bloque 2 – Dashboard y Blueprints (Versión Final)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#avances-de-bloque-2">✅ Avances de Bloque 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#estructura-final-de-archivos">📂 Estructura final de archivos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pasos-de-verificacion">⚙️ Pasos de verificación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pendientes-para-bloque-3">📝 Pendientes para Bloque 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commit-git-sugerido">💾 Commit Git sugerido</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque3_Seguridad.html">Software Notarios - Bloque 3: Seguridad y Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque4_Documentos.html">Software Notarios - Bloque 4: Documentos y Librería</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html">Pasos para generar la migración para tener asociación notario procurador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#asegurate-de-tener-la-carpeta-migrations-ya-inicializada">1️⃣ Asegúrate de tener la carpeta “migrations” ya inicializada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#si-no-existe-corre-primero">Si no existe, corre primero:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-db-init">flask db init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#generar-la-migracion">2️⃣ Generar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#aplicar-la-migracion">3️⃣ Aplicar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#verifica-en-tu-base-de-datos-que-la-tabla-exista-correctamente">4️⃣ Verifica en tu base de datos que la tabla exista correctamente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#opcional-usar-flask-shell-para-insertar-prueba">5️⃣ Opcional: usar flask shell para insertar prueba:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-shell">flask shell</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Software Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/README_Bloque2_Final.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="proyecto-software-notarios-bloque-2-version-final-dashboard-y-blueprints">
+<h1>Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints<a class="headerlink" href="#proyecto-software-notarios-bloque-2-version-final-dashboard-y-blueprints" title="Link to this heading"></a></h1>
+<section id="bloque-2-dashboard-y-blueprints-version-final">
+<h2>Bloque 2 – Dashboard y Blueprints (Versión Final)<a class="headerlink" href="#bloque-2-dashboard-y-blueprints-version-final" title="Link to this heading"></a></h2>
+<p><strong>Fecha:</strong> 01/08/2025<br />
+<strong>Autor:</strong> Giancarlo + Tars-90</p>
+<hr class="docutils" />
+<p><strong>Ubicación:</strong> Este documento forma parte de la carpeta <code class="docutils literal notranslate"><span class="pre">docs/</span></code> del proyecto.</p>
+<section id="avances-de-bloque-2">
+<h3>✅ Avances de Bloque 2<a class="headerlink" href="#avances-de-bloque-2" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Dashboard funcional y profesional</strong>:</p>
+<ul class="simple">
+<li><p>Navbar con <strong>logo.png</strong> desde <code class="docutils literal notranslate"><span class="pre">app/static/img/logo.png</span></code></p></li>
+<li><p>Cards de métricas con colores profesionales e íconos FontAwesome</p></li>
+<li><p>Tarjeta amarilla dinámica para <strong>Avisos Pendientes</strong> (solo aparece si <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">0</span></code>)</p></li>
+</ul>
+</li>
+<li><p><strong>Bootstrap local</strong> desde <code class="docutils literal notranslate"><span class="pre">app/static/bootstrap</span></code></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">styles.css</span></code></strong> en <code class="docutils literal notranslate"><span class="pre">app/static/css</span></code> para colores y estilos propios</p></li>
+<li><p><strong>Validaciones Jinja</strong> para evitar errores de variables no definidas</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="estructura-final-de-archivos">
+<h3>📂 Estructura final de archivos<a class="headerlink" href="#estructura-final-de-archivos" title="Link to this heading"></a></h3>
+<p>Software_Notarios/
+├── app/
+├── docs/
+│   ├── README LECCIONES DE LOS ERRORES 290725.md
+│   ├── README_BLOQUE_1_310725.md
+│   ├── README_Bloque2_Final.md   &lt;– este
+│   ├── README_Bloque2_Dashboard.md
+│   └── …
+└── README.md (documentación general del proyecto)</p>
+</section>
+<hr class="docutils" />
+<section id="pasos-de-verificacion">
+<h3>⚙️ Pasos de verificación<a class="headerlink" href="#pasos-de-verificacion" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Ejecutar <code class="docutils literal notranslate"><span class="pre">flask</span> <span class="pre">run</span></code></p></li>
+<li><p>Abrir <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:5000/dashboard</span></code></p></li>
+<li><p>Confirmar:</p>
+<ul class="simple">
+<li><p>Navbar con <strong>logo.png</strong></p></li>
+<li><p>Cards de métricas correctas e íconos visibles</p></li>
+<li><p>Tarjeta amarilla de <strong>Avisos Pendientes</strong> aparece solo si <code class="docutils literal notranslate"><span class="pre">avisos_pendientes</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="pendientes-para-bloque-3">
+<h3>📝 Pendientes para Bloque 3<a class="headerlink" href="#pendientes-para-bloque-3" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Subpáginas para <strong>Usuarios</strong> y <strong>Documentos</strong></p></li>
+<li><p>Dashboard del <strong>Superadmin</strong> con visión global</p></li>
+<li><p>Implementación real de la tabla <strong>Avisos</strong> y su dash</p></li>
+<li><p>Breadcrumbs y footer corporativo</p></li>
+<li><p>Exportaciones y reportes básicos</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="commit-git-sugerido">
+<h3>💾 Commit Git sugerido<a class="headerlink" href="#commit-git-sugerido" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>app/templates/base.html
+git<span class="w"> </span>add<span class="w"> </span>app/templates/dashboard/dashboard.html
+git<span class="w"> </span>add<span class="w"> </span>app/dashboard/routes.py
+git<span class="w"> </span>add<span class="w"> </span>app/static/css/styles.css
+git<span class="w"> </span>add<span class="w"> </span>README_Bloque2_Final.md
+git<span class="w"> </span>add<span class="w"> </span>app/static/img/logo.png
+
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat(dashboard): Finalización de Bloque 2 - Dashboard completo y estable&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="README_Bloque2_Dashboard.html" class="btn btn-neutral float-left" title="Software Notarios -la forma original para Bloque 2: Dashboard y Blueprints" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="README_Bloque3_Seguridad.html" class="btn btn-neutral float-right" title="Software Notarios - Bloque 3: Seguridad y Roles" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor .</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

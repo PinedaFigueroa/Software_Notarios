@@ -1,0 +1,1783 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app.models package &mdash; documentación de Software Notarios - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Software Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido del Proyecto</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALLATION_GUIDE.html">📘 Guía de Instalación – Software Notarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html">Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_BLOQUE_1_310725.html">Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_BigBang2.html">📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bitacora_2025-08-01.html">Bitácora Técnica – 2025-08-01</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque1_DB_Seeds.html">Software Notarios - Bloque 1: Base de Datos y Seeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque2_Dashboard.html">Software Notarios -la forma original para  Bloque 2: Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque2_Final.html">Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque3_Plan_Seguridad_2025-08-01.html">Software Notarios – Plan de Seguridad, Roles y Auditoría</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque3_Seguridad.html">Software Notarios - Bloque 3: Seguridad y Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_Bloque4_Documentos.html">Software Notarios - Bloque 4: Documentos y Librería</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html">Pasos para generar la migración para tener asociación notario procurador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#asegurate-de-tener-la-carpeta-migrations-ya-inicializada">1️⃣ Asegúrate de tener la carpeta “migrations” ya inicializada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#si-no-existe-corre-primero">Si no existe, corre primero:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#flask-db-init">flask db init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#generar-la-migracion">2️⃣ Generar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#aplicar-la-migracion">3️⃣ Aplicar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#verifica-en-tu-base-de-datos-que-la-tabla-exista-correctamente">4️⃣ Verifica en tu base de datos que la tabla exista correctamente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#opcional-usar-flask-shell-para-insertar-prueba">5️⃣ Opcional: usar flask shell para insertar prueba:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migracion_asociacion_instrucciones.html#flask-shell">flask shell</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Software Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">app.models package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modulos/app.models.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-models-package">
+<h1>app.models package<a class="headerlink" href="#app-models-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.models.asociaciones">
+<span id="app-models-asociaciones-module"></span><h2>app.models.asociaciones module<a class="headerlink" href="#module-app.models.asociaciones" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.asociaciones.</span></span><span class="sig-name descname"><span class="pre">NotarioProcuradorAsociacion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/asociaciones.html#NotarioProcuradorAsociacion"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.notario_id">
+<span class="sig-name descname"><span class="pre">notario_id</span></span><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.notario_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.procurador_id">
+<span class="sig-name descname"><span class="pre">procurador_id</span></span><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.procurador_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.bufete_id">
+<span class="sig-name descname"><span class="pre">bufete_id</span></span><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.bufete_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.fecha_asignacion">
+<span class="sig-name descname"><span class="pre">fecha_asignacion</span></span><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.fecha_asignacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.fecha_reasignacion">
+<span class="sig-name descname"><span class="pre">fecha_reasignacion</span></span><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.fecha_reasignacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.motivo_reasignacion">
+<span class="sig-name descname"><span class="pre">motivo_reasignacion</span></span><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.motivo_reasignacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.activo">
+<span class="sig-name descname"><span class="pre">activo</span></span><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.activo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.notario">
+<span class="sig-name descname"><span class="pre">notario</span></span><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.notario" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.procurador">
+<span class="sig-name descname"><span class="pre">procurador</span></span><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.procurador" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.bufete">
+<span class="sig-name descname"><span class="pre">bufete</span></span><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.bufete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.asociaciones.NotarioProcuradorAsociacion.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.asociaciones.NotarioProcuradorAsociacion.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.models.bienes">
+<span id="app-models-bienes-module"></span><h2>app.models.bienes module<a class="headerlink" href="#module-app.models.bienes" title="Link to this heading"></a></h2>
+</section>
+<section id="app-models-bufetes-module">
+<h2>app.models.bufetes module<a class="headerlink" href="#app-models-bufetes-module" title="Link to this heading"></a></h2>
+</section>
+<section id="app-models-clausulas-module">
+<h2>app.models.clausulas module<a class="headerlink" href="#app-models-clausulas-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.models.clausulas_puntos">
+<span id="app-models-clausulas-puntos-module"></span><h2>app.models.clausulas_puntos module<a class="headerlink" href="#module-app.models.clausulas_puntos" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.clausulas_puntos.</span></span><span class="sig-name descname"><span class="pre">ClausulasPuntos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/clausulas_puntos.html#ClausulasPuntos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Modelo unificado para Cláusulas (escrituras) y Puntos de Acta.
+Permite registrar contenido legal reutilizable en documentos y actas.</p>
+<ul class="simple">
+<li><p>nombre: nombre de la cláusula/punto (ej. “PRIMERO: REQUERIMIENTO”)</p></li>
+<li><p>contenido: texto completo</p></li>
+<li><p>fundamento_legal / fundamento_doctrinario: soporte jurídico</p></li>
+<li><p>instrumentos_permitidos: opcional, en qué instrumentos se sugiere</p></li>
+<li><p>tipo: tipo de cláusula (general, obligatoria, sugerida, personalizada)</p></li>
+<li><p>aplicacion: si aplica a documentos, actas o ambos</p></li>
+<li><p>activo: para permitir baja lógica sin borrar el registro</p></li>
+<li><p>fecha_creacion: auditoría básica</p></li>
+</ul>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos.nombre">
+<span class="sig-name descname"><span class="pre">nombre</span></span><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos.nombre" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos.contenido">
+<span class="sig-name descname"><span class="pre">contenido</span></span><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos.contenido" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos.fundamento_legal">
+<span class="sig-name descname"><span class="pre">fundamento_legal</span></span><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos.fundamento_legal" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos.fundamento_doctrinario">
+<span class="sig-name descname"><span class="pre">fundamento_doctrinario</span></span><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos.fundamento_doctrinario" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos.instrumentos_permitidos">
+<span class="sig-name descname"><span class="pre">instrumentos_permitidos</span></span><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos.instrumentos_permitidos" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos.tipo">
+<span class="sig-name descname"><span class="pre">tipo</span></span><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos.tipo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos.aplicacion">
+<span class="sig-name descname"><span class="pre">aplicacion</span></span><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos.aplicacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos.activo">
+<span class="sig-name descname"><span class="pre">activo</span></span><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos.activo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos.fecha_creacion">
+<span class="sig-name descname"><span class="pre">fecha_creacion</span></span><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos.fecha_creacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.clausulas_puntos.ClausulasPuntos.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.clausulas_puntos.ClausulasPuntos.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="app-models-core-module">
+<h2>app.models.core module<a class="headerlink" href="#app-models-core-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.models.cuenta_corriente">
+<span id="app-models-cuenta-corriente-module"></span><h2>app.models.cuenta_corriente module<a class="headerlink" href="#module-app.models.cuenta_corriente" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.cuenta_corriente.MovimientoCuenta">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.cuenta_corriente.</span></span><span class="sig-name descname"><span class="pre">MovimientoCuenta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/cuenta_corriente.html#MovimientoCuenta"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.cuenta_corriente.MovimientoCuenta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Movimientos de la cuenta corriente del bufete:
+- cargos
+- pagos
+- ajustes</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.cuenta_corriente.MovimientoCuenta.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.cuenta_corriente.MovimientoCuenta.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.cuenta_corriente.MovimientoCuenta.bufete_id">
+<span class="sig-name descname"><span class="pre">bufete_id</span></span><a class="headerlink" href="#app.models.cuenta_corriente.MovimientoCuenta.bufete_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.cuenta_corriente.MovimientoCuenta.fecha">
+<span class="sig-name descname"><span class="pre">fecha</span></span><a class="headerlink" href="#app.models.cuenta_corriente.MovimientoCuenta.fecha" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.cuenta_corriente.MovimientoCuenta.descripcion">
+<span class="sig-name descname"><span class="pre">descripcion</span></span><a class="headerlink" href="#app.models.cuenta_corriente.MovimientoCuenta.descripcion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.cuenta_corriente.MovimientoCuenta.monto">
+<span class="sig-name descname"><span class="pre">monto</span></span><a class="headerlink" href="#app.models.cuenta_corriente.MovimientoCuenta.monto" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.cuenta_corriente.MovimientoCuenta.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.cuenta_corriente.MovimientoCuenta.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.models.documentos">
+<span id="app-models-documentos-module"></span><h2>app.models.documentos module<a class="headerlink" href="#module-app.models.documentos" title="Link to this heading"></a></h2>
+<p>Modelo DocumentoNotarial:
+Representa documentos, actas o escrituras creados por notarios y procuradores.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.documentos.</span></span><span class="sig-name descname"><span class="pre">DocumentoNotarial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/documentos.html#DocumentoNotarial"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.documentos.DocumentoNotarial" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.tipo_documento">
+<span class="sig-name descname"><span class="pre">tipo_documento</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.tipo_documento" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.numero_instrumento">
+<span class="sig-name descname"><span class="pre">numero_instrumento</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.numero_instrumento" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.fecha_otorgamiento">
+<span class="sig-name descname"><span class="pre">fecha_otorgamiento</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.fecha_otorgamiento" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.hora_otorgamiento">
+<span class="sig-name descname"><span class="pre">hora_otorgamiento</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.hora_otorgamiento" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.lugar_otorgamiento">
+<span class="sig-name descname"><span class="pre">lugar_otorgamiento</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.lugar_otorgamiento" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.estado_documento">
+<span class="sig-name descname"><span class="pre">estado_documento</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.estado_documento" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.notario_id">
+<span class="sig-name descname"><span class="pre">notario_id</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.notario_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.procurador_id">
+<span class="sig-name descname"><span class="pre">procurador_id</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.procurador_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.bufete_id">
+<span class="sig-name descname"><span class="pre">bufete_id</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.bufete_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.notario">
+<span class="sig-name descname"><span class="pre">notario</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.notario" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.procurador">
+<span class="sig-name descname"><span class="pre">procurador</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.procurador" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.bufete">
+<span class="sig-name descname"><span class="pre">bufete</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.bufete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.activo">
+<span class="sig-name descname"><span class="pre">activo</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.activo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.fecha_creacion">
+<span class="sig-name descname"><span class="pre">fecha_creacion</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.fecha_creacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.fecha_actualizacion">
+<span class="sig-name descname"><span class="pre">fecha_actualizacion</span></span><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.fecha_actualizacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.documentos.DocumentoNotarial.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.documentos.DocumentoNotarial.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.models.entidades">
+<span id="app-models-entidades-module"></span><h2>app.models.entidades module<a class="headerlink" href="#module-app.models.entidades" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.models.enums">
+<span id="app-models-enums-module"></span><h2>app.models.enums module<a class="headerlink" href="#module-app.models.enums" title="Link to this heading"></a></h2>
+<p>Este archivo centraliza TODOS los Enum usados en la aplicación Software Notarios.
+Objetivos:
+1. Evitar errores de ImportError en los modelos
+2. Mantener consistencia de valores en la base de datos
+3. Facilitar futuras migraciones y mantenimiento</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.RolUsuarioEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">RolUsuarioEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#RolUsuarioEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.RolUsuarioEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.RolUsuarioEnum.SUPERADMIN">
+<span class="sig-name descname"><span class="pre">SUPERADMIN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'superadmin'</span></em><a class="headerlink" href="#app.models.enums.RolUsuarioEnum.SUPERADMIN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.RolUsuarioEnum.ADMIN_LOCAL">
+<span class="sig-name descname"><span class="pre">ADMIN_LOCAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'admin_local'</span></em><a class="headerlink" href="#app.models.enums.RolUsuarioEnum.ADMIN_LOCAL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.RolUsuarioEnum.NOTARIO">
+<span class="sig-name descname"><span class="pre">NOTARIO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'notario'</span></em><a class="headerlink" href="#app.models.enums.RolUsuarioEnum.NOTARIO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.RolUsuarioEnum.PROCURADOR">
+<span class="sig-name descname"><span class="pre">PROCURADOR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'procurador'</span></em><a class="headerlink" href="#app.models.enums.RolUsuarioEnum.PROCURADOR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.RolUsuarioEnum.ASISTENTE">
+<span class="sig-name descname"><span class="pre">ASISTENTE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'asistente'</span></em><a class="headerlink" href="#app.models.enums.RolUsuarioEnum.ASISTENTE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.EstadoUsuarioEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">EstadoUsuarioEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#EstadoUsuarioEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.EstadoUsuarioEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoUsuarioEnum.ACTIVO">
+<span class="sig-name descname"><span class="pre">ACTIVO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'activo'</span></em><a class="headerlink" href="#app.models.enums.EstadoUsuarioEnum.ACTIVO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoUsuarioEnum.INACTIVO">
+<span class="sig-name descname"><span class="pre">INACTIVO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'inactivo'</span></em><a class="headerlink" href="#app.models.enums.EstadoUsuarioEnum.INACTIVO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoUsuarioEnum.BLOQUEADO">
+<span class="sig-name descname"><span class="pre">BLOQUEADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'bloqueado'</span></em><a class="headerlink" href="#app.models.enums.EstadoUsuarioEnum.BLOQUEADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.TipoDocumentoEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">TipoDocumentoEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#TipoDocumentoEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.TipoDocumentoEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoDocumentoEnum.ESCRITURA">
+<span class="sig-name descname"><span class="pre">ESCRITURA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'escritura'</span></em><a class="headerlink" href="#app.models.enums.TipoDocumentoEnum.ESCRITURA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoDocumentoEnum.ACTA">
+<span class="sig-name descname"><span class="pre">ACTA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'acta'</span></em><a class="headerlink" href="#app.models.enums.TipoDocumentoEnum.ACTA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoDocumentoEnum.TESTIMONIO">
+<span class="sig-name descname"><span class="pre">TESTIMONIO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'testimonio'</span></em><a class="headerlink" href="#app.models.enums.TipoDocumentoEnum.TESTIMONIO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.EstadoDocumentoEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">EstadoDocumentoEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#EstadoDocumentoEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.EstadoDocumentoEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoDocumentoEnum.BORRADOR">
+<span class="sig-name descname"><span class="pre">BORRADOR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'borrador'</span></em><a class="headerlink" href="#app.models.enums.EstadoDocumentoEnum.BORRADOR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoDocumentoEnum.FIRMADO">
+<span class="sig-name descname"><span class="pre">FIRMADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'firmado'</span></em><a class="headerlink" href="#app.models.enums.EstadoDocumentoEnum.FIRMADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoDocumentoEnum.ENTREGADO">
+<span class="sig-name descname"><span class="pre">ENTREGADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'entregado'</span></em><a class="headerlink" href="#app.models.enums.EstadoDocumentoEnum.ENTREGADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.TipoAvisoDocumentoEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">TipoAvisoDocumentoEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#TipoAvisoDocumentoEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.TipoAvisoDocumentoEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoAvisoDocumentoEnum.EMAIL">
+<span class="sig-name descname"><span class="pre">EMAIL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'email'</span></em><a class="headerlink" href="#app.models.enums.TipoAvisoDocumentoEnum.EMAIL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoAvisoDocumentoEnum.WHATSAPP">
+<span class="sig-name descname"><span class="pre">WHATSAPP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'whatsapp'</span></em><a class="headerlink" href="#app.models.enums.TipoAvisoDocumentoEnum.WHATSAPP" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoAvisoDocumentoEnum.FISICO">
+<span class="sig-name descname"><span class="pre">FISICO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fisico'</span></em><a class="headerlink" href="#app.models.enums.TipoAvisoDocumentoEnum.FISICO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.EstadoEnvioAvisoDocEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">EstadoEnvioAvisoDocEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#EstadoEnvioAvisoDocEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.EstadoEnvioAvisoDocEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoEnvioAvisoDocEnum.PENDIENTE">
+<span class="sig-name descname"><span class="pre">PENDIENTE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pendiente'</span></em><a class="headerlink" href="#app.models.enums.EstadoEnvioAvisoDocEnum.PENDIENTE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoEnvioAvisoDocEnum.ENVIADO">
+<span class="sig-name descname"><span class="pre">ENVIADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'enviado'</span></em><a class="headerlink" href="#app.models.enums.EstadoEnvioAvisoDocEnum.ENVIADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoEnvioAvisoDocEnum.ENTREGADO">
+<span class="sig-name descname"><span class="pre">ENTREGADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'entregado'</span></em><a class="headerlink" href="#app.models.enums.EstadoEnvioAvisoDocEnum.ENTREGADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoEnvioAvisoDocEnum.FALLIDO">
+<span class="sig-name descname"><span class="pre">FALLIDO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fallido'</span></em><a class="headerlink" href="#app.models.enums.EstadoEnvioAvisoDocEnum.FALLIDO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.TipoObligacionDocumentoGeneralEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">TipoObligacionDocumentoGeneralEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#TipoObligacionDocumentoGeneralEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.TipoObligacionDocumentoGeneralEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoObligacionDocumentoGeneralEnum.PAGO_IMPUESTOS">
+<span class="sig-name descname"><span class="pre">PAGO_IMPUESTOS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pago_impuestos'</span></em><a class="headerlink" href="#app.models.enums.TipoObligacionDocumentoGeneralEnum.PAGO_IMPUESTOS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoObligacionDocumentoGeneralEnum.PUBLICACION">
+<span class="sig-name descname"><span class="pre">PUBLICACION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'publicacion'</span></em><a class="headerlink" href="#app.models.enums.TipoObligacionDocumentoGeneralEnum.PUBLICACION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoObligacionDocumentoGeneralEnum.AVISO_TERCEROS">
+<span class="sig-name descname"><span class="pre">AVISO_TERCEROS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'aviso_terceros'</span></em><a class="headerlink" href="#app.models.enums.TipoObligacionDocumentoGeneralEnum.AVISO_TERCEROS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">TipoEmisionDocumentoAdicionalGeneralEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#TipoEmisionDocumentoAdicionalGeneralEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum.CERTIFICADO">
+<span class="sig-name descname"><span class="pre">CERTIFICADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'certificado'</span></em><a class="headerlink" href="#app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum.CERTIFICADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum.TESTIMONIO">
+<span class="sig-name descname"><span class="pre">TESTIMONIO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'testimonio'</span></em><a class="headerlink" href="#app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum.TESTIMONIO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum.OTRO">
+<span class="sig-name descname"><span class="pre">OTRO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'otro'</span></em><a class="headerlink" href="#app.models.enums.TipoEmisionDocumentoAdicionalGeneralEnum.OTRO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.EstadoEnvioEmisionGeneralEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">EstadoEnvioEmisionGeneralEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#EstadoEnvioEmisionGeneralEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.EstadoEnvioEmisionGeneralEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoEnvioEmisionGeneralEnum.PENDIENTE">
+<span class="sig-name descname"><span class="pre">PENDIENTE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pendiente'</span></em><a class="headerlink" href="#app.models.enums.EstadoEnvioEmisionGeneralEnum.PENDIENTE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoEnvioEmisionGeneralEnum.ENVIADO">
+<span class="sig-name descname"><span class="pre">ENVIADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'enviado'</span></em><a class="headerlink" href="#app.models.enums.EstadoEnvioEmisionGeneralEnum.ENVIADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoEnvioEmisionGeneralEnum.ENTREGADO">
+<span class="sig-name descname"><span class="pre">ENTREGADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'entregado'</span></em><a class="headerlink" href="#app.models.enums.EstadoEnvioEmisionGeneralEnum.ENTREGADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoEnvioEmisionGeneralEnum.FALLIDO">
+<span class="sig-name descname"><span class="pre">FALLIDO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fallido'</span></em><a class="headerlink" href="#app.models.enums.EstadoEnvioEmisionGeneralEnum.FALLIDO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.TipoClausulaEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">TipoClausulaEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#TipoClausulaEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.TipoClausulaEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoClausulaEnum.GENERAL">
+<span class="sig-name descname"><span class="pre">GENERAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'general'</span></em><a class="headerlink" href="#app.models.enums.TipoClausulaEnum.GENERAL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoClausulaEnum.OBLIGATORIA">
+<span class="sig-name descname"><span class="pre">OBLIGATORIA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'obligatoria'</span></em><a class="headerlink" href="#app.models.enums.TipoClausulaEnum.OBLIGATORIA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoClausulaEnum.SUGERIDA">
+<span class="sig-name descname"><span class="pre">SUGERIDA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sugerida'</span></em><a class="headerlink" href="#app.models.enums.TipoClausulaEnum.SUGERIDA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoClausulaEnum.PERSONALIZADA">
+<span class="sig-name descname"><span class="pre">PERSONALIZADA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'personalizada'</span></em><a class="headerlink" href="#app.models.enums.TipoClausulaEnum.PERSONALIZADA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.TipoAplicacionClausulaEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">TipoAplicacionClausulaEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#TipoAplicacionClausulaEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.TipoAplicacionClausulaEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoAplicacionClausulaEnum.DOCUMENTO">
+<span class="sig-name descname"><span class="pre">DOCUMENTO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'documento'</span></em><a class="headerlink" href="#app.models.enums.TipoAplicacionClausulaEnum.DOCUMENTO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoAplicacionClausulaEnum.ACTA">
+<span class="sig-name descname"><span class="pre">ACTA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'acta'</span></em><a class="headerlink" href="#app.models.enums.TipoAplicacionClausulaEnum.ACTA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoAplicacionClausulaEnum.AMBOS">
+<span class="sig-name descname"><span class="pre">AMBOS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ambos'</span></em><a class="headerlink" href="#app.models.enums.TipoAplicacionClausulaEnum.AMBOS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.TipoBienEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">TipoBienEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#TipoBienEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.TipoBienEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoBienEnum.INMUEBLE">
+<span class="sig-name descname"><span class="pre">INMUEBLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'inmueble'</span></em><a class="headerlink" href="#app.models.enums.TipoBienEnum.INMUEBLE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoBienEnum.MUEBLE">
+<span class="sig-name descname"><span class="pre">MUEBLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mueble'</span></em><a class="headerlink" href="#app.models.enums.TipoBienEnum.MUEBLE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoBienEnum.VEHICULO">
+<span class="sig-name descname"><span class="pre">VEHICULO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'vehiculo'</span></em><a class="headerlink" href="#app.models.enums.TipoBienEnum.VEHICULO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoBienEnum.OTRO">
+<span class="sig-name descname"><span class="pre">OTRO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'otro'</span></em><a class="headerlink" href="#app.models.enums.TipoBienEnum.OTRO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.TipoTimbreGlobalEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">TipoTimbreGlobalEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#TipoTimbreGlobalEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.TipoTimbreGlobalEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoTimbreGlobalEnum.ESPECIAL">
+<span class="sig-name descname"><span class="pre">ESPECIAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'especial'</span></em><a class="headerlink" href="#app.models.enums.TipoTimbreGlobalEnum.ESPECIAL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoTimbreGlobalEnum.ORDINARIO">
+<span class="sig-name descname"><span class="pre">ORDINARIO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ordinario'</span></em><a class="headerlink" href="#app.models.enums.TipoTimbreGlobalEnum.ORDINARIO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.TipoTimbreGlobalEnum.ELECTRONICO">
+<span class="sig-name descname"><span class="pre">ELECTRONICO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'electronico'</span></em><a class="headerlink" href="#app.models.enums.TipoTimbreGlobalEnum.ELECTRONICO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.MetodoPagoGlobalEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">MetodoPagoGlobalEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#MetodoPagoGlobalEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.MetodoPagoGlobalEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.MetodoPagoGlobalEnum.EFECTIVO">
+<span class="sig-name descname"><span class="pre">EFECTIVO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'efectivo'</span></em><a class="headerlink" href="#app.models.enums.MetodoPagoGlobalEnum.EFECTIVO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.MetodoPagoGlobalEnum.TRANSFERENCIA">
+<span class="sig-name descname"><span class="pre">TRANSFERENCIA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'transferencia'</span></em><a class="headerlink" href="#app.models.enums.MetodoPagoGlobalEnum.TRANSFERENCIA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.MetodoPagoGlobalEnum.TARJETA">
+<span class="sig-name descname"><span class="pre">TARJETA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tarjeta'</span></em><a class="headerlink" href="#app.models.enums.MetodoPagoGlobalEnum.TARJETA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.MetodoPagoGlobalEnum.DEBITO">
+<span class="sig-name descname"><span class="pre">DEBITO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'debito'</span></em><a class="headerlink" href="#app.models.enums.MetodoPagoGlobalEnum.DEBITO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.MetodoPagoGlobalEnum.CREDITO">
+<span class="sig-name descname"><span class="pre">CREDITO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'credito'</span></em><a class="headerlink" href="#app.models.enums.MetodoPagoGlobalEnum.CREDITO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.FormaPagoEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">FormaPagoEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#FormaPagoEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.FormaPagoEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Formas de pago específicas para bufetes (compatibilidad con pagos.py)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.FormaPagoEnum.EFECTIVO">
+<span class="sig-name descname"><span class="pre">EFECTIVO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'efectivo'</span></em><a class="headerlink" href="#app.models.enums.FormaPagoEnum.EFECTIVO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.FormaPagoEnum.TRANSFERENCIA">
+<span class="sig-name descname"><span class="pre">TRANSFERENCIA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'transferencia'</span></em><a class="headerlink" href="#app.models.enums.FormaPagoEnum.TRANSFERENCIA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.FormaPagoEnum.TARJETA">
+<span class="sig-name descname"><span class="pre">TARJETA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tarjeta'</span></em><a class="headerlink" href="#app.models.enums.FormaPagoEnum.TARJETA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.FormaPagoEnum.DEBITO">
+<span class="sig-name descname"><span class="pre">DEBITO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'debito'</span></em><a class="headerlink" href="#app.models.enums.FormaPagoEnum.DEBITO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.FormaPagoEnum.CREDITO">
+<span class="sig-name descname"><span class="pre">CREDITO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'credito'</span></em><a class="headerlink" href="#app.models.enums.FormaPagoEnum.CREDITO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.EstadoTimbreGlobalEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">EstadoTimbreGlobalEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#EstadoTimbreGlobalEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.EstadoTimbreGlobalEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoTimbreGlobalEnum.DISPONIBLE">
+<span class="sig-name descname"><span class="pre">DISPONIBLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'disponible'</span></em><a class="headerlink" href="#app.models.enums.EstadoTimbreGlobalEnum.DISPONIBLE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoTimbreGlobalEnum.UTILIZADO">
+<span class="sig-name descname"><span class="pre">UTILIZADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'utilizado'</span></em><a class="headerlink" href="#app.models.enums.EstadoTimbreGlobalEnum.UTILIZADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoTimbreGlobalEnum.ANULADO">
+<span class="sig-name descname"><span class="pre">ANULADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'anulado'</span></em><a class="headerlink" href="#app.models.enums.EstadoTimbreGlobalEnum.ANULADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.EstadoPapelProtocoloGlobalEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">EstadoPapelProtocoloGlobalEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#EstadoPapelProtocoloGlobalEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.EstadoPapelProtocoloGlobalEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoPapelProtocoloGlobalEnum.DISPONIBLE">
+<span class="sig-name descname"><span class="pre">DISPONIBLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'disponible'</span></em><a class="headerlink" href="#app.models.enums.EstadoPapelProtocoloGlobalEnum.DISPONIBLE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoPapelProtocoloGlobalEnum.UTILIZADO">
+<span class="sig-name descname"><span class="pre">UTILIZADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'utilizado'</span></em><a class="headerlink" href="#app.models.enums.EstadoPapelProtocoloGlobalEnum.UTILIZADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoPapelProtocoloGlobalEnum.ANULADO">
+<span class="sig-name descname"><span class="pre">ANULADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'anulado'</span></em><a class="headerlink" href="#app.models.enums.EstadoPapelProtocoloGlobalEnum.ANULADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.EstadoExpedienteEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">EstadoExpedienteEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#EstadoExpedienteEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.EstadoExpedienteEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoExpedienteEnum.ABIERTO">
+<span class="sig-name descname"><span class="pre">ABIERTO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'abierto'</span></em><a class="headerlink" href="#app.models.enums.EstadoExpedienteEnum.ABIERTO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoExpedienteEnum.EN_PROCESO">
+<span class="sig-name descname"><span class="pre">EN_PROCESO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'en_proceso'</span></em><a class="headerlink" href="#app.models.enums.EstadoExpedienteEnum.EN_PROCESO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoExpedienteEnum.CERRADO">
+<span class="sig-name descname"><span class="pre">CERRADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cerrado'</span></em><a class="headerlink" href="#app.models.enums.EstadoExpedienteEnum.CERRADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoExpedienteEnum.ARCHIVADO">
+<span class="sig-name descname"><span class="pre">ARCHIVADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'archivado'</span></em><a class="headerlink" href="#app.models.enums.EstadoExpedienteEnum.ARCHIVADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.enums.EstadoPagoFacturaEnum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.enums.</span></span><span class="sig-name descname"><span class="pre">EstadoPagoFacturaEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/enums.html#EstadoPagoFacturaEnum"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.enums.EstadoPagoFacturaEnum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoPagoFacturaEnum.PENDIENTE">
+<span class="sig-name descname"><span class="pre">PENDIENTE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pendiente'</span></em><a class="headerlink" href="#app.models.enums.EstadoPagoFacturaEnum.PENDIENTE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoPagoFacturaEnum.PAGADO">
+<span class="sig-name descname"><span class="pre">PAGADO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pagado'</span></em><a class="headerlink" href="#app.models.enums.EstadoPagoFacturaEnum.PAGADO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.enums.EstadoPagoFacturaEnum.VENCIDO">
+<span class="sig-name descname"><span class="pre">VENCIDO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'vencido'</span></em><a class="headerlink" href="#app.models.enums.EstadoPagoFacturaEnum.VENCIDO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="app-models-enums-antes-de-mejoras-260725-module">
+<h2>app.models.enums ANTES de mejoras 260725 module<a class="headerlink" href="#app-models-enums-antes-de-mejoras-260725-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.models.expedientes">
+<span id="app-models-expedientes-module"></span><h2>app.models.expedientes module<a class="headerlink" href="#module-app.models.expedientes" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.models.facturacion">
+<span id="app-models-facturacion-module"></span><h2>app.models.facturacion module<a class="headerlink" href="#module-app.models.facturacion" title="Link to this heading"></a></h2>
+</section>
+<section id="app-models-libreria-module">
+<h2>app.models.libreria module<a class="headerlink" href="#app-models-libreria-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.models.pagos">
+<span id="app-models-pagos-module"></span><h2>app.models.pagos module<a class="headerlink" href="#module-app.models.pagos" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.pagos.PagoBufete">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.pagos.</span></span><span class="sig-name descname"><span class="pre">PagoBufete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/pagos.html#PagoBufete"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.pagos.PagoBufete" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Registra cada pago realizado por un bufete.</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.pagos.PagoBufete.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.pagos.PagoBufete.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.pagos.PagoBufete.bufete_id">
+<span class="sig-name descname"><span class="pre">bufete_id</span></span><a class="headerlink" href="#app.models.pagos.PagoBufete.bufete_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.pagos.PagoBufete.monto_pagado">
+<span class="sig-name descname"><span class="pre">monto_pagado</span></span><a class="headerlink" href="#app.models.pagos.PagoBufete.monto_pagado" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.pagos.PagoBufete.fecha_pago">
+<span class="sig-name descname"><span class="pre">fecha_pago</span></span><a class="headerlink" href="#app.models.pagos.PagoBufete.fecha_pago" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.pagos.PagoBufete.forma_pago">
+<span class="sig-name descname"><span class="pre">forma_pago</span></span><a class="headerlink" href="#app.models.pagos.PagoBufete.forma_pago" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.pagos.PagoBufete.detalle">
+<span class="sig-name descname"><span class="pre">detalle</span></span><a class="headerlink" href="#app.models.pagos.PagoBufete.detalle" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.pagos.PagoBufete.bufete">
+<span class="sig-name descname"><span class="pre">bufete</span></span><a class="headerlink" href="#app.models.pagos.PagoBufete.bufete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.pagos.PagoBufete.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.pagos.PagoBufete.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.models.personas">
+<span id="app-models-personas-module"></span><h2>app.models.personas module<a class="headerlink" href="#module-app.models.personas" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.models.planes">
+<span id="app-models-planes-module"></span><h2>app.models.planes module<a class="headerlink" href="#module-app.models.planes" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.planes.Plan">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.planes.</span></span><span class="sig-name descname"><span class="pre">Plan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/planes.html#Plan"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.planes.Plan" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Modelo: Plan</p>
+<p>Representa un plan contratado por un bufete jurídico.</p>
+<p>Campos principales:
+- nombre: Nombre del plan (ej. Demo, Profesional, Ilimitado)
+- descripcion: Breve descripción visible en el dashboard
+- límites: usuarios, documentos, almacenamiento
+- precio_mensual: Costo en quetzales
+- es_personalizado: Bandera para planes fuera del catálogo general
+- activo: Si está disponible para nuevos bufetes
+- fechas: creación y actualización</p>
+<p>Usos:
+- Control de acceso según el plan contratado
+- Facturación y visualización de plan actual</p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.planes.Plan.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.nombre">
+<span class="sig-name descname"><span class="pre">nombre</span></span><a class="headerlink" href="#app.models.planes.Plan.nombre" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.descripcion">
+<span class="sig-name descname"><span class="pre">descripcion</span></span><a class="headerlink" href="#app.models.planes.Plan.descripcion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.max_notarios">
+<span class="sig-name descname"><span class="pre">max_notarios</span></span><a class="headerlink" href="#app.models.planes.Plan.max_notarios" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.max_procuradores">
+<span class="sig-name descname"><span class="pre">max_procuradores</span></span><a class="headerlink" href="#app.models.planes.Plan.max_procuradores" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.max_asistentes">
+<span class="sig-name descname"><span class="pre">max_asistentes</span></span><a class="headerlink" href="#app.models.planes.Plan.max_asistentes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.max_documentos">
+<span class="sig-name descname"><span class="pre">max_documentos</span></span><a class="headerlink" href="#app.models.planes.Plan.max_documentos" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.storage_mb">
+<span class="sig-name descname"><span class="pre">storage_mb</span></span><a class="headerlink" href="#app.models.planes.Plan.storage_mb" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.precio_mensual">
+<span class="sig-name descname"><span class="pre">precio_mensual</span></span><a class="headerlink" href="#app.models.planes.Plan.precio_mensual" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.es_personalizado">
+<span class="sig-name descname"><span class="pre">es_personalizado</span></span><a class="headerlink" href="#app.models.planes.Plan.es_personalizado" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.activo">
+<span class="sig-name descname"><span class="pre">activo</span></span><a class="headerlink" href="#app.models.planes.Plan.activo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.fecha_creacion">
+<span class="sig-name descname"><span class="pre">fecha_creacion</span></span><a class="headerlink" href="#app.models.planes.Plan.fecha_creacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.fecha_actualizacion">
+<span class="sig-name descname"><span class="pre">fecha_actualizacion</span></span><a class="headerlink" href="#app.models.planes.Plan.fecha_actualizacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.bufetes">
+<span class="sig-name descname"><span class="pre">bufetes</span></span><a class="headerlink" href="#app.models.planes.Plan.bufetes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.models.planes.Plan.es_valido_para">
+<span class="sig-name descname"><span class="pre">es_valido_para</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notarios</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">procuradores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asistentes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">documentos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uso_mb</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/planes.html#Plan.es_valido_para"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.planes.Plan.es_valido_para" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.planes.Plan.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.planes.Plan.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.models.relaciones">
+<span id="app-models-relaciones-module"></span><h2>app.models.relaciones module<a class="headerlink" href="#module-app.models.relaciones" title="Link to this heading"></a></h2>
+<p>Tabla de relación entre notarios, procuradores y asistentes</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.relaciones.NotarioProcurador">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.relaciones.</span></span><span class="sig-name descname"><span class="pre">NotarioProcurador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/relaciones.html#NotarioProcurador"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.relaciones.NotarioProcurador" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.relaciones.NotarioProcurador.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.relaciones.NotarioProcurador.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.relaciones.NotarioProcurador.notario_id">
+<span class="sig-name descname"><span class="pre">notario_id</span></span><a class="headerlink" href="#app.models.relaciones.NotarioProcurador.notario_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.relaciones.NotarioProcurador.procurador_id">
+<span class="sig-name descname"><span class="pre">procurador_id</span></span><a class="headerlink" href="#app.models.relaciones.NotarioProcurador.procurador_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.relaciones.NotarioProcurador.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.relaciones.NotarioProcurador.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.relaciones.NotarioAsistente">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.relaciones.</span></span><span class="sig-name descname"><span class="pre">NotarioAsistente</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/relaciones.html#NotarioAsistente"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.relaciones.NotarioAsistente" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.relaciones.NotarioAsistente.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.relaciones.NotarioAsistente.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.relaciones.NotarioAsistente.notario_id">
+<span class="sig-name descname"><span class="pre">notario_id</span></span><a class="headerlink" href="#app.models.relaciones.NotarioAsistente.notario_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.relaciones.NotarioAsistente.asistente_id">
+<span class="sig-name descname"><span class="pre">asistente_id</span></span><a class="headerlink" href="#app.models.relaciones.NotarioAsistente.asistente_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.relaciones.NotarioAsistente.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.relaciones.NotarioAsistente.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.models.timbres">
+<span id="app-models-timbres-module"></span><h2>app.models.timbres module<a class="headerlink" href="#module-app.models.timbres" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.models.usuarios">
+<span id="app-models-usuarios-module"></span><h2>app.models.usuarios module<a class="headerlink" href="#module-app.models.usuarios" title="Link to this heading"></a></h2>
+<p>Este módulo define el modelo principal de usuarios del sistema notarial multitenant.</p>
+<p>Incluye:
+- BufeteJuridico: Datos del bufete, plan, formas de pago, feature flags.
+- Usuario (abstracto): Base para todos los usuarios.
+- Notario: Extiende Usuario, con datos colegiado y firma electrónica.
+- Procurador: Extiende Usuario, usado para redacción.
+- Asistente: Extiende Usuario, tareas complementarias.</p>
+<p>Estos modelos soportan:
+- Multitenancy por bufete
+- Borrado lógico para auditoría
+- Adaptabilidad para exportación a otros países</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.usuarios.</span></span><span class="sig-name descname"><span class="pre">BufeteJuridico</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/usuarios.html#BufeteJuridico"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.usuarios.BufeteJuridico" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.nombre_bufete_o_razon_social">
+<span class="sig-name descname"><span class="pre">nombre_bufete_o_razon_social</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.nombre_bufete_o_razon_social" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.direccion">
+<span class="sig-name descname"><span class="pre">direccion</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.direccion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.telefono">
+<span class="sig-name descname"><span class="pre">telefono</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.telefono" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.email">
+<span class="sig-name descname"><span class="pre">email</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.email" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.nit">
+<span class="sig-name descname"><span class="pre">nit</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.nit" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.pais">
+<span class="sig-name descname"><span class="pre">pais</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.pais" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.app_copyright">
+<span class="sig-name descname"><span class="pre">app_copyright</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.app_copyright" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.nombre_aplicacion">
+<span class="sig-name descname"><span class="pre">nombre_aplicacion</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.nombre_aplicacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.maneja_inventario_timbres_papel">
+<span class="sig-name descname"><span class="pre">maneja_inventario_timbres_papel</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.maneja_inventario_timbres_papel" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.incluye_libreria_plantillas_inicial">
+<span class="sig-name descname"><span class="pre">incluye_libreria_plantillas_inicial</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.incluye_libreria_plantillas_inicial" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.habilita_auditoria_borrado_logico">
+<span class="sig-name descname"><span class="pre">habilita_auditoria_borrado_logico</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.habilita_auditoria_borrado_logico" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.habilita_dashboard_avanzado">
+<span class="sig-name descname"><span class="pre">habilita_dashboard_avanzado</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.habilita_dashboard_avanzado" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.habilita_ayuda_contextual">
+<span class="sig-name descname"><span class="pre">habilita_ayuda_contextual</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.habilita_ayuda_contextual" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.facturacion_nombre">
+<span class="sig-name descname"><span class="pre">facturacion_nombre</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.facturacion_nombre" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.facturacion_nit">
+<span class="sig-name descname"><span class="pre">facturacion_nit</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.facturacion_nit" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.facturacion_direccion">
+<span class="sig-name descname"><span class="pre">facturacion_direccion</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.facturacion_direccion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.formas_pago">
+<span class="sig-name descname"><span class="pre">formas_pago</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.formas_pago" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.metodo_pago_preferido">
+<span class="sig-name descname"><span class="pre">metodo_pago_preferido</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.metodo_pago_preferido" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.activo">
+<span class="sig-name descname"><span class="pre">activo</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.activo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.fecha_creacion">
+<span class="sig-name descname"><span class="pre">fecha_creacion</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.fecha_creacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.plan_id">
+<span class="sig-name descname"><span class="pre">plan_id</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.plan_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.plan">
+<span class="sig-name descname"><span class="pre">plan</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.plan" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.usuarios">
+<span class="sig-name descname"><span class="pre">usuarios</span></span><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.usuarios" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.BufeteJuridico.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.usuarios.BufeteJuridico.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.usuarios.</span></span><span class="sig-name descname"><span class="pre">Usuario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/usuarios.html#Usuario"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.usuarios.Usuario" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.username">
+<span class="sig-name descname"><span class="pre">username</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.username" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.correo">
+<span class="sig-name descname"><span class="pre">correo</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.correo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.password_hash">
+<span class="sig-name descname"><span class="pre">password_hash</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.password_hash" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.rol">
+<span class="sig-name descname"><span class="pre">rol</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.rol" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.estado">
+<span class="sig-name descname"><span class="pre">estado</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.estado" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.nombres">
+<span class="sig-name descname"><span class="pre">nombres</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.nombres" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.apellidos">
+<span class="sig-name descname"><span class="pre">apellidos</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.apellidos" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.telefono">
+<span class="sig-name descname"><span class="pre">telefono</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.telefono" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.direccion_laboral">
+<span class="sig-name descname"><span class="pre">direccion_laboral</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.direccion_laboral" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.preferencia_contacto_red_social">
+<span class="sig-name descname"><span class="pre">preferencia_contacto_red_social</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.preferencia_contacto_red_social" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.bufete_id">
+<span class="sig-name descname"><span class="pre">bufete_id</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.bufete_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.bufete">
+<span class="sig-name descname"><span class="pre">bufete</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.bufete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.borrado_logico">
+<span class="sig-name descname"><span class="pre">borrado_logico</span></span><a class="headerlink" href="#app.models.usuarios.Usuario.borrado_logico" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Usuario.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.usuarios.Usuario.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.usuarios.</span></span><span class="sig-name descname"><span class="pre">Notario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/usuarios.html#Notario"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.usuarios.Notario" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#app.models.usuarios.Usuario" title="app.models.usuarios.Usuario"><code class="xref py py-class docutils literal notranslate"><span class="pre">Usuario</span></code></a></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.usuarios.Notario.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.numero_colegiado">
+<span class="sig-name descname"><span class="pre">numero_colegiado</span></span><a class="headerlink" href="#app.models.usuarios.Notario.numero_colegiado" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.colegiado_activo">
+<span class="sig-name descname"><span class="pre">colegiado_activo</span></span><a class="headerlink" href="#app.models.usuarios.Notario.colegiado_activo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.fecha_verificacion">
+<span class="sig-name descname"><span class="pre">fecha_verificacion</span></span><a class="headerlink" href="#app.models.usuarios.Notario.fecha_verificacion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.firma_electronica_registrada">
+<span class="sig-name descname"><span class="pre">firma_electronica_registrada</span></span><a class="headerlink" href="#app.models.usuarios.Notario.firma_electronica_registrada" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.proveedor_firma_electronica">
+<span class="sig-name descname"><span class="pre">proveedor_firma_electronica</span></span><a class="headerlink" href="#app.models.usuarios.Notario.proveedor_firma_electronica" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.apellidos">
+<span class="sig-name descname"><span class="pre">apellidos</span></span><a class="headerlink" href="#app.models.usuarios.Notario.apellidos" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.borrado_logico">
+<span class="sig-name descname"><span class="pre">borrado_logico</span></span><a class="headerlink" href="#app.models.usuarios.Notario.borrado_logico" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.bufete">
+<span class="sig-name descname"><span class="pre">bufete</span></span><a class="headerlink" href="#app.models.usuarios.Notario.bufete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.bufete_id">
+<span class="sig-name descname"><span class="pre">bufete_id</span></span><a class="headerlink" href="#app.models.usuarios.Notario.bufete_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.correo">
+<span class="sig-name descname"><span class="pre">correo</span></span><a class="headerlink" href="#app.models.usuarios.Notario.correo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.direccion_laboral">
+<span class="sig-name descname"><span class="pre">direccion_laboral</span></span><a class="headerlink" href="#app.models.usuarios.Notario.direccion_laboral" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.estado">
+<span class="sig-name descname"><span class="pre">estado</span></span><a class="headerlink" href="#app.models.usuarios.Notario.estado" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.nombres">
+<span class="sig-name descname"><span class="pre">nombres</span></span><a class="headerlink" href="#app.models.usuarios.Notario.nombres" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.password_hash">
+<span class="sig-name descname"><span class="pre">password_hash</span></span><a class="headerlink" href="#app.models.usuarios.Notario.password_hash" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.preferencia_contacto_red_social">
+<span class="sig-name descname"><span class="pre">preferencia_contacto_red_social</span></span><a class="headerlink" href="#app.models.usuarios.Notario.preferencia_contacto_red_social" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.rol">
+<span class="sig-name descname"><span class="pre">rol</span></span><a class="headerlink" href="#app.models.usuarios.Notario.rol" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.telefono">
+<span class="sig-name descname"><span class="pre">telefono</span></span><a class="headerlink" href="#app.models.usuarios.Notario.telefono" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.username">
+<span class="sig-name descname"><span class="pre">username</span></span><a class="headerlink" href="#app.models.usuarios.Notario.username" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Notario.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.usuarios.Notario.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.usuarios.</span></span><span class="sig-name descname"><span class="pre">Procurador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/usuarios.html#Procurador"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.usuarios.Procurador" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#app.models.usuarios.Usuario" title="app.models.usuarios.Usuario"><code class="xref py py-class docutils literal notranslate"><span class="pre">Usuario</span></code></a></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.apellidos">
+<span class="sig-name descname"><span class="pre">apellidos</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.apellidos" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.borrado_logico">
+<span class="sig-name descname"><span class="pre">borrado_logico</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.borrado_logico" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.bufete">
+<span class="sig-name descname"><span class="pre">bufete</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.bufete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.bufete_id">
+<span class="sig-name descname"><span class="pre">bufete_id</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.bufete_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.correo">
+<span class="sig-name descname"><span class="pre">correo</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.correo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.direccion_laboral">
+<span class="sig-name descname"><span class="pre">direccion_laboral</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.direccion_laboral" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.estado">
+<span class="sig-name descname"><span class="pre">estado</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.estado" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.nombres">
+<span class="sig-name descname"><span class="pre">nombres</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.nombres" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.password_hash">
+<span class="sig-name descname"><span class="pre">password_hash</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.password_hash" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.preferencia_contacto_red_social">
+<span class="sig-name descname"><span class="pre">preferencia_contacto_red_social</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.preferencia_contacto_red_social" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.rol">
+<span class="sig-name descname"><span class="pre">rol</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.rol" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.telefono">
+<span class="sig-name descname"><span class="pre">telefono</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.telefono" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.username">
+<span class="sig-name descname"><span class="pre">username</span></span><a class="headerlink" href="#app.models.usuarios.Procurador.username" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Procurador.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.usuarios.Procurador.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.models.usuarios.</span></span><span class="sig-name descname"><span class="pre">Asistente</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/app/models/usuarios.html#Asistente"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#app.models.usuarios.Asistente" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#app.models.usuarios.Usuario" title="app.models.usuarios.Usuario"><code class="xref py py-class docutils literal notranslate"><span class="pre">Usuario</span></code></a></p>
+<p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.apellidos">
+<span class="sig-name descname"><span class="pre">apellidos</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.apellidos" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.borrado_logico">
+<span class="sig-name descname"><span class="pre">borrado_logico</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.borrado_logico" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.bufete">
+<span class="sig-name descname"><span class="pre">bufete</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.bufete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.bufete_id">
+<span class="sig-name descname"><span class="pre">bufete_id</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.bufete_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.correo">
+<span class="sig-name descname"><span class="pre">correo</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.correo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.direccion_laboral">
+<span class="sig-name descname"><span class="pre">direccion_laboral</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.direccion_laboral" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.estado">
+<span class="sig-name descname"><span class="pre">estado</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.estado" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.nombres">
+<span class="sig-name descname"><span class="pre">nombres</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.nombres" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.password_hash">
+<span class="sig-name descname"><span class="pre">password_hash</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.password_hash" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.preferencia_contacto_red_social">
+<span class="sig-name descname"><span class="pre">preferencia_contacto_red_social</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.preferencia_contacto_red_social" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.rol">
+<span class="sig-name descname"><span class="pre">rol</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.rol" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.telefono">
+<span class="sig-name descname"><span class="pre">telefono</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.telefono" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.username">
+<span class="sig-name descname"><span class="pre">username</span></span><a class="headerlink" href="#app.models.usuarios.Asistente.username" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.models.usuarios.Asistente.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">t.ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Query</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#app.models.usuarios.Asistente.query" title="Link to this definition"></a></dt>
+<dd><p>A SQLAlchemy query for a model. Equivalent to <code class="docutils literal notranslate"><span class="pre">db.session.query(Model)</span></code>. Can be
+customized per-model by overriding <code class="xref py py-attr docutils literal notranslate"><span class="pre">query_class</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>The query interface is considered legacy in SQLAlchemy. Prefer using
+<code class="docutils literal notranslate"><span class="pre">session.execute(select())</span></code> instead.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.models">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-app.models" title="Link to this heading"></a></h2>
+<p>Inicializa el paquete models e importa todas las clases
+para que SQLAlchemy y Flask las reconozcan.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor .</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

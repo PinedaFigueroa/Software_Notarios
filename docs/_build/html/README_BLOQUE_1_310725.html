@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial &mdash; documentación de Software Notarios - 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=36c4ab74"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos" href="README_BigBang2.html" />
+    <link rel="prev" title="Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO" href="README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Software Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido del Proyecto</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="INSTALLATION_GUIDE.html">📘 Guía de Instalación – Software Notarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html">Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#avances">✅ Avances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#errores-y-soluciones">🛠 Errores y Soluciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pendientes-para-el-siguiente-bloque">📌 Pendientes para el siguiente bloque</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nota-sobre-ux-para-notarios">🔹 Nota sobre UX para Notarios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="README_BigBang2.html">📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque1_DB_Seeds.html">Software Notarios - Bloque 1: Base de Datos y Seeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Dashboard.html">Software Notarios -la forma original para  Bloque 2: Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque2_Final.html">Proyecto: Software Notarios Bloque 2 version final Dashboard y Blueprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque3_Seguridad.html">Software Notarios - Bloque 3: Seguridad y Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README_Bloque4_Documentos.html">Software Notarios - Bloque 4: Documentos y Librería</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html">Pasos para generar la migración para tener asociación notario procurador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#asegurate-de-tener-la-carpeta-migrations-ya-inicializada">1️⃣ Asegúrate de tener la carpeta “migrations” ya inicializada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#si-no-existe-corre-primero">Si no existe, corre primero:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-db-init">flask db init</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#generar-la-migracion">2️⃣ Generar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#aplicar-la-migracion">3️⃣ Aplicar la migración</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#verifica-en-tu-base-de-datos-que-la-tabla-exista-correctamente">4️⃣ Verifica en tu base de datos que la tabla exista correctamente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#opcional-usar-flask-shell-para-insertar-prueba">5️⃣ Opcional: usar flask shell para insertar prueba:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migracion_asociacion_instrucciones.html#flask-shell">flask shell</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Software Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/README_BLOQUE_1_310725.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bloque-1-problemas-con-el-big-bang-seed-inicial">
+<h1>Bloque 1 – Problemas con el Big Bang &amp; Seed Inicial<a class="headerlink" href="#bloque-1-problemas-con-el-big-bang-seed-inicial" title="Link to this heading"></a></h1>
+<p><strong>Fecha de finalización:</strong> 31/07/2025 14:50<br />
+<strong>Responsable:</strong> Giancarlo + Tars-90</p>
+<hr class="docutils" />
+<section id="avances">
+<h2>✅ Avances<a class="headerlink" href="#avances" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>**Base de datos **`` recreada correctamente usando <code class="docutils literal notranslate"><span class="pre">init_big_bang.py</span></code>.</p></li>
+<li><p><strong>Migraciones Alembic</strong> aplicadas con éxito (migración inicial <code class="docutils literal notranslate"><span class="pre">big_bang_initial_creation.py</span></code>).</p></li>
+<li><p><strong>Seed inicial ejecutado</strong> sin errores:</p>
+<ul class="simple">
+<li><p>Usuarios creados: <code class="docutils literal notranslate"><span class="pre">admin</span></code>, <code class="docutils literal notranslate"><span class="pre">notario_demo</span></code>, <code class="docutils literal notranslate"><span class="pre">admin_local</span></code>, <code class="docutils literal notranslate"><span class="pre">notario_pineda</span></code></p></li>
+<li><p>23 cláusulas iniciales insertadas en <code class="docutils literal notranslate"><span class="pre">ClausulasPuntos</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Logs generados con timestamp</strong>: <code class="docutils literal notranslate"><span class="pre">big_bang_20250731_145012.log</span></code></p></li>
+<li><p><strong>Verificación con Flask Shell</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">u</span><span class="o">.</span><span class="n">username</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">Usuario</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
+<span class="c1"># [&#39;notario_pineda&#39;, &#39;admin&#39;, &#39;notario_demo&#39;, &#39;admin_local&#39;]</span>
+
+<span class="n">ClausulasPuntos</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="c1"># 23</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>App probada en navegador</strong> → Interfaz funcional y estable.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="errores-y-soluciones">
+<h2>🛠 Errores y Soluciones<a class="headerlink" href="#errores-y-soluciones" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>**ENUM PostgreSQL: **``</p>
+<ul class="simple">
+<li><p><strong>Causa:</strong> Se insertaba <code class="docutils literal notranslate"><span class="pre">rol='notario'</span></code> en minúsculas</p></li>
+<li><p><strong>Solución:</strong> Usar <code class="docutils literal notranslate"><span class="pre">RolUsuarioEnum.NOTARIO.name</span></code> (mayúsculas)</p></li>
+</ul>
+</li>
+<li><p><strong>Tabla <strong>``</strong> no existía</strong></p>
+<ul class="simple">
+<li><p><strong>Causa:</strong> Migración inicial no incluía modelo</p></li>
+<li><p><strong>Solución:</strong> Asegurar importación en <code class="docutils literal notranslate"><span class="pre">models/__init__.py</span></code> y regenerar migración</p></li>
+</ul>
+</li>
+<li><p><strong>Problemas con rutas con espacios en Windows</strong></p>
+<ul class="simple">
+<li><p><strong>Solución:</strong> Modo híbrido Python + <code class="docutils literal notranslate"><span class="pre">.bat</span></code> y logs con timestamp</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="pendientes-para-el-siguiente-bloque">
+<h2>📌 Pendientes para el siguiente bloque<a class="headerlink" href="#pendientes-para-el-siguiente-bloque" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Diseñar <strong>Dashboard</strong> del bufete y <strong>blueprints</strong>.</p></li>
+<li><p>Probar <code class="docutils literal notranslate"><span class="pre">scripts/test_relaciones_asociacion.py</span></code> para relaciones Notario-Procurador.</p></li>
+<li><p>Implementar <strong>generación automática de README diario</strong> en cada Big Bang.</p></li>
+<li><p>Primer commit Git del proyecto consolidado.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="nota-sobre-ux-para-notarios">
+<h2>🔹 Nota sobre UX para Notarios<a class="headerlink" href="#nota-sobre-ux-para-notarios" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Se abrirá investigación en Bloque 3 para identificar:</p>
+<ol class="arabic simple">
+<li><p><strong>Puntos de dolor</strong> que hacen que notarios eviten cierto software.</p></li>
+<li><p><strong>Colores y diseño visual</strong> que generen comodidad y atracción.</p></li>
+<li><p><strong>Sustento psicológico y estudios de usabilidad</strong> aplicados a software legal/notarial.</p></li>
+</ol>
+</li>
+</ul>
+<hr class="docutils" />
+<p><strong>Estado:</strong> ✅ <strong>Bloque 1 completado</strong> – Listo para continuar con Dashboard y Blueprints</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="README%20LECCIONES%20DE%20LOS%20ERRORES%20290725.html" class="btn btn-neutral float-left" title="Bloque 1 – ERRORES APRENDIDOS Y LECCIONES PARA MEJORAR EL DESARROLLO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="README_BigBang2.html" class="btn btn-neutral float-right" title="📝 Big Bang 2 – Proceso de (RE) Inicialización de Base de Datos" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor .</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
