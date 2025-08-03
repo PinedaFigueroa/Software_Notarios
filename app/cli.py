@@ -6,7 +6,7 @@
 
 import click
 from flask.cli import AppGroup
-from app import db
+from app.extensions import db
 from app.models.usuarios import BufeteJuridico, Notario, Usuario
 from app.models.planes import Plan
 from app.models.enums import RolUsuarioEnum, EstadoUsuarioEnum

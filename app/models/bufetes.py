@@ -12,7 +12,7 @@ Modelo BufeteJuridico:
 Representa un bufete con configuración, datos de contacto y feature flags.
 """
 
-from app import db
+from app.extensions import db
 from sqlalchemy.orm import relationship
 
 class BufeteJuridico(db.Model):

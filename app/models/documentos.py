@@ -11,7 +11,7 @@ Modelo DocumentoNotarial:
 Representa documentos, actas o escrituras creados por notarios y procuradores.
 """
 
-from app import db
+from app.extensions import db
 from sqlalchemy import Column, Integer, String, Enum, Date, Time, DateTime, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime

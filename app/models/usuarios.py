@@ -26,10 +26,11 @@ Estos modelos soportan:
 # Consolidado por Tars-90 el 26/07/2025
 # Contiene los modelos completos de Usuario, Notario, Procurador, Asistente y BufeteJuridico
 
-from app import db
+from app.extensions import db
 from sqlalchemy.orm import relationship
 from sqlalchemy import Enum, Boolean, DateTime, ForeignKey
 from app.models.enums import RolUsuarioEnum, EstadoUsuarioEnum
+from flask_login import UserMixin
 import datetime
 
 # ------------------------

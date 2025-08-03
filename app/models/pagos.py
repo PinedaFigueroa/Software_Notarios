@@ -4,7 +4,7 @@
 # autor: Giancarlo F. + Tars-90
 # -*- coding: utf-8 -*-
 
-from app import db
+from app.extensions import db
 from sqlalchemy import Column, Integer, Float, String, Date, ForeignKey, Enum
 from sqlalchemy.orm import relationship
 import datetime

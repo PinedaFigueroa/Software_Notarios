@@ -11,7 +11,7 @@
 Tabla de relación entre notarios, procuradores y asistentes
 """
 
-from app import db
+from app.extensions import db
 
 class NotarioProcurador(db.Model):
     __tablename__ = 'notario_procurador'

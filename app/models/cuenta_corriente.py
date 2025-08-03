@@ -4,7 +4,7 @@
 # autor: Giancarlo F. + Tars-90
 # -*- coding: utf-8 -*-
 
-from app import db
+from app.extensions import db
 from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey
 import datetime  # <<<< ESTE IMPORT ES CLAVE
 

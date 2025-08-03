@@ -1,35 +1,61 @@
+# ===============================
 # Carpetas de sistema/editor
+# ===============================
 .vscode/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
+# ===============================
 # Entornos virtuales y binarios
+# ===============================
 env/
 venv/
 swnot/
 
-# Archivos temporales y de error
+# ===============================
+# Archivos temporales y logs
+# ===============================
 *.log
 init_error.log
 
-# Archivos de documentación generada
-*.md
-README*
-docs/
-doctest-output/
+# ===============================
+# Documentación y Sphinx
+# (Ignora solo la build, NO la fuente)
+# ===============================
+docs_build/
+docs/_build/
+docs/doctest-output/
+docs_build/doctrees/
+docs_build/html/_sources/
+docs_build/html/_static/
 
-# Carpetas no deseadas según imagen
+# ===============================
+# Archivos de documentación
+# (NO ignoramos .md ni README para conservar bitácoras)
+# ===============================
+# *.md  <-- Se eliminó para versionar bitácoras
+# README* <-- Se mantiene para documentación
+
+# ===============================
+# Carpetas no deseadas del proyecto inicial
+# ===============================
 Prompts/
 leyes/
 routes_iniciales del proyecto/
 _templates iniciales del proyecto/
 
+# ===============================
 # Archivos ocultos o del sistema
+# ===============================
 .DS_Store
 Thumbs.db
+desktop.ini
+ehthumbs.db
 
-# Build y static folders si no son necesarias en control de versiones
-_build/
-_static/
+# ===============================
+# Archivos temporales y backups
+# ===============================
+*.bak
+*.tmp
