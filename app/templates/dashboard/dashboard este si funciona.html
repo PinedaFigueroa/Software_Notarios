@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard | Software Notarios{% endblock %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="card card-primary shadow text-center">
+            <div class="card-body">
+                <i class="fas fa-users fa-2x mb-2"></i>
+                <h4>{{ total_usuarios }}</h4>
+                <p>Usuarios Totales</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-success shadow text-center">
+            <div class="card-body">
+                <i class="fas fa-file-alt fa-2x mb-2"></i>
+                <h4>{{ total_documentos }}</h4>
+                <p>Documentos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        {% if avisos_pendientes > 0 %}
+        <div class="card card-warning shadow text-center">
+            <div class="card-body">
+                <i class="fas fa-bell fa-2x mb-2"></i>
+                <h4>{{ avisos_pendientes }}</h4>
+                <p>Avisos Pendientes</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-md-3">
+        {% if urgencias > 0 %}
+        <div class="card card-danger shadow text-center">
+            <div class="card-body">
+                <i class="fas fa-exclamation-triangle fa-2x mb-2"></i>
+                <h4>{{ urgencias }}</h4>
+                <p>Urgencias</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

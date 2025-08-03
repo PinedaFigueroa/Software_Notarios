@@ -1,13 +1,98 @@
-<!-- archivo: app/templates/dashboard/dashboard.html -->
-<!-- motivo: dashboard principal extendiendo base.html -->
-
 {% extends 'base.html' %}
 
 {% block title %}Dashboard Bufete{% endblock %}
 
 {% block content %}
-<h1 class="mt-4">Bienvenido al Bufete</h1>
-<p class="lead">Usuario logueado: {{ usuario }} (Rol: {{ rol }})</p>
+<h1 class="mt-4">Dashboard del Bufete</h1>
+<p class="lead">Resumen general de la actividad del sistema</p>
 <hr>
-<div class="alert alert-info">Aquí aparecerán los datos del bufete, tareas, métricas...</div>
+
+<div class="row text-center">
+
+    <!-- Usuarios Totales -->
+    <div class="col-md-3 mb-4">
+        <div class="card text-white shadow" style="background-color: #0d6efd;">
+            <div class="card-body">
+                <h4>{{ usuarios_totales }}</h4>
+                <p>Usuarios Totales</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Documentos Notariales -->
+    <div class="col-md-3 mb-4">
+        <div class="card text-white shadow" style="background-color: #198754;">
+            <div class="card-body">
+                <h4>{{ documentos_totales }}</h4>
+                <p>Documentos Notariales</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Asociaciones Activas -->
+    <div class="col-md-3 mb-4">
+        <div class="card text-white shadow" style="background-color: #0dcaf0;">
+            <div class="card-body">
+                <h4>{{ asociaciones_activas }}</h4>
+                <p>Asociaciones Activas</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notarios -->
+    <div class="col-md-3 mb-4">
+        <div class="card text-white shadow" style="background-color: #495057;">
+            <div class="card-body">
+                <h4>{{ notarios }}</h4>
+                <p>Notarios</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row text-center">
+
+    <!-- Procuradores -->
+    <div class="col-md-3 mb-4">
+        <div class="card text-white shadow" style="background-color: #6c757d;">
+            <div class="card-body">
+                <h4>{{ procuradores }}</h4>
+                <p>Procuradores</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Asistentes -->
+    <div class="col-md-3 mb-4">
+        <div class="card text-dark shadow" style="background-color: #adb5bd;">
+            <div class="card-body">
+                <h4>{{ asistentes }}</h4>
+                <p>Asistentes</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admins Locales -->
+    <div class="col-md-3 mb-4">
+        <div class="card text-white shadow" style="background-color: #6f42c1;">
+            <div class="card-body">
+                <h4>{{ admins_local }}</h4>
+                <p>Admins Locales</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Superadmins -->
+    <div class="col-md-3 mb-4">
+        <div class="card text-white shadow" style="background-color: #0b5ed7;">
+            <div class="card-body">
+                <h4>{{ superadmins }}</h4>
+                <p>Superadmins</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 {% endblock %}

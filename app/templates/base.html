@@ -1,33 +1,53 @@
-<!-- archivo: app/templates/base.html -->
-<!-- última actualización: 28/07/25 -->
-<!-- motivo: corregir ruta de logo, color y clic en navbar -->
-<!-- autor: Giancarlo F. + Tars-90 -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}SWNotarios{% endblock %}</title>
+    <title>{% block title %}Software Notarios{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap local -->
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
-    <style>
-        body { padding-top: 60px; }
-    </style>
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url_for('dashboard.mostrar_dashboard') }}">
-                <img src="{{ url_for('static', filename='img/logo_app.png') }}" alt="Logo" height="30">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('dashboard.mostrar_dashboard') }}">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo-navbar me-2">
                 Software Notarial Hubsa
             </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard.mostrar_dashboard') }}">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Documentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Librería</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
+    <!-- Contenido principal -->
+    <main class="container my-4">
+        {% block content %}{% endblock %}
+    </main>
 
+    <!-- Bootstrap JS -->
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo App" class="logo-footer me-2">
+            <span class="text-muted">© 2025 Sistema Notarial Hubsa / Todos los derechos reservados.</span>
+        </div>
+    </footer>
 </body>
 </html>

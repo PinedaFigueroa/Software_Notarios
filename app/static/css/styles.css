@@ -1,0 +1,16 @@
+/* Logo en navbar */
+.logo-navbar {
+    height: 30px;
+}
+
+/* Logo en footer */
+.logo-footer {
+    height: 20px;
+}
+
+/* Footer centrado */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
