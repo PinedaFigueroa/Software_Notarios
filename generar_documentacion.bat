@@ -13,14 +13,14 @@ echo  Software Notarios - Generación Documentación DB
 echo ==========================================
 
 REM Activar entorno virtual
-call swnot\Scripts\activate
+REM call swnot\Scripts\activate
 
 REM Crear carpeta de documentación si no existe
 if not exist db_docs mkdir db_docs
 
 REM Limpiar generación anterior
-echo Limpiando db_docs anterior...
-del /q db_docs\*.*
+REM echo Limpiando db_docs anterior...
+REM del /q db_docs\*.*
 echo.
 
 REM 1. Exportar tablas a Excel con colores
