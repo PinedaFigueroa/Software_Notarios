@@ -79,35 +79,37 @@
              
   <h1>Código fuente para app</h1><div class="highlight"><pre>
 <span></span><span class="c1"># archivo: app/__init__.py</span>
-<span class="c1"># fecha de creación: 14 / 07 / 25</span>
-<span class="c1"># cantidad de lineas originales: ____</span>
-<span class="c1"># última actualización: 15 / 07 / 25 hora 08:20</span>
-<span class="c1"># motivo de la actualización: evitar circular import con cli.py</span>
-<span class="c1"># autor: Giancarlo + Tars-90</span>
+<span class="c1"># fecha de creación: 26 / 07 / 25</span>
+<span class="c1"># cantidad de líneas originales: 40 aprox.</span>
+<span class="c1"># última actualización: 27 / 07 / 25 hora 21:40</span>
+<span class="c1"># motivo de la actualización: registrar correctamente blueprint del dashboard</span>
+<span class="c1"># autor: Giancarlo F. + Tars-90</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">flask_sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQLAlchemy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">flask_migrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">Migrate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flask_login</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoginManager</span>
 
 <span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">()</span>
 <span class="n">migrate</span> <span class="o">=</span> <span class="n">Migrate</span><span class="p">()</span>
+<span class="n">login_manager</span> <span class="o">=</span> <span class="n">LoginManager</span><span class="p">()</span>
 
 <div class="viewcode-block" id="create_app">
 <a class="viewcode-back" href="../source/app.html#app.create_app">[documentos]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">create_app</span><span class="p">():</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-
-    <span class="c1"># Configuración</span>
     <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="s1">&#39;app.config.Config&#39;</span><span class="p">)</span>
 
-    <span class="c1"># Inicializa extensiones</span>
+    <span class="c1"># Registrar blueprints</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">app.dashboard</span><span class="w"> </span><span class="kn">import</span> <span class="n">dashboard_bp</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">dashboard_bp</span><span class="p">)</span>
+
+    <span class="c1"># Inicializar extensiones</span>
     <span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
     <span class="n">migrate</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
 
-    <span class="c1"># Importa y registra blueprints aquí si tienes</span>
-
-    <span class="c1"># Importa y registra comandos CLI al final para evitar circular import</span>
+    <span class="c1"># Registrar comandos personalizados</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">app.cli</span><span class="w"> </span><span class="kn">import</span> <span class="n">cli</span>
     <span class="n">app</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">cli</span><span class="p">)</span>
 
