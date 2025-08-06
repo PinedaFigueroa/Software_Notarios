@@ -15,6 +15,9 @@ extensions = [
     'sphinx.ext.autodoc',       # extraer docstrings de los módulos Python
     'sphinx.ext.napoleon',      # soportar Google y NumPy style docstrings
     'sphinx.ext.viewcode',      # añadir enlaces al código fuente
+     'myst_parser',  # ⬅ Permite usar archivos .md
+     'docxbuilder',             # ⬅ Para exportar a .docx
+
 ]
 
 templates_path = ['_templates']

@@ -79,14 +79,12 @@
            <div itemprop="articleBody">
              
   <h1>Código fuente para app.models.enums</h1><div class="highlight"><pre>
-<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># archivo: app/models/enums.py</span>
-<span class="c1"># fecha de creación: 14 / 07 / 25 hora 20:46</span>
-<span class="c1"># cantidad de lineas originales: 30 aprox.</span>
-<span class="c1"># ultima actualización: </span>
-<span class="c1"># motivo de la actualizacion: </span>
-<span class="c1"># lineas actuales: ____</span>
+<span></span><span class="c1"># archivo: app/models/enums.py</span>
+<span class="c1"># fecha de creación: 14/07/25 hora 20:46</span>
+<span class="c1"># ultima actualización: 16/07/25</span>
 <span class="c1"># autor: Giancarlo F. + Tars-90</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">enum</span>
 
 <div class="viewcode-block" id="TipoDocumentoEnum">
@@ -130,7 +128,8 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">TipoClausulaEnum</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">GENERAL</span> <span class="o">=</span> <span class="s2">&quot;General&quot;</span>
     <span class="n">PARTICULAR</span> <span class="o">=</span> <span class="s2">&quot;Particular&quot;</span>
-    <span class="n">ESPECIFICA</span> <span class="o">=</span> <span class="s2">&quot;Específica&quot;</span></div>
+    <span class="n">ESPECIFICA</span> <span class="o">=</span> <span class="s2">&quot;Específica&quot;</span>
+    <span class="n">OTRA</span> <span class="o">=</span> <span class="s2">&quot;Otra&quot;</span></div>
 
 
 <div class="viewcode-block" id="TipoBienEnum">
@@ -140,6 +139,14 @@
     <span class="n">VEHICULO</span> <span class="o">=</span> <span class="s2">&quot;Vehículo&quot;</span>
     <span class="n">MUEBLE</span> <span class="o">=</span> <span class="s2">&quot;Mueble&quot;</span>
     <span class="n">OTRO</span> <span class="o">=</span> <span class="s2">&quot;Otro&quot;</span></div>
+
+
+<div class="viewcode-block" id="FormaPagoEnum">
+<a class="viewcode-back" href="../../../source/app.models.html#app.models.enums.FormaPagoEnum">[documentos]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FormaPagoEnum</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">EFECTIVO</span> <span class="o">=</span> <span class="s2">&quot;Efectivo&quot;</span>
+    <span class="n">CHEQUE</span> <span class="o">=</span> <span class="s2">&quot;Cheque&quot;</span>
+    <span class="n">TARJETA</span> <span class="o">=</span> <span class="s2">&quot;Tarjeta de Crédito&quot;</span></div>
 
 </pre></div>
 

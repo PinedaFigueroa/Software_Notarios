@@ -79,44 +79,75 @@
            <div itemprop="articleBody">
              
   <h1>Código fuente para app.models.planes</h1><div class="highlight"><pre>
-<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1"># archivo: app/models/planes.py</span>
-<span class="c1"># autor: Giancarlo + Tars-90</span>
-<span class="c1"># última actualización: 25 / 07 / 25</span>
-<span class="c1"># Descripción: Modelo de Planes para definir límites y características contratadas por cada bufete</span>
+<span></span><span class="c1"># archivo: app/models/planes.py</span>
+<span class="c1"># fecha de creación: 16/07/25 hora 09:50</span>
+<span class="c1"># cantidad de lineas originales: ~40</span>
+<span class="c1"># última actualización: 26/07/25 hora 20:10</span>
+<span class="c1"># motivo de la actualización: corrección de importación, expansión del modelo y preparación para planes base</span>
+<span class="c1"># autor: Giancarlo F. + Tars-90</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">Boolean</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">relationship</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">db</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">Boolean</span><span class="p">,</span> <span class="n">DateTime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">relationship</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
 
 <div class="viewcode-block" id="Plan">
 <a class="viewcode-back" href="../../../source/app.models.html#app.models.planes.Plan">[documentos]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Plan</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Modelo que define los planes de suscripción del sistema.</span>
-<span class="sd">    Permite controlar límites como usuarios, documentos, almacenamiento, etc.</span>
+<span class="sd">    Modelo: Plan</span>
+
+<span class="sd">    Representa un plan contratado por un bufete jurídico.</span>
+
+<span class="sd">    Campos principales:</span>
+<span class="sd">    - nombre: Nombre del plan (ej. Demo, Profesional, Ilimitado)</span>
+<span class="sd">    - descripcion: Breve descripción visible en el dashboard</span>
+<span class="sd">    - límites: usuarios, documentos, almacenamiento</span>
+<span class="sd">    - precio_mensual: Costo en quetzales</span>
+<span class="sd">    - es_personalizado: Bandera para planes fuera del catálogo general</span>
+<span class="sd">    - activo: Si está disponible para nuevos bufetes</span>
+<span class="sd">    - fechas: creación y actualización</span>
+
+<span class="sd">    Usos:</span>
+<span class="sd">    - Control de acceso según el plan contratado</span>
+<span class="sd">    - Facturación y visualización de plan actual</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;planes&#39;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">nombre</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">descripcion</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">250</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">descripcion</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="c1"># Límites</span>
-    <span class="n">max_notarios</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">max_procuradores</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">max_asistentes</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">max_escrituras_mensuales</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">max_actas_mensuales</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">max_storage_mb</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+    <span class="n">max_notarios</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">max_procuradores</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">max_asistentes</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">max_documentos</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">storage_mb</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 
+    <span class="n">precio_mensual</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Float</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">es_personalizado</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Boolean</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">activo</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Boolean</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="c1"># Relación inversa: bufetes que usan este plan</span>
-    <span class="n">bufetes</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;BufeteJuridico&#39;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s1">&#39;plan&#39;</span><span class="p">)</span>
+    <span class="c1"># Auditoría</span>
+    <span class="n">fecha_creacion</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">)</span>
+    <span class="n">fecha_actualizacion</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">,</span> <span class="n">onupdate</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">)</span>
+    <span class="n">bufetes</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;BufeteJuridico&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;plan&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Plan.es_valido_para">
+<a class="viewcode-back" href="../../../source/app.models.html#app.models.planes.Plan.es_valido_para">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">es_valido_para</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notarios</span><span class="p">,</span> <span class="n">procuradores</span><span class="p">,</span> <span class="n">asistentes</span><span class="p">,</span> <span class="n">documentos</span><span class="p">,</span> <span class="n">uso_mb</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">notarios</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_notarios</span> <span class="ow">and</span>
+            <span class="n">procuradores</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_procuradores</span> <span class="ow">and</span>
+            <span class="n">asistentes</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_asistentes</span> <span class="ow">and</span>
+            <span class="n">documentos</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_documentos</span> <span class="ow">and</span>
+            <span class="n">uso_mb</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_mb</span>
+        <span class="p">)</span></div>
+
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;Plan(id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">, nombre=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nombre</span><span class="si">}</span><span class="s2">&#39;)&gt;&quot;</span></div>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;Plan </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nombre</span><span class="si">}</span><span class="s2"> Q</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">precio_mensual</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
 
 </pre></div>
 
