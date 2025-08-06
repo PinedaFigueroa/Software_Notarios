@@ -1,8 +1,8 @@
 """Big Bang: Initial creation
 
-Revision ID: a97a4431cb52
+Revision ID: 190598888acc
 Revises: 
-Create Date: 2025-08-02 20:29:25.074627
+Create Date: 2025-08-05 15:54:41.387652
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a97a4431cb52'
+revision = '190598888acc'
 down_revision = None
 branch_labels = None
 depends_on = None
