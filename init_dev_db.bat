@@ -71,7 +71,7 @@ echo ✅ Flask-Migrate inicializado.
 
 echo.
 echo --- 📦 PASO 4: Generando migración inicial ---
-python -m flask db migrate -m "Big Bang: Initial creation" 2> %LOG_DIR%\migrate.log
+python -m flask db migrate -m "Big Bang: Initial creation 06-08-25-19.27" 2> %LOG_DIR%\migrate.log
 if %errorlevel% neq 0 (
     echo ❌ ERROR flask db migrate. Revisa %LOG_DIR%\migrate.log
     goto :eof

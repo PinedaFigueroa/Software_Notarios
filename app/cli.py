@@ -1,20 +1,23 @@
 # archivo: app/cli.py
-# fecha de actualización: 26 / 07 / 25
-# motivo: agregar numero_colegiado=0 al notario principal y asegurar integridad con modelos
+# fecha de actualización: 06 / 08 / 25
+# motivo de la actualización: corregido uso de "nombre" en vez de "nombre_bufete_o_razon_social"
 # autor: Giancarlo F. + Tars-90
 # -*- coding: utf-8 -*-
 
 import click
 from flask.cli import AppGroup
+from werkzeug.security import generate_password_hash
+
 from app import db
-from app.models.usuarios import BufeteJuridico, Notario, Usuario
+from app.models.bufetes import BufeteJuridico
+from app.models.usuarios import Usuario, Notario, Procurador, Asistente
 from app.models.planes import Plan
 from app.models.enums import RolUsuarioEnum, EstadoUsuarioEnum
 
 cli = AppGroup('seed-cli')
 
 def seed_inicial():
-    print("🌱 Iniciando seed inicial...")
+    print("\n🌱 Iniciando seed inicial...")
 
     # 1️⃣ Planes base
     planes = [
@@ -39,15 +42,22 @@ def seed_inicial():
     print("✅ Planes base creados.")
 
     # 2️⃣ Bufete principal
-    bufete = BufeteJuridico.query.filter_by(nombre_bufete_o_razon_social="PINEDA VON AHN, FIGUEROA Y ASOCIADOS").first()
+    bufete = BufeteJuridico.query.filter_by(nombre_bufete="PINEDA VON AHN, FIGUEROA Y ASOCIADOS").first()
     if not bufete:
         bufete = BufeteJuridico(
-            nombre_bufete_o_razon_social="PINEDA VON AHN, FIGUEROA Y ASOCIADOS",
+            nombre_bufete="PINEDA VON AHN, FIGUEROA Y ASOCIADOS",
+            direccion="5a avenida 15-45 zona 10",
+            telefono="2333-4455",
             nit="CF",
             email="admin@bufete.com",
-            app_copyright="© 2025 Pineda von Ahn Figueroa y Asociados / Hubsa  Todos los derechos reservados.",
-            nombre_aplicacion="Sistema Notarial Hubsa",
-            plan_id=Plan.query.filter_by(nombre="Profesional").first().id
+            forma_contacto="Correo institucional",
+            plan_id=Plan.query.filter_by(nombre="Profesional").first().id,
+            maneja_inventario_timbres_papel = True,
+            incluye_libreria_plantillas_inicial= True,
+            habilita_auditoria_borrado_logico= True,
+            habilita_dashboard_avanzado= True,
+            habilita_ayuda_contextual = True,
+            habilita_papeleria_digital = False,
         )
         db.session.add(bufete)
         db.session.commit()
@@ -58,7 +68,7 @@ def seed_inicial():
         db.session.add(Notario(
             username="notario_pineda",
             correo="notario@bufete.com",
-            password_hash="hashed_password",  # reemplazar por hash real
+            password_hash=generate_password_hash("123456"),
             rol=RolUsuarioEnum.NOTARIO,
             estado=EstadoUsuarioEnum.ACTIVO,
             bufete_id=bufete.id,
@@ -68,11 +78,11 @@ def seed_inicial():
         print("✅ Notario principal creado.")
 
     # 4️⃣ Superadmin
-    if not Usuario.query.filter_by(username="admin").first():
+    if not Usuario.query.filter_by(username="superadmin").first():
         db.session.add(Usuario(
-            username="admin",
+            username="superadmin",
             correo="admin@bufete.com",
-            password_hash="admin123",  # reemplazar por hash real
+            password_hash=generate_password_hash("123456"),
             rol=RolUsuarioEnum.SUPERADMIN,
             estado=EstadoUsuarioEnum.ACTIVO,
             bufete_id=bufete.id
@@ -80,7 +90,7 @@ def seed_inicial():
         db.session.commit()
         print("✅ Superadmin creado.")
 
-    print("🎉 Seed inicial completado.")
+    print("🎉 Seed inicial completado exitosamente.\n")
 
 @cli.command('init')
 def seed_cli():

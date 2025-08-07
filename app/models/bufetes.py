@@ -11,31 +11,57 @@
 Modelo BufeteJuridico:
 Representa un bufete con configuración, datos de contacto y feature flags.
 """
+# import datetime  # se probará importar todo de core, si funciona quitar estas lineas
+# from app import db
+# from sqlalchemy.orm import relationship
+# from sqlalchemy import Enum, Boolean, ForeignKey, DateTime
 
-from app import db
-from sqlalchemy.orm import relationship
-
+from app.models.core import * 
+#------------------------
+# MODELO: BufeteJuridico
+# ------------------------
 class BufeteJuridico(db.Model):
     __tablename__ = 'bufetes_juridicos'
+
     id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(255), nullable=False)
-    direccion = db.Column(db.String(255), nullable=False)
-    telefono = db.Column(db.String(100), nullable=False)
-    nit = db.Column(db.String(20))
-    correo = db.Column(db.String(255))
-    forma_contacto = db.Column(db.String(100))
+    nombre_bufete = db.Column(db.String(255), unique=True, nullable=False)
+    direccion = db.Column(db.String(255), nullable=True)
+    telefono = db.Column(db.String(50), nullable=True)
+    email = db.Column(db.String(150), nullable=True)
+    nit = db.Column(db.String(50), nullable=True)
+    pais = db.Column(db.String(50), nullable=True)
 
+    # Personalización de marca y aplicación SI EN EL FUTURO SE CONCESIONA
+    # app_copyright = db.Column(db.String(255), nullable=True)
+    # nombre_aplicacion = db.Column(db.String(255), nullable=True)
+
+    # Configuración y permisos
+    maneja_inventario_timbres_papel = db.Column(Boolean, default=True, nullable=False)
+    incluye_libreria_plantillas_inicial = db.Column(Boolean, default=True, nullable=False)
+    habilita_auditoria_borrado_logico = db.Column(Boolean, default=True, nullable=False)
+    habilita_dashboard_avanzado = db.Column(Boolean, default=True, nullable=False)
+    habilita_ayuda_contextual = db.Column(Boolean, default=True, nullable=False)
+    habilita_papeleria_digital = db.Column(Boolean, default=True, nullable=False)
+    forma_contacto = db.Column(db.String(255), nullable=True)
+
+    # Facturación
+    facturacion_nombre = db.Column(db.String(255), nullable=True)
+    facturacion_nit = db.Column(db.String(50), nullable=True)
+    facturacion_direccion = db.Column(db.String(255), nullable=True)
+
+    # Métodos de pago del bufete
+    formas_pago = db.Column(db.String(150), nullable=True)  # ejemplo: "efectivo,tarjeta,transferencia"
+    metodo_pago_preferido = db.Column(db.String(50), nullable=True)
+
+    # Control
+    activo = db.Column(Boolean, default=True)
+    fecha_creacion = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+
+    # Relaciones
     plan_id = db.Column(db.Integer, db.ForeignKey('planes.id'))
-    plan = relationship("Plan", back_populates="bufetes")
-    movimientos = db.relationship('MovimientoCuenta', back_populates='bufete', cascade='all, delete-orphan')
+    plan = relationship('Plan', back_populates='bufetes')
 
-
-    # Feature flags
-    usa_control_inventario = db.Column(db.Boolean, default=False)
-    usa_auditoria = db.Column(db.Boolean, default=False)
-    usa_digital = db.Column(db.Boolean, default=False) # protocolo, timbres digitales
-
-    usuarios = relationship("Usuario", back_populates="bufete")
+    usuarios = relationship('Usuario', back_populates='bufete', cascade='all, delete-orphan')
 
     def __repr__(self):
-        return f"<BufeteJuridico nombre={self.nombre}>"
+        return "<Bufete %s>" % self.nombre_bufete_o_razon_social

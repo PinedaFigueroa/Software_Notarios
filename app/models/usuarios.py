@@ -10,7 +10,6 @@
 Este módulo define el modelo principal de usuarios del sistema notarial multitenant.
 
 Incluye:
-- BufeteJuridico: Datos del bufete, plan, formas de pago, feature flags.
 - Usuario (abstracto): Base para todos los usuarios.
 - Notario: Extiende Usuario, con datos colegiado y firma electrónica.
 - Procurador: Extiende Usuario, usado para redacción.
@@ -26,58 +25,15 @@ Estos modelos soportan:
 # Consolidado por Tars-90 el 26/07/2025
 # Contiene los modelos completos de Usuario, Notario, Procurador, Asistente y BufeteJuridico
 
-from app import db
-from sqlalchemy.orm import relationship
-from sqlalchemy import Enum, Boolean, DateTime, ForeignKey
+#import datetime
+#from app import db
+#from sqlalchemy.orm import relationship
+# from sqlalchemy import Enum, Boolean, DateTime, ForeignKey
+
+from app.models.core import * 
 from app.models.enums import RolUsuarioEnum, EstadoUsuarioEnum
-import datetime
 
-# ------------------------
-# MODELO: BufeteJuridico
-# ------------------------
-class BufeteJuridico(db.Model):
-    __tablename__ = 'bufetes_juridicos'
 
-    id = db.Column(db.Integer, primary_key=True)
-    nombre_bufete_o_razon_social = db.Column(db.String(255), unique=True, nullable=False)
-    direccion = db.Column(db.String(255), nullable=True)
-    telefono = db.Column(db.String(50), nullable=True)
-    email = db.Column(db.String(150), nullable=True)
-    nit = db.Column(db.String(50), nullable=True)
-    pais = db.Column(db.String(50), nullable=True)
-
-    # Personalización de marca y aplicación
-    app_copyright = db.Column(db.String(255), nullable=True)
-    nombre_aplicacion = db.Column(db.String(255), nullable=True)
-
-    # Configuración y permisos
-    maneja_inventario_timbres_papel = db.Column(Boolean, default=True, nullable=False)
-    incluye_libreria_plantillas_inicial = db.Column(Boolean, default=True, nullable=False)
-    habilita_auditoria_borrado_logico = db.Column(Boolean, default=True, nullable=False)
-    habilita_dashboard_avanzado = db.Column(Boolean, default=True, nullable=False)
-    habilita_ayuda_contextual = db.Column(Boolean, default=True, nullable=False)
-
-    # Facturación
-    facturacion_nombre = db.Column(db.String(255), nullable=True)
-    facturacion_nit = db.Column(db.String(50), nullable=True)
-    facturacion_direccion = db.Column(db.String(255), nullable=True)
-
-    # Métodos de pago del bufete
-    formas_pago = db.Column(db.String(150), nullable=True)  # ejemplo: "efectivo,tarjeta,transferencia"
-    metodo_pago_preferido = db.Column(db.String(50), nullable=True)
-
-    # Control
-    activo = db.Column(Boolean, default=True)
-    fecha_creacion = db.Column(DateTime, default=datetime.datetime.utcnow)
-
-    # Relaciones
-    plan_id = db.Column(db.Integer, db.ForeignKey('planes.id'))
-    plan = relationship('Plan', back_populates='bufetes')
-
-    usuarios = relationship('Usuario', back_populates='bufete', cascade='all, delete-orphan')
-
-    def __repr__(self):
-        return "<Bufete %s>" % self.nombre_bufete_o_razon_social
 
 # ------------------------
 # MODELO: Usuario base

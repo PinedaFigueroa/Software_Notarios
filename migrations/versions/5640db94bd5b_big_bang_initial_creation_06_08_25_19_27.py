@@ -1,8 +1,8 @@
-"""Big Bang: Initial creation
+"""Big Bang: Initial creation 06-08-25-19.27
 
-Revision ID: a97a4431cb52
+Revision ID: 5640db94bd5b
 Revises: 
-Create Date: 2025-08-02 20:29:25.074627
+Create Date: 2025-08-06 20:18:41.434165
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a97a4431cb52'
+revision = '5640db94bd5b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,19 +37,19 @@ def upgrade():
     )
     op.create_table('bufetes_juridicos',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('nombre_bufete_o_razon_social', sa.String(length=255), nullable=False),
+    sa.Column('nombre_bufete', sa.String(length=255), nullable=False),
     sa.Column('direccion', sa.String(length=255), nullable=True),
     sa.Column('telefono', sa.String(length=50), nullable=True),
     sa.Column('email', sa.String(length=150), nullable=True),
     sa.Column('nit', sa.String(length=50), nullable=True),
     sa.Column('pais', sa.String(length=50), nullable=True),
-    sa.Column('app_copyright', sa.String(length=255), nullable=True),
-    sa.Column('nombre_aplicacion', sa.String(length=255), nullable=True),
     sa.Column('maneja_inventario_timbres_papel', sa.Boolean(), nullable=False),
     sa.Column('incluye_libreria_plantillas_inicial', sa.Boolean(), nullable=False),
     sa.Column('habilita_auditoria_borrado_logico', sa.Boolean(), nullable=False),
     sa.Column('habilita_dashboard_avanzado', sa.Boolean(), nullable=False),
     sa.Column('habilita_ayuda_contextual', sa.Boolean(), nullable=False),
+    sa.Column('habilita_papeleria_digital', sa.Boolean(), nullable=False),
+    sa.Column('forma_contacto', sa.String(length=255), nullable=True),
     sa.Column('facturacion_nombre', sa.String(length=255), nullable=True),
     sa.Column('facturacion_nit', sa.String(length=50), nullable=True),
     sa.Column('facturacion_direccion', sa.String(length=255), nullable=True),
@@ -60,7 +60,7 @@ def upgrade():
     sa.Column('plan_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['plan_id'], ['planes.id'], ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('nombre_bufete_o_razon_social')
+    sa.UniqueConstraint('nombre_bufete')
     )
     op.create_table('cuenta_corriente',
     sa.Column('id', sa.Integer(), nullable=False),
