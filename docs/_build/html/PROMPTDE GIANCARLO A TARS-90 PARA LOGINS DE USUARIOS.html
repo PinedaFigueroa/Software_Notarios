@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PROMPTDE GIANCARLO A TARS-90 PARA LOGINS 070825 &mdash; documentación de Software para Notarios - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4936afed"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Software para Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduccion.html">introduccion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instalacion.html">instalacion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuracion.html">configuracion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelos/index.html">Modelos disponibles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulos/index.html">Modulos funcionales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uso.html">uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">faq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contacto.html">contacto</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Software para Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PROMPTDE GIANCARLO A TARS-90  PARA LOGINS 070825</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/PROMPTDE GIANCARLO A TARS-90 PARA LOGINS DE USUARIOS.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="promptde-giancarlo-a-tars-90-para-logins-070825">
+<h1>PROMPTDE GIANCARLO A TARS-90  PARA LOGINS 070825<a class="headerlink" href="#promptde-giancarlo-a-tars-90-para-logins-070825" title="Link to this heading"></a></h1>
+<p>tiempo tiempo
+rewind
+se crearon usuarios en cli, solamente para tener con que arrancar,
+ahora estamos separando dashboard del bufete principal, del superadmin, este último hace login y tendrá su dash, con la opción de trabajar directo en algún bufete,. lo que corresponde obvio</p>
+<p>¿qué necesitábamos para que todo esto funcione?</p>
+<ol class="arabic simple">
+<li><p>que superadmin pueda crear bufetes</p></li>
+<li><p>para eso tiene que haber creado planes (como un help pusimos en el seed algo de esto, para poder arrancar y probar)</p></li>
+<li><p>si ya hay planes, y pudo crear uno o más bufetes,
+4 a cada bufete, según su plan se le crearan usuarios, pero todos los bufetes, obligatoriamente tienen AL MENOS 1 Notario, los demás roles no son vitales, por razones obvias</p></li>
+<li><p>para pruebas, sin duda crearemos procurador, asistente,</p></li>
+</ol>
+<p>¿En dónde estamos ahorita?</p>
+<p>un dashboard del superadmin, ok, aceptable,
+necesitamos un login, por lo expuesto, pero no pedirá correo sino el username asignado
+en este momento la idea posible es que se siga alguna regla como
+Bx_N(P)(A)y_username
+En dónde B corresponde al número de bufete
+N para notarios, P para procuradores, A para asistentes…</p>
+<p>Acá te había pedido ayudas y sugerencias, para el tema de actividades profesionales, el software será usado por oficinas, de profesionales del Derecho, y no sé si hay estándares para este asunto de los usernames, y que se vea mal usar B3_N1_jbenitez..</p>
+<p>En otra instancia de pensamiento, esto al principio es sencillo, pero si pasa de cierto número de usuarios el superadmin, empezará a repetir y cometer errores, por lo que lo ideal sería que el proceso fuera:</p>
+<ul class="simple">
+<li><p>Ingresa el superadmin a su dashboard,</p></li>
+<li><p>Elige gestión de bufetes,</p></li>
+<li><p>Le aparece el listado o las opciones: listado, agregar, editar, eliminar, etc.</p></li>
+<li><p>Crea un nuevo bufete</p></li>
+<li><p>Posteriormente ingresa a la gestión de usuarios (separado del bufete, porque si se deja uno a continuación del otro, se volverá complicado, un error, y a repetir y regresar, además los usuarios se administran con sus particularidades)</p></li>
+<li><p>Lo mismo listar, crear, editar, eliminar… eligirá crear
+DESPUES DE INGRESAR LOS DATOS QUE LA PANTALLA LE PIDE, Y CON TODO VALIDADO BIEN, AL DAR EL GUARDAR / SAVE que el sistema genere el username con las combinaciones apropiadas…</p></li>
+</ul>
+<p>En ese sentido, se procedería así:</p>
+<ul class="simple">
+<li><p>Obligatorio para todo bufete, crear un Notario (¿seria aconsejable hacerlo obligatorio cuando se creó el Bufete, con un aviso, Bufete creado exitosamente, ¿tiene que crear un Notario?  Podría darse el caso que paguen por el servicio, pero no tienen los datos a la mano, y los pasan después, y esto se complicaría entonces. think</p></li>
+<li><p>Procede a crear procurador(es) asistente(s)</p></li>
+<li><p>Listo ya hay un bufete nuevo, con sus usuarios creados</p></li>
+<li></li>
+</ul>
+<p>AHORA ENTENDAMOS BIEN EL TEMA DEL USUARIO:</p>
+<p>al ingresarlo llevarán los datos generales que aparecen en las tablas de la bdd, en el caso del notario, número de colegiado (no puede estar en blanco, ser menor a cero, solamente números) , este número no puede estar repetido dentro del bufete (un Notario solamente puede estar registrado 1 vez en el bufete)
+NOTA IMPORTANTE: 1 USUARIO SOLO PUEDE ESTAR REGISTRADO 1 SOLA VEZ EN TODO EL SISTEMA, DE LO CONTRARIO PAGARÍAN POR 1 USER Y PODRÍAN UTILIZAR EL SISTEMA N USUARIOS… de darse estos intentos, debe generarse avisos dentro del bufete, warnings, y avisos al superadmin en su dashboard… auditoria</p>
+<p>Para quienes paguen el modulo de auditoria, es necesario controlar a los usuarios sus horarios, lo que hicieron, si se conectaron (en caso que se les permita hacerlo ) fuera de la oficina, ese modulo será de mucha ayuda por lo vital que son los documentos y los datos que un Notario maneja. A esto necesito que le pongas tus mejores pensamientos.</p>
+<p>el NIT del notario, los notarios pueden facturarle a ese bufete en el cual están asignados, para eso serviría, en el tema que estamos integrando cosas adicionales como controles de gastos (versión Beta 3)</p>
+<p>si se ingresa el NIT (pueden dejarlo en blanco) debe pasar por la revisión que proporciona y ayuda la siguiente</p>
+<p>https://pypi.org/project/NIT-dpi-validator/</p>
+<p>al revisar estas líneas y pensando las cosas, me doy cuenta de que no tenemos el campo DPI, documento personal de identificación en Guatemala, habrá que agregarlo a las tablas,</p>
+<p>reglas:
+¿pueden dejar el campo DPI en blanco? por ahora si, pero
+si llenan el campo DPI deberá ser validado con la librería que ya indiqué líneas arriba,</p>
+<p>por temas legales de Guatemala, hay un impase, así que algunos podrían ingresar como NIT el mismo DPI… para la misma persona… caso muy raro pero si finalmente cambia la ley hacia eso irá todo</p>
+<p>el NIT, una vez ingresado y que sea válido según las reglas que la misma librería establece, no puede ser duplicado en el mismo bufete (no hay 2 personas con el mismo NIT)</p>
+<p>nuevamente el Notario podría dar servicios en otro bufete, por lo que su NIT se registraría allí también</p>
+<p>en las platicas iniciales contigo (que lastimosamente se pierden) esto del DPI en Guatemala , por el hecho de querer eventualmente exportar el software a Latinoamérica, se debería dejar contemplado de una manera fácil, por ejemplo, si se usará en Salvador, allí el documento personal de identificación se llama xxxx y se valida yyyyy , no sé como podrías ayudarme con esto. Igualmente sería el tema del NIT, se ha buscado pensar en la aplicación para Guatemala y que sea lo más fácilmente exportable a toda LA ya que el notariado es muy parecido.</p>
+<p>HELP CONSTANTE
+Se habló en su momento que se tendría un help, para el usuario final, para que al pasar el mouse, hacer hover, sobre los campos, recibiera una ayuda, un mensaje sobre que debe colocar allí… para todos todos los usuarios , y todos los menús sub menús… gestiones etc.</p>
+<p>A su vez se necesitaría ir creando un help=manual del usuario final, que pueda ser una opción en el navbar…</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Giancarlo E. Figueroa F. / HUBSA.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

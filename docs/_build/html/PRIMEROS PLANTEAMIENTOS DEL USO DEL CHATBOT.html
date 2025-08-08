@@ -1,0 +1,164 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRIMEROS PLANTEAMIENTOS DEL USO DEL CHATBOT &mdash; documentación de Software para Notarios - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4936afed"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Software para Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduccion.html">introduccion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instalacion.html">instalacion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuracion.html">configuracion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelos/index.html">Modelos disponibles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulos/index.html">Modulos funcionales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uso.html">uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">faq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contacto.html">contacto</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Software para Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PRIMEROS PLANTEAMIENTOS DEL USO DEL CHATBOT</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/PRIMEROS PLANTEAMIENTOS DEL USO DEL CHATBOT.md.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="primeros-planteamientos-del-uso-del-chatbot">
+<h1>PRIMEROS PLANTEAMIENTOS DEL USO DEL CHATBOT<a class="headerlink" href="#primeros-planteamientos-del-uso-del-chatbot" title="Link to this heading"></a></h1>
+<p>🛰️ Entendido desde la nave, comandante. Navegación detenida.
+Y sí, ¡te explicás perfectamente! Vamos por partes para que lo tengas claro ahora que has invertido en el plan ChatGPT Plus anual ($60 USD) y querés integrar un chatbot en tu aplicación sin sorpresas ni facturas ocultas:</p>
+<hr class="docutils" />
+<p>✅ 1. Tu suscripción actual de $60/año
+•	Este pago solo cubre tu uso personal de ChatGPT (como usuario de esta plataforma).
+•	No autoriza automáticamente que puedas integrar la tecnología (modelo) en tu app web para terceros (por ejemplo, un bufete usando un chatbot desde su dashboard).
+•	No podés usar esta cuenta directamente en producción web para terceros, a menos que sea algo muy limitado y personal.</p>
+<hr class="docutils" />
+<p>🔐 2. ¿Cómo se incluye legalmente ChatGPT en tu app web pública (ej. Software Notarios)?
+Opción A — API oficial de OpenAI (requiere pago por uso)
+•	Tenés que usar la API de OpenAI → https://platform.openai.com
+•	Cada mensaje que envía un usuario (en tu web/app) consume tokens y genera costo por uso
+•	Factura mensual, según tráfico de usuarios (puede ir desde centavos hasta cientos de dólares si no lo controlás)
+•	Pero podés limitar el uso, establecer máximos diarios, usuarios por rol, etc.
+Opción B — Usás localmente la experiencia de ChatGPT desde tu suscripción personal
+•	Esto es lo que estás haciendo ahora.
+•	Solo podés usarlo como desarrollador, no como backend público.
+•	Por ejemplo, podrías usarlo para:
+o	Crear prompts
+o	Redactar contratos
+o	Generar plantillas o cláusulas
+o	Revisar errores del sistema
+o	Pero NO para que los usuarios de tu app accedan directamente al modelo.</p>
+<hr class="docutils" />
+<p>💡 ¿Qué podés hacer entonces?</p>
+<ol class="arabic simple">
+<li><p>✅ Seguir usando ChatGPT aquí para mejorar el software (plantillas, lógicas, UI, flujos).</p></li>
+<li><p>🛠️ Preparar un módulo de chatbot en el dashboard, con diseño e integración lista, pero con un modo de prueba sin conexión a OpenAI todavía.</p></li>
+<li><p>📈 Más adelante, si querés que el chatbot responda a los usuarios:
+o	Usás tu cuenta API de OpenAI.
+o	O configurás una versión limitada con tu cuenta personal y límites de acceso (no recomendable para producción).
+o	O lo entrenás con preguntas frecuentes y respuestas pregrabadas, sin conexión a OpenAI.</p></li>
+</ol>
+<hr class="docutils" />
+<p>🌐 ¿Y cómo se aprovecha mejor ChatGPT en tu app?
+Aquí unas ideas para el futuro módulo de chatbot en Software Notarios:
+🧠 Funcionalidad Chatbot	Descripción
+Asistencia legal general	Explicar tipos de escrituras, requisitos, documentación
+Ayuda técnica del sistema	¿Cómo crear un documento?, ¿Cómo imprimir?
+Generador de cláusulas	Crear cláusulas tipo, con validaciones
+Simulación de llenado	Chat interactivo para crear borradores legales
+Soporte multilenguaje	Ayuda en inglés u otros idiomas para clientes internacionales
+Asistente para el notario	Recordatorios, resumen de tareas, verificación de firma digital</p>
+<hr class="docutils" />
+<p>🧩 En resumen:
+💰 Tu cuenta NO genera cargos extras mientras la usás aquí.
+🌍 Para incluirlo en la app web para usuarios, sí necesitas usar la API y pagar por uso.
+🔐 Podés construir toda la infraestructura y luego decidir si lo conectás a OpenAI API o no.</p>
+<hr class="docutils" />
+<p>¿Querés que preparemos mañana un diseño del «Módulo ChatBot de ayuda legal para el dashboard»? Con eso podés decidir si será local, con API, o solo visual. 🌙
+Dulces sueños desde la órbita, compañero.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Giancarlo E. Figueroa F. / HUBSA.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

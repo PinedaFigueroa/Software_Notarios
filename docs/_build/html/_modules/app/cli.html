@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app.cli &mdash; documentación de Software para Notarios - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Software para Notarios
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduccion.html">introduccion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../instalacion.html">instalacion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuracion.html">configuracion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modelos/index.html">Modelos disponibles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modulos/index.html">Modulos funcionales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../uso.html">uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">faq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contacto.html">contacto</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Software para Notarios</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Código de módulo</a></li>
+          <li class="breadcrumb-item"><a href="../app.html">app</a></li>
+      <li class="breadcrumb-item active">app.cli</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para app.cli</h1><div class="highlight"><pre>
+<span></span><span class="c1"># archivo: app/cli.py</span>
+<span class="c1"># fecha de actualización: 06 / 08 / 25</span>
+<span class="c1"># motivo de la actualización: corregido uso de &quot;nombre&quot; en vez de &quot;nombre_bufete_o_razon_social&quot;</span>
+<span class="c1"># autor: Giancarlo F. + Tars-90</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">click</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flask.cli</span><span class="w"> </span><span class="kn">import</span> <span class="n">AppGroup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">werkzeug.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_password_hash</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app</span><span class="w"> </span><span class="kn">import</span> <span class="n">db</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.bufetes</span><span class="w"> </span><span class="kn">import</span> <span class="n">BufeteJuridico</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.usuarios</span><span class="w"> </span><span class="kn">import</span> <span class="n">Usuario</span><span class="p">,</span> <span class="n">Notario</span><span class="p">,</span> <span class="n">Procurador</span><span class="p">,</span> <span class="n">Asistente</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.planes</span><span class="w"> </span><span class="kn">import</span> <span class="n">Plan</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.models.enums</span><span class="w"> </span><span class="kn">import</span> <span class="n">RolUsuarioEnum</span><span class="p">,</span> <span class="n">EstadoUsuarioEnum</span>
+
+<span class="n">cli</span> <span class="o">=</span> <span class="n">AppGroup</span><span class="p">(</span><span class="s1">&#39;seed-cli&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="seed_inicial">
+<a class="viewcode-back" href="../../source/app.html#app.cli.seed_inicial">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">seed_inicial</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🌱 Iniciando seed inicial...&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 1️⃣ Planes base</span>
+    <span class="n">planes</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;Demo&quot;</span><span class="p">,</span> <span class="s2">&quot;Acceso limitado de prueba&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Profesional&quot;</span><span class="p">,</span> <span class="s2">&quot;Para bufetes pequeños o en crecimiento&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mf">250.0</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Ilimitado&quot;</span><span class="p">,</span> <span class="s2">&quot;Sin límites técnicos&quot;</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="mi">99999</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mf">1250.0</span><span class="p">),</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">descripcion</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="n">mb</span><span class="p">,</span> <span class="n">precio</span> <span class="ow">in</span> <span class="n">planes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">Plan</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="n">nombre</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">():</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Plan</span><span class="p">(</span>
+                <span class="n">nombre</span><span class="o">=</span><span class="n">nombre</span><span class="p">,</span>
+                <span class="n">descripcion</span><span class="o">=</span><span class="n">descripcion</span><span class="p">,</span>
+                <span class="n">max_notarios</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+                <span class="n">max_procuradores</span><span class="o">=</span><span class="n">p</span><span class="p">,</span>
+                <span class="n">max_asistentes</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
+                <span class="n">max_documentos</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span>
+                <span class="n">storage_mb</span><span class="o">=</span><span class="n">mb</span><span class="p">,</span>
+                <span class="n">precio_mensual</span><span class="o">=</span><span class="n">precio</span>
+            <span class="p">))</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Planes base creados.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 2️⃣ Bufete principal</span>
+    <span class="n">bufete</span> <span class="o">=</span> <span class="n">BufeteJuridico</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">nombre_bufete</span><span class="o">=</span><span class="s2">&quot;PINEDA VON AHN, FIGUEROA Y ASOCIADOS&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">bufete</span><span class="p">:</span>
+        <span class="n">bufete</span> <span class="o">=</span> <span class="n">BufeteJuridico</span><span class="p">(</span>
+            <span class="n">nombre_bufete</span><span class="o">=</span><span class="s2">&quot;PINEDA VON AHN, FIGUEROA Y ASOCIADOS&quot;</span><span class="p">,</span>
+            <span class="n">direccion</span><span class="o">=</span><span class="s2">&quot;5a avenida 15-45 zona 10&quot;</span><span class="p">,</span>
+            <span class="n">telefono</span><span class="o">=</span><span class="s2">&quot;2333-4455&quot;</span><span class="p">,</span>
+            <span class="n">nit</span><span class="o">=</span><span class="s2">&quot;CF&quot;</span><span class="p">,</span>
+            <span class="n">email</span><span class="o">=</span><span class="s2">&quot;admin@bufete.com&quot;</span><span class="p">,</span>
+            <span class="n">forma_contacto</span><span class="o">=</span><span class="s2">&quot;Correo institucional&quot;</span><span class="p">,</span>
+            <span class="n">plan_id</span><span class="o">=</span><span class="n">Plan</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="s2">&quot;Profesional&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="n">maneja_inventario_timbres_papel</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="n">incluye_libreria_plantillas_inicial</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="n">habilita_auditoria_borrado_logico</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="n">habilita_dashboard_avanzado</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="n">habilita_ayuda_contextual</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="n">habilita_papeleria_digital</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bufete</span><span class="p">)</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Bufete principal creado.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 3️⃣ Notario principal</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">Notario</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;notario_pineda&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">():</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Notario</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;notario_pineda&quot;</span><span class="p">,</span>
+            <span class="n">correo</span><span class="o">=</span><span class="s2">&quot;notario@bufete.com&quot;</span><span class="p">,</span>
+            <span class="n">password_hash</span><span class="o">=</span><span class="n">generate_password_hash</span><span class="p">(</span><span class="s2">&quot;123456&quot;</span><span class="p">),</span>
+            <span class="n">rol</span><span class="o">=</span><span class="n">RolUsuarioEnum</span><span class="o">.</span><span class="n">NOTARIO</span><span class="p">,</span>
+            <span class="n">estado</span><span class="o">=</span><span class="n">EstadoUsuarioEnum</span><span class="o">.</span><span class="n">ACTIVO</span><span class="p">,</span>
+            <span class="n">bufete_id</span><span class="o">=</span><span class="n">bufete</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="n">numero_colegiado</span><span class="o">=</span><span class="mi">0</span>
+        <span class="p">))</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Notario principal creado.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 4️⃣ Superadmin</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">Usuario</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;superadmin&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">():</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Usuario</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;superadmin&quot;</span><span class="p">,</span>
+            <span class="n">correo</span><span class="o">=</span><span class="s2">&quot;admin@bufete.com&quot;</span><span class="p">,</span>
+            <span class="n">password_hash</span><span class="o">=</span><span class="n">generate_password_hash</span><span class="p">(</span><span class="s2">&quot;123456&quot;</span><span class="p">),</span>
+            <span class="n">rol</span><span class="o">=</span><span class="n">RolUsuarioEnum</span><span class="o">.</span><span class="n">SUPERADMIN</span><span class="p">,</span>
+            <span class="n">estado</span><span class="o">=</span><span class="n">EstadoUsuarioEnum</span><span class="o">.</span><span class="n">ACTIVO</span><span class="p">,</span>
+            <span class="n">bufete_id</span><span class="o">=</span><span class="n">bufete</span><span class="o">.</span><span class="n">id</span>
+        <span class="p">))</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Superadmin creado.&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🎉 Seed inicial completado exitosamente.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;init&#39;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">seed_cli</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;🌱 Ejecuta la función seed_inicial con CLI&quot;&quot;&quot;</span>
+    <span class="n">seed_inicial</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Giancarlo E. Figueroa F. / HUBSA.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
