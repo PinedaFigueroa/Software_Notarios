@@ -6,7 +6,9 @@
 # autor: Giancarlo F. + Tars-90
 # -*- coding: utf-8 -*-
 
-from app import db
+# importación centralizada
+from app.core_ext import db
+from app.models.core import *
 from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime
 from sqlalchemy.orm import relationship
 import datetime

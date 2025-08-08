@@ -10,13 +10,19 @@
 Modelo DocumentoNotarial:
 Representa documentos, actas o escrituras creados por notarios y procuradores.
 """
-
-from app import db
-from sqlalchemy import Column, Integer, String, Enum, Date, Time, DateTime, Boolean, ForeignKey
-from sqlalchemy.orm import relationship
-from datetime import datetime
-
+# importación centralizada
+from app.core_ext import db
+from app.models.core import *
 from app.models.enums import TipoDocumentoEnum, EstadoDocumentoEnum
+
+# se tenian definido antes de poner todo en core y centralizar... 
+# #from app.models.core import db
+# from app.core_ext import db
+# from sqlalchemy import Column, Integer, String, Enum, Date, Time, DateTime, Boolean, ForeignKey
+# from sqlalchemy.orm import relationship
+# from datetime import datetime
+
+
 
 class DocumentoNotarial(db.Model):
     __tablename__ = 'documentos_notariales'
@@ -39,8 +45,10 @@ class DocumentoNotarial(db.Model):
 
     # Auditoría
     activo = Column(Boolean, default=True)
-    fecha_creacion = Column(DateTime, default=datetime.utcnow)
-    fecha_actualizacion = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    # fecha_creacion = Column(DateTime, default=datetime.utcnow) datetime ya viene importado desde core
+    fecha_creacion = Column(DateTime, default=utcnow)
+    #fecha_actualizacion = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    fecha_actualizacion = Column(DateTime, default=utcnow, onupdate=utcnow)
 
     def __repr__(self):
         return f"<DocumentoNotarial id={self.id} tipo={self.tipo_documento}>"

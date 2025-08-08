@@ -6,10 +6,15 @@
 # autor: Giancarlo F. + Tars-90
 # -*- coding: utf-8 -*-
 
-from app import db
-from sqlalchemy import Column, Integer, ForeignKey, DateTime, String, Boolean
-from sqlalchemy.orm import relationship
-from datetime import datetime
+#from app import db
+
+# importación centralizada
+from app.core_ext import db
+from app.models.core import *
+
+# from sqlalchemy import Column, Integer, ForeignKey, DateTime, String, Boolean
+# from sqlalchemy.orm import relationship
+# from datetime import datetime
 
 class NotarioProcuradorAsociacion(db.Model):
     __tablename__ = "notario_procurador_asociacion"
@@ -19,7 +24,10 @@ class NotarioProcuradorAsociacion(db.Model):
     procurador_id = Column(Integer, ForeignKey('usuarios.id'), nullable=False)
     bufete_id = Column(Integer, ForeignKey('bufetes_juridicos.id'), nullable=False)
 
-    fecha_asignacion = Column(DateTime, default=datetime.utcnow)
+    #fecha_asignacion = Column(DateTime, default=datetime.utcnow)
+    fecha_asignacion = Column(DateTime, default=utcnow, onupdate=utcnow)
+
+    
     fecha_reasignacion = Column(DateTime, nullable=True)
     motivo_reasignacion = Column(String(255), nullable=True)
 

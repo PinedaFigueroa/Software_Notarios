@@ -14,22 +14,21 @@ swnot/
 *.log
 init_error.log
 
-# Archivos de documentación generada
-*.md
-README*
-docs/
-doctest-output/
-
-# Carpetas no deseadas según imagen
-Prompts/
-leyes/
-routes_iniciales del proyecto/
-_templates iniciales del proyecto/
-
 # Archivos ocultos o del sistema
 .DS_Store
 Thumbs.db
 
-# Build y static folders si no son necesarias en control de versiones
+# Archivos innecesarios en el repo
+*.sqlite3
+*.egg-info/
+
+# Documentación generada (manteniendo .md y Prompts/)
+doctest-output/
+
+# Carpetas locales no deseadas
+leyes/
+
+
+# Carpeta de construcción estática (solo si no contiene recursos reales del sistema)
 _build/
 _static/

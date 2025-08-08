@@ -16,7 +16,11 @@ Representa un bufete con configuración, datos de contacto y feature flags.
 # from sqlalchemy.orm import relationship
 # from sqlalchemy import Enum, Boolean, ForeignKey, DateTime
 
-from app.models.core import * 
+
+# importación centralizada
+from app.core_ext import db
+from app.models.core import *
+
 #------------------------
 # MODELO: BufeteJuridico
 # ------------------------

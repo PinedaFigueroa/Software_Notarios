@@ -1,0 +1,32 @@
+# Pasos para generar la migración para tener asociación notario procurador
+
+# 1️⃣ Asegúrate de tener la carpeta 'migrations' ya inicializada
+# Si no existe, corre primero:
+# flask db init
+
+# 2️⃣ Generar la migración
+flask db migrate -m "tabla intermedia Notario-Procurador"
+
+# 3️⃣ Aplicar la migración
+flask db upgrade
+
+# 4️⃣ Verifica en tu base de datos que la tabla exista correctamente
+
+# 5️⃣ Opcional: usar flask shell para insertar prueba:
+# flask shell
+from app.models.asociaciones import NotarioProcuradorAsociacion
+from app.models.usuarios import Usuario
+from app import db
+
+notario = Usuario.query.filter_by(username="notario_pineda").first()
+procurador = Usuario.query.filter_by(username="procu_test1").first()
+
+asoc = NotarioProcuradorAsociacion(
+    notario_id=notario.id,
+    procurador_id=procurador.id,
+    bufete_id=notario.bufete_id
+)
+
+db.session.add(asoc)
+db.session.commit()
+print("✅ Asociación creada.")

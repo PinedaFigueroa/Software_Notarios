@@ -1,0 +1,40 @@
+<!-- archivo: app/templates/superadmin/dashboard.html -->
+<!-- fecha de creación: 07 / 08 / 25 -->
+<!-- cantidad de líneas originales: 28 -->
+<!-- última actualización: 07 / 08 / 25 hora 18:15 -->
+<!-- motivo de la creación: plantilla para dashboard global del superadmin -->
+<!-- autor: Giancarlo + Tars-90 -->
+<!-- -*- coding: utf-8 -*- -->
+
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Dashboard Global - SuperAdmin</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card shadow-sm p-3 mb-4">
+                <h5 class="card-title">Bufetes registrados</h5>
+                <p class="card-text display-6">{{ total_bufetes }}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm p-3 mb-4">
+                <h5 class="card-title">Usuarios totales</h5>
+                <p class="card-text display-6">{{ total_usuarios }}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm p-3 mb-4">
+                <h5 class="card-title">Superadmins</h5>
+                <p class="card-text display-6">{{ total_superadmins }}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm p-3 mb-4">
+                <h5 class="card-title">Espacio usado</h5>
+                <p class="card-text display-6">{{ espacio_usado }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -5,6 +5,9 @@
 # -*- coding: utf-8 -*-
 
 import enum
+# importación centralizada
+from app.core_ext import db
+from app.models.core import *
 
 class TipoDocumentoEnum(enum.Enum):
     ESCRITURA_PUBLICA = "Escritura Pública"

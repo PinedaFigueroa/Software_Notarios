@@ -30,15 +30,16 @@ Estos modelos soportan:
 #from sqlalchemy.orm import relationship
 # from sqlalchemy import Enum, Boolean, DateTime, ForeignKey
 
-from app.models.core import * 
+# importación centralizada
+from app.core_ext import db
+from app.models.core import *
 from app.models.enums import RolUsuarioEnum, EstadoUsuarioEnum
-
-
-
+from flask_login import UserMixin  # Asegúrate que esté importado
 # ------------------------
 # MODELO: Usuario base
 # ------------------------
-class Usuario(db.Model):
+class Usuario(db.Model, UserMixin):
+#class Usuario(db.Model):
     __tablename__ = 'usuarios'
 
     id = db.Column(db.Integer, primary_key=True)

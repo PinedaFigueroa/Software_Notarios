@@ -6,6 +6,6 @@ from datetime import datetime
 # autor: Giancarlo + Tars-90
 # -*- coding: utf-8 -*-
 
-# Ejemplo de uso corregido
-fecha_creacion = Column(DateTime, default=datetime.utcnow)
-fecha_actualizacion = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+# importación centralizada
+from app.core_ext import db
+from app.models.core import *
