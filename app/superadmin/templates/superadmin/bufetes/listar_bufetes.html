@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Listado de Bufetes</h2>
+  <a href="{{ url_for('superadmin_bp.crear_bufete') }}" class="btn btn-primary mb-3">+ Nuevo Bufete</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Responsable</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for bufete in bufetes %}
+      <tr>
+        <td>{{ bufete.nombre_bufete }}</td>
+        <td>{{ bufete.responsable }}</td>
+        <td>{{ bufete.telefono }}</td>
+        <td>{{ bufete.correo }}</td>
+        <td>
+          <a href="{{ url_for('superadmin_bp.editar_bufete', id=bufete.id) }}" class="btn btn-sm btn-warning">Editar</a>
+          <form action="{{ url_for('superadmin_bp.eliminar_bufete', id=bufete.id) }}" method="post" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

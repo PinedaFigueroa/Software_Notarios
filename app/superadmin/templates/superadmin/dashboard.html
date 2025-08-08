@@ -1,38 +1,52 @@
 <!-- archivo: app/templates/superadmin/dashboard.html -->
 <!-- fecha de creación: 07 / 08 / 25 -->
-<!-- cantidad de líneas originales: 28 -->
-<!-- última actualización: 07 / 08 / 25 hora 18:15 -->
-<!-- motivo de la creación: plantilla para dashboard global del superadmin -->
+<!-- cantidad de líneas originales: 38 -->
+<!-- última actualización: 08 / 08 / 25 hora 14:30 -->
+<!-- motivo de la actualización: Aplicar estilo formal azul y mostrar datos de usuario -->
 <!-- autor: Giancarlo + Tars-90 -->
 <!-- -*- coding: utf-8 -*- -->
 
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-4">
-    <h2 class="mb-4">Dashboard Global - SuperAdmin</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Dashboard Global - SuperAdmin</h2>
+        <div class="text-end">
+            <p class="mb-0"><strong>Usuario:</strong> {{ current_user.nombres }} {{ current_user.apellidos }}</p>
+            <p class="mb-0"><strong>Bufete:</strong> {{ current_user.bufete.nombre_bufete if current_user.bufete else "Bufete Principal" }}</p>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-3">
-            <div class="card shadow-sm p-3 mb-4">
-                <h5 class="card-title">Bufetes registrados</h5>
-                <p class="card-text display-6">{{ total_bufetes }}</p>
+            <div class="card text-white bg-primary mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Bufetes registrados</h5>
+                    <p class="card-text display-6">{{ total_bufetes }}</p>
+                </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card shadow-sm p-3 mb-4">
-                <h5 class="card-title">Usuarios totales</h5>
-                <p class="card-text display-6">{{ total_usuarios }}</p>
+            <div class="card text-white bg-info mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Usuarios totales</h5>
+                    <p class="card-text display-6">{{ total_usuarios }}</p>
+                </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card shadow-sm p-3 mb-4">
-                <h5 class="card-title">Superadmins</h5>
-                <p class="card-text display-6">{{ total_superadmins }}</p>
+            <div class="card text-white bg-secondary mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Superadmins</h5>
+                    <p class="card-text display-6">{{ total_superadmins }}</p>
+                </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card shadow-sm p-3 mb-4">
-                <h5 class="card-title">Espacio usado</h5>
-                <p class="card-text display-6">{{ espacio_usado }}</p>
+            <div class="card text-white bg-dark mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Espacio usado</h5>
+                    <p class="card-text display-6">{{ espacio_usado }}</p>
+                </div>
             </div>
         </div>
     </div>
