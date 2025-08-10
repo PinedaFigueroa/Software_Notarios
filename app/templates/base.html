@@ -1,3 +1,10 @@
+<!-- archivo: app/templates/base.html -->
+<!-- fecha de creación: 26 / 07 / 25 -->
+<!-- última actualización: 09 / 08 / 25 hora 15:50 -->
+<!-- motivo: integrar menú SuperAdmin en navbar + mostrar usuario/bufete con checks seguros -->
+<!-- autor: Giancarlo + Tars-90 -->
+<!-- -*- coding: utf-8 -*- -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +19,8 @@
     <!-- Font Awesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container-fluid">
@@ -20,27 +28,85 @@
                 <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo-navbar me-2">
                 Software Notarial Hubsa
             </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Menú izquierdo -->
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('dashboard.mostrar_dashboard') }}">
+                            <i class="fa-solid fa-gauge"></i> Dashboard
+                        </a>
+                    </li>
+
+                    <!-- Ítems comunes -->
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-user"></i> Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-file-lines"></i> Documentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-folder-open"></i> Librería</a></li>
+
+                    <!-- Ítems exclusivos de SUPERADMIN -->
+                    {% if current_user is defined
+                       and current_user.is_authenticated
+                       and current_user.rol is not none
+                       and current_user.rol.name == 'SUPERADMIN' %}
+                        {% include 'partials/_navbar_superadmin.html' %}
+                    {% endif %}
+                </ul>
+
+                <!-- Menú derecho: usuario / bufete / logout -->
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard.mostrar_dashboard') }}">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Usuarios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Documentos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Librería</a></li>
+                  {% if current_user is defined and current_user.is_authenticated %}
+                    <li class="nav-item d-flex align-items-center me-2">
+                      <span class="navbar-text small text-muted">
+                        <i class="fa-regular fa-id-badge"></i>
+                        {% set nombre = (current_user.nombres or '') if current_user.nombres is defined else '' %}
+                        {% set apellido = (current_user.apellidos or '') if current_user.apellidos is defined else '' %}
+                        {% set full_name = (nombre ~ ' ' ~ apellido).strip() %}
+                        {% if full_name %}
+                          {{ full_name }}
+                        {% elif current_user.rol is defined and current_user.rol and current_user.rol.name == 'SUPERADMIN' %}
+                          ADMINISTRADOR GENERAL DEL SISTEMA
+                        {% else %}
+                          Usuario sin nombre
+                        {% endif %}
+                      </span>
+                    </li>
+                    <li class="nav-item d-flex align-items-center me-3">
+                      <span class="navbar-text small text-muted">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        {% if current_user.bufete is defined and current_user.bufete %}
+                          {{ current_user.bufete.nombre_bufete }}
+                        {% elif current_user.rol is defined and current_user.rol and current_user.rol.name == 'SUPERADMIN' %}
+                          Bufete principal (por defecto)
+                        {% else %}
+                          Bufete no asignado
+                        {% endif %}
+                      </span>
+                    </li>
+                    <li class="nav-item">
+                      <a class="btn btn-outline-secondary btn-sm" href="{{ url_for('auth_bp.logout') }}">
+                        <i class="fa-solid fa-right-from-bracket"></i> Salir
+                      </a>
+                    </li>
+                  {% else %}
+                    <li class="nav-item">
+                      <a class="btn btn-primary btn-sm" href="{{ url_for('auth_bp.login') }}">
+                        <i class="fa-solid fa-right-to-bracket"></i> Ingresar
+                      </a>
+                    </li>
+                  {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Contenido principal -->
-    <main class="container my-4">
+    <main class="container my-4 flex-grow-1">
         {% block content %}{% endblock %}
     </main>
-
-    <!-- Bootstrap JS -->
-    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 bg-light">
@@ -49,5 +115,8 @@
             <span class="text-muted">© 2025 Sistema Notarial Hubsa / Todos los derechos reservados.</span>
         </div>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

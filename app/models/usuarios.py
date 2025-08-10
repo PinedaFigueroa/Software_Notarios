@@ -32,13 +32,13 @@ Estos modelos soportan:
 
 from app.models.core import * 
 from app.models.enums import RolUsuarioEnum, EstadoUsuarioEnum
-
+from flask_login import UserMixin
 
 
 # ------------------------
 # MODELO: Usuario base
 # ------------------------
-class Usuario(db.Model):
+class Usuario(UserMixin,db.Model):
     __tablename__ = 'usuarios'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -59,6 +59,16 @@ class Usuario(db.Model):
 
     # Auditoría y control
     borrado_logico = db.Column(Boolean, default=False)
+
+ # ---- Flask-Login integration ----
+    @property
+    def is_active(self) -> bool:
+        """Requerido por Flask-Login: usuario activo si estado=ACTIVO y no borrado lógicamente."""
+        # Activo si estado = ACTIVO y no está borrado lógicamente
+        from app.models.enums import EstadoUsuarioEnum
+        return (self.estado == EstadoUsuarioEnum.ACTIVO) and (not self.borrado_logico)
+
+    # UserMixin ya implementa: is_authenticated, is_anonymous, get_id()
 
     def __repr__(self):
         return "<Usuario %s (%s)>" % (self.username, self.rol)

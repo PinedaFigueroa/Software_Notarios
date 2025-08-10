@@ -1,4 +1,4 @@
-# archivo: app/dashboard/routes.py
+# archivo: app/routes.py
 # fecha de actualización: 29 / 07 / 25
 # motivo: mostrar métricas reales en dashboard con cards Bootstrap
 # autor: Giancarlo F. + Tars-90

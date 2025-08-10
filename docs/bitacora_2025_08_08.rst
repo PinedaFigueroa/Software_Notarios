@@ -1,0 +1,56 @@
+=====================================================
+Bitácora Técnica - Viernes 08 / 08 / 2025
+=====================================================
+
+Resumen del día
+---------------
+
+En esta jornada se realizaron ajustes y mejoras importantes en la aplicación, principalmente relacionados con:
+
+- **Dashboards por rol**:
+  - Dashboard del **SUPERADMIN** creado con diseño formal, tonos azules y métricas globales (bufetes, usuarios totales, superadmins, espacio usado).
+  - Mantenimiento del dashboard general con colores vivos para otros roles.
+
+- **Visualización personalizada**:
+  - Navbar modificado para mostrar el **nombre real del usuario** y el **bufete** al que pertenece.
+  - Para el superadmin, nombre establecido como *"Administrador"* y apellidos *"GENERAL DEL SISTEMA"*.
+
+- **Script utilitario**:
+  - Creación del script ``scripts/actualizar_usuario.py`` que permite modificar cualquier usuario desde consola de forma interactiva.
+  - Funcionalidad:
+    - Selección de usuario por username.
+    - Edición de campos: nombre, apellidos, correo, teléfono, rol, bufete, etc.
+
+- **Control de acceso**:
+  - Revisión y corrección del decorador ``rol_required`` en ``app/utils/roles_required.py``.
+  - Ajuste de rutas en ``app/superadmin`` para correcto acceso solo por usuarios SUPERADMIN.
+
+- **Integración en Git**:
+  - Commit de todos los cambios en la rama ``feature/docs_y_dashboards``.
+  - Creación de tag: ``v2025.08.08-docs_dashboards``.
+  - Push de la rama y tag al repositorio remoto.
+
+Cambios clave en el código
+--------------------------
+
+1. ``app/auth/routes.py``:
+   - Redirección por rol usando ``RolUsuarioEnum``.
+   - Ajuste para dashboards por tipo de usuario.
+
+2. ``app/superadmin/templates/superadmin/dashboard.html``:
+   - Nuevo diseño formal y diferenciado del dashboard general.
+
+3. ``scripts/actualizar_usuario.py``:
+   - Script de mantenimiento para modificar datos de usuario.
+
+4. ``app/utils/roles_required.py``:
+   - Decorador revisado y funcional para control de acceso por roles.
+
+Próximos pasos
+--------------
+
+- Aplicar la misma lógica de colores diferenciados a todos los dashboards de roles (Notario, Procurador, Asistente, Administrador local).
+- Incluir más métricas relevantes en el dashboard del superadmin (por ejemplo, planes activos, pagos pendientes).
+- Extender el script de actualización para incluir creación de usuarios.
+- Documentar en el manual técnico la instalación y uso del script ``actualizar_usuario.py``.
+

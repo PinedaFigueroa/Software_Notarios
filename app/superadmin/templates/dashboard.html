@@ -1,0 +1,61 @@
+<!-- archivo: app/superadmin/templates/superadmin/dashboard.html -->
+<!-- fecha de creación: 09 / 08 / 25 -->
+<!-- cantidad de líneas originales: 45 -->
+<!-- última actualización: 09 / 08 / 25 hora 17:10 -->
+<!-- motivo: Plantilla de dashboard global para SuperAdmin -->
+<!-- autor: Giancarlo + Tars-90 -->
+<!-- -*- coding: utf-8 -*- -->
+
+{% extends 'base.html' %}
+
+{% block title %}Dashboard SuperAdmin{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4 text-primary">
+        <i class="fa-solid fa-user-shield"></i> Panel de Control - SuperAdmin
+    </h1>
+
+    <div class="row g-4">
+        <!-- Card: Total Bufetes -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-primary">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-primary">Bufetes Registrados</h5>
+                    <p class="display-6 fw-bold">{{ total_bufetes }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card: Total Usuarios -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-success">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-success">Usuarios Totales</h5>
+                    <p class="display-6 fw-bold">{{ total_usuarios }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card: SuperAdmins -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-warning">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-warning">SuperAdmins</h5>
+                    <p class="display-6 fw-bold">{{ total_superadmins }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card: Espacio Usado -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-danger">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-danger">Espacio Usado</h5>
+                    <p class="display-6 fw-bold">{{ espacio_usado }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!-- archivo: app/superadmin/templates/superadmin/usuarios/form_usuario.html -->
+<!-- fecha de creación: 09 / 08 / 25 -->
+<!-- cantidad de líneas originales: 45 -->
+<!-- última actualización: 09 / 08 / 25 hora 10:05 -->
+<!-- motivo de la creación: Form de creación/edición de usuarios por bufete -->
+<!-- autor: Giancarlo + Tars-90 -->
+<!-- -*- coding: utf-8 -*- -->
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-3">{{ titulo }}</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">{{ form.nombres.label }} {{ form.nombres(class="form-control") }}</div>
+    <div class="mb-3">{{ form.apellidos.label }} {{ form.apellidos(class="form-control") }}</div>
+    <div class="mb-3">{{ form.correo.label }} {{ form.correo(class="form-control") }}</div>
+    <div class="mb-3">{{ form.telefono.label }} {{ form.telefono(class="form-control") }}</div>
+    <div class="mb-3">{{ form.rol.label }} {{ form.rol(class="form-select") }}</div>
+    <div class="mb-3">{{ form.password.label }} {{ form.password(class="form-control") }}</div>
+    {{ form.submit(class="btn btn-success") }}
+    <a href="{{ url_for('superadmin_bp.listar_usuarios', bufete_id=bufete.id) }}" class="btn btn-secondary">Cancelar</a>
+  </form>
+  <p class="text-muted mt-3">Si no ingresas una contraseña, se usará la predeterminada: <code>123456</code>.</p>
+</div>
+{% endblock %}

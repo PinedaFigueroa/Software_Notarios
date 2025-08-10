@@ -1,0 +1,19 @@
+<!-- archivo: app/superadmin/templates/superadmin/bufetes/form_bufete.html -->
+<!-- fecha de creación: 09 / 08 / 25 -->
+<!-- cantidad de líneas originales: 40 -->
+<!-- última actualización: 09 / 08 / 25 hora 10:05 -->
+<!-- motivo de la creación: Form de creación/edición de bufetes -->
+<!-- autor: Giancarlo + Tars-90 -->
+<!-- -*- coding: utf-8 -*- -->
+
+{% extends 'base.html' %}
+{% block title %}{{ titulo }}{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-3">{{ titulo }}</h2>
+  <div class="alert alert-info">
+    Esta pantalla está en construcción. Pronto podrás crear bufetes aquí.
+  </div>
+  <a href="{{ url_for('superadmin_bp.listar_bufetes') }}" class="btn btn-secondary">Volver a la lista</a>
+</div>
+{% endblock %}
