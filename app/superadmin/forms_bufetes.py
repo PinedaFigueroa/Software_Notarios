@@ -1,29 +1,42 @@
 # archivo: app/superadmin/forms_bufetes.py
-# fecha de creación: 09 / 08 / 25
-# cantidad de líneas originales: 70
-# última actualización: 09 / 08 / 25 hora 10:05
-# motivo de la creación: Formularios WTForms para CRUD de Bufetes
+# fecha de creación: 11 / 08 / 25
+# cantidad de lineas originales: 120
+# última actualización: 12 / 08 / 25 hora 01:32
+# motivo de la actualización: Crear WTForm para Bufetes (crear/editar) con selección de plan y activo
 # autor: Giancarlo + Tars-90
 # -*- coding: utf-8 -*-
 
 """
-Formularios para crear y editar bufetes jurídicos.
-Incluye selección de Plan y campos básicos de contacto.
+Formularios WTForms para la gestión de Bufetes.
 """
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, BooleanField
-from wtforms.validators import DataRequired, Length, Optional, Email
+from wtforms import StringField, SelectField, BooleanField, SubmitField
+from wtforms.validators import DataRequired, Length
+
+# Cargamos Plan dinámicamente para choices
+def get_plan_choices():
+    plans = []
+    try:
+        from app.models.plan import Plan  # opción 1
+    except Exception:
+        try:
+            from app.models.planes import Plan  # opción 2
+        except Exception:
+            Plan = None
+    if 'Plan' in locals() and Plan is not None:
+        try:
+            plans = [(str(p.id), p.nombre) for p in Plan.query.order_by(Plan.nombre.asc()).all()]
+        except Exception:
+            plans = []
+    # Agregar opción vacía al inicio
+    return [("", "-- Sin plan --")] + plans
 
 class BufeteForm(FlaskForm):
-    """Formulario de creación/edición de bufetes."""
-    nombre_bufete = StringField('Nombre del Bufete', validators=[DataRequired(), Length(max=255)])
-    direccion = StringField('Dirección', validators=[Optional(), Length(max=255)])
-    telefono = StringField('Teléfono', validators=[Optional(), Length(max=50)])
-    email = StringField('Email', validators=[Optional(), Email(), Length(max=150)])
-    nit = StringField('NIT', validators=[Optional(), Length(max=50)])
-    pais = StringField('País', validators=[Optional(), Length(max=50)])
-    plan_id = SelectField('Plan', coerce=int, validators=[DataRequired()])
-    activo = BooleanField('Activo', default=True)
+    nombre_bufete = StringField("Nombre del bufete", validators=[DataRequired(), Length(min=2, max=150)])
+    plan_id = SelectField("Plan", choices=[], default="")
+    activo = BooleanField("Activo", default=True)
+    submit = SubmitField("Guardar")
 
-    submit = SubmitField('Guardar')
+    def refresh_choices(self):
+        self.plan_id.choices = get_plan_choices()
