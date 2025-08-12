@@ -1,7 +1,8 @@
 <!-- archivo: app/templates/base.html -->
 <!-- fecha de creación: 26 / 07 / 25 -->
-<!-- última actualización: 09 / 08 / 25 hora 15:50 -->
-<!-- motivo: integrar menú SuperAdmin en navbar + mostrar usuario/bufete con checks seguros -->
+<!-- cantidad de líneas originales: 290 -->
+<!-- última actualización: 12 / 08 / 25 hora 01:32 -->
+<!-- motivo: Ocultar navbar completo en login; mostrar solo logo; integración robusta de SUPERADMIN -->
 <!-- autor: Giancarlo + Tars-90 -->
 <!-- -*- coding: utf-8 -*- -->
 
@@ -9,7 +10,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Software Notarios{% endblock %}</title>
+    <title>{{% block title %}}Software Notarios{{% endblock %}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap local -->
@@ -21,7 +22,10 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
+    {% set is_login = (request.endpoint == 'auth_bp.login') %}
+
     <!-- Navbar -->
+    {% if not is_login %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="{{ url_for('dashboard.mostrar_dashboard') }}">
@@ -43,7 +47,7 @@
                     </li>
 
                     <!-- Ítems comunes -->
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-user"></i> Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('superadmin_bp.listar_usuarios_root') }}"><i class="fa-regular fa-user"></i> Usuarios</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-file-lines"></i> Documentos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-folder-open"></i> Librería</a></li>
 
@@ -102,10 +106,16 @@
             </div>
         </div>
     </nav>
+    {% else %}
+      <!-- Encabezado mínimo en Login -->
+      <div class="py-3 text-center">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo-navbar">
+      </div>
+    {% endif %}
 
     <!-- Contenido principal -->
     <main class="container my-4 flex-grow-1">
-        {% block content %}{% endblock %}
+        {{% block content %}}{{% endblock %}}
     </main>
 
     <!-- Footer -->
