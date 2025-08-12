@@ -1,14 +1,12 @@
 # archivo: app/superadmin/forms_usuarios.py
 # fecha de creación: 11 / 08 / 25
 # cantidad de lineas originales: 160
-# última actualización: 12 / 08 / 25 hora 01:32
-# motivo de la actualización: Crear WTForm para Usuarios (crear/editar) con rol y bufete
+# última actualización: 12 / 08 / 25 hora 03:25
+# motivo de la actualización: WTForms Usuarios (crear/editar) con rol y bufete
 # autor: Giancarlo + Tars-90
 # -*- coding: utf-8 -*-
 
-"""
-Formularios WTForms para la gestión de Usuarios desde SuperAdmin.
-"""
+"""Formularios WTForms para la gestión de Usuarios desde SuperAdmin."""
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, BooleanField, SubmitField
@@ -18,10 +16,10 @@ def get_bufete_choices():
     bufetes = []
     BufeteJuridico = None
     try:
-        from app.models.usuarios import BufeteJuridico  # opción 1
+        from app.models.usuarios import BufeteJuridico
     except Exception:
         try:
-            from app.models.bufetes import BufeteJuridico  # opción 2
+            from app.models.bufetes import BufeteJuridico
         except Exception:
             BufeteJuridico = None
     if BufeteJuridico is not None:
@@ -32,15 +30,12 @@ def get_bufete_choices():
     return bufetes
 
 def get_role_choices():
-    # Intentamos leer Enum desde el modelo
     choices = []
     try:
         from app.models.usuarios import RolUsuarioEnum
-        # Generar pares (name, label) legibles
         for r in RolUsuarioEnum:
-            choices.append((r.name, r.name.title().replace("_", " ")))
+            choices.append((r.name, r.name.title().replace("_"," ")))
     except Exception:
-        # fallback común
         choices = [
             ("SUPERADMIN", "Superadmin"),
             ("ADMINISTRADOR", "Administrador"),
@@ -51,12 +46,15 @@ def get_role_choices():
     return choices
 
 class UsuarioForm(FlaskForm):
-    nombres = StringField("Nombres", validators=[DataRequired(), Length(min=1, max=100)])
-    apellidos = StringField("Apellidos", validators=[Optional(), Length(max=120)])
-    correo = StringField("Correo", validators=[Optional(), Email(), Length(max=150)])
-    rol = SelectField("Rol", choices=[], validators=[DataRequired()])
-    bufete_id = SelectField("Bufete", choices=[], validators=[Optional()])
-    activo = BooleanField("Activo", default=True)
+    nombres = StringField("Nombres", validators=[DataRequired(), Length(min=1, max=100)],
+                          render_kw={"placeholder":"Ej. Juan", "title":"Nombres del usuario"})
+    apellidos = StringField("Apellidos", validators=[Optional(), Length(max=120)],
+                            render_kw={"placeholder":"Ej. Pérez", "title":"Apellidos del usuario"})
+    correo = StringField("Correo", validators=[Optional(), Email(), Length(max=150)],
+                         render_kw={"placeholder":"correo@dominio.com", "title":"Correo (opcional)"})
+    rol = SelectField("Rol", choices=[], validators=[DataRequired()], render_kw={"title":"Rol del usuario dentro del sistema"})
+    bufete_id = SelectField("Bufete", choices=[], validators=[Optional()], render_kw={"title":"Asignación de bufete (opcional)"})
+    activo = BooleanField("Activo", default=True, render_kw={"title":"Habilita o deshabilita el acceso"})
     submit = SubmitField("Guardar")
 
     def refresh_choices(self):

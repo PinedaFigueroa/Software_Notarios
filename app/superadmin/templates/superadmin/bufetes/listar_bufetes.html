@@ -1,23 +1,18 @@
 <!-- archivo: app/superadmin/templates/superadmin/bufetes/listar_bufetes.html -->
-<!-- fecha de creación: 09 / 08 / 25 -->
-<!-- cantidad de líneas originales: 60 -->
-<!-- última actualización: 09 / 08 / 25 hora 10:05 -->
-<!-- motivo de la creación: Listado de bufetes con búsqueda y acciones -->
-<!-- autor: Giancarlo + Tars-90 -->
-<!-- -*- coding: utf-8 -*- -->
-
 {% extends 'base.html' %}
 {% block content %}
 <div class="container mt-4">
   <div class="d-flex justify-content-between align-items-center">
     <h2>Bufetes</h2>
-    <a href="{{ url_for('superadmin_bp.crear_bufete') }}" class="btn btn-primary">+ Nuevo Bufete</a>
+    <a href="{{ url_for('superadmin_bp.crear_bufete') }}"
+       class="btn btn-primary"
+       title="Crear un nuevo bufete en el sistema">+ Nuevo Bufete</a>
   </div>
 
   <form class="mt-3 mb-3" method="get">
     <div class="input-group">
-      <input type="text" class="form-control" name="q" placeholder="Buscar por nombre..." value="{{ q or '' }}">
-      <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+      <input type="text" class="form-control" name="q" placeholder="Buscar por nombre..." value="{{ q or '' }}" title="Escribe el nombre del bufete">
+      <button class="btn btn-outline-secondary" type="submit" title="Filtrar listado">Buscar</button>
     </div>
   </form>
 
@@ -28,7 +23,7 @@
         <th>Nombre</th>
         <th>Plan</th>
         <th>Activo</th>
-        <th></th>
+        <th class="text-end">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -45,13 +40,19 @@
           {% endif %}
         </td>
         <td class="text-end">
-          <a class="btn btn-sm btn-outline-primary" href="{{ url_for('superadmin_bp.editar_bufete', bufete_id=b.id) }}">Editar</a>
-          <form action="{{ url_for('superadmin_bp.toggle_estado_bufete', bufete_id=b.id) }}" method="post" style="display:inline-block">
-            <button class="btn btn-sm btn-outline-warning" type="submit">
+          <a class="btn btn-sm btn-outline-primary"
+             href="{{ url_for('superadmin_bp.editar_bufete', bufete_id=b.id) }}"
+             title="Editar datos del bufete">Editar</a>
+          <form action="{{ url_for('superadmin_bp.toggle_estado_bufete', bufete_id=b.id) }}"
+                method="post" style="display:inline-block">
+            <button class="btn btn-sm btn-outline-warning" type="submit"
+                    title="{{ 'Desactivar' if b.activo else 'Activar' }} bufete">
               {{ 'Desactivar' if b.activo else 'Activar' }}
             </button>
           </form>
-          <a class="btn btn-sm btn-outline-dark" href="{{ url_for('superadmin_bp.listar_usuarios', bufete_id=b.id) }}">Usuarios</a>
+          <a class="btn btn-sm btn-outline-dark"
+             href="{{ url_for('superadmin_bp.listar_usuarios', bufete_id=b.id) }}"
+             title="Ver usuarios pertenecientes a este bufete">Usuarios</a>
         </td>
       </tr>
       {% endfor %}

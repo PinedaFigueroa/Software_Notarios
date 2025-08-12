@@ -1,18 +1,12 @@
 # archivo: app/superadmin/routes_usuarios.py
 # fecha de creación: 09 / 08 / 25
 # cantidad de lineas originales: 260
-# última actualización: 12 / 08 / 25 hora 01:32
+# última actualización: 12 / 08 / 25 hora 03:25
 # motivo de la actualización: CRUD real de Usuarios (listar/buscar, crear, editar, toggle activo)
 # autor: Giancarlo + Tars-90
 # -*- coding: utf-8 -*-
 
-"""
-Rutas de gestión de Usuarios para el panel del SuperAdmin.
-Incluye:
-- Listado global y por bufete con filtro ?q=...
-- Crear y Editar conectados a WTForms
-- Activar/Desactivar (borrado lógico) vía POST
-"""
+"""Rutas de gestión de Usuarios para SuperAdmin."""
 
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required
@@ -23,7 +17,6 @@ from app.core_ext import db
 
 from .forms_usuarios import UsuarioForm
 
-# Modelos
 from app.models.usuarios import Usuario
 try:
     from app.models.usuarios import RolUsuarioEnum
@@ -32,17 +25,16 @@ except Exception:
 
 BufeteJuridico = None
 try:
-    from app.models.usuarios import BufeteJuridico  # opción 1
+    from app.models.usuarios import BufeteJuridico
 except Exception:
     try:
-        from app.models.bufetes import BufeteJuridico  # opción 2
+        from app.models.bufetes import BufeteJuridico
     except Exception:
         pass
 
 def _apply_user_search(query, q: str):
     if q:
         like = f"%{q}%"
-        # Intentamos nombres + apellidos + correo
         try:
             query = query.filter(
                 (Usuario.nombres.ilike(like)) |
@@ -57,7 +49,6 @@ def _apply_user_search(query, q: str):
 @login_required
 @rol_required(['SUPERADMIN'])
 def listar_usuarios_root():
-    """Listado global de usuarios con filtro por ?q=..."""
     q = request.args.get('q', type=str, default='')
     query = Usuario.query.order_by(Usuario.id.asc())
     query = _apply_user_search(query, q)
@@ -68,7 +59,6 @@ def listar_usuarios_root():
 @login_required
 @rol_required(['SUPERADMIN'])
 def listar_usuarios(bufete_id):
-    """Listado de usuarios por bufete con filtro por ?q=..."""
     q = request.args.get('q', type=str, default='')
     query = Usuario.query.filter(Usuario.bufete_id == bufete_id).order_by(Usuario.id.asc())
     query = _apply_user_search(query, q)
@@ -84,7 +74,6 @@ def crear_usuario():
     if request.method == 'POST':
         if form.validate_on_submit():
             rol_value = form.rol.data
-            # Si el Enum existe, convertimos al valor correcto
             rol_obj = None
             if RolUsuarioEnum:
                 try:
@@ -95,7 +84,7 @@ def crear_usuario():
                 nombres=form.nombres.data.strip(),
                 apellidos=(form.apellidos.data or '').strip(),
                 correo=(form.correo.data or '').strip() or None,
-                rol=rol_obj if rol_obj else rol_value,  # soporta Enum o string
+                rol=rol_obj if rol_obj else rol_value,
                 bufete_id=int(form.bufete_id.data) if form.bufete_id.data else None,
                 activo=bool(form.activo.data),
             )
@@ -135,7 +124,6 @@ def editar_usuario(usuario_id):
             return redirect(url_for('superadmin_bp.listar_usuarios_root'))
         else:
             flash('Por favor corrige los errores del formulario.', 'danger')
-    # Preseleccionar
     form.rol.data = usuario.rol.name if hasattr(usuario.rol, 'name') else str(usuario.rol)
     form.bufete_id.data = str(usuario.bufete_id) if usuario.bufete_id else ''
     return render_template('superadmin/usuarios/form_usuario.html', titulo=f'Editar: {usuario.nombres}', form=form, usuario=usuario)
@@ -149,6 +137,5 @@ def toggle_usuario(usuario_id):
     db.session.add(usuario)
     db.session.commit()
     flash(f"Usuario '{usuario.nombres}' ahora está {'activo' if usuario.activo else 'inactivo'}.", 'success')
-    # Mantener filtro si viene de listado por bufete
     next_url = request.args.get('next') or url_for('superadmin_bp.listar_usuarios_root')
     return redirect(next_url)

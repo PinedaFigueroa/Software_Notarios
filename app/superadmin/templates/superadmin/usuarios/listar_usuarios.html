@@ -1,29 +1,18 @@
 <!-- archivo: app/superadmin/templates/superadmin/usuarios/listar_usuarios.html -->
-<!-- fecha de creación: 09 / 08 / 25 -->
-<!-- cantidad de líneas originales: 70 -->
-<!-- última actualización: 09 / 08 / 25 hora 10:05 -->
-<!-- motivo de la creación: Listado de usuarios por bufete con filtro por rol -->
-<!-- autor: Giancarlo + Tars-90 -->
-<!-- -*- coding: utf-8 -*- -->
-
 {% extends 'base.html' %}
 {% block content %}
 <div class="container mt-4">
   <div class="d-flex justify-content-between align-items-center">
-    <h2>Usuarios del bufete: {{ bufete.nombre_bufete }}</h2>
-    <a href="{{ url_for('superadmin_bp.crear_usuario', bufete_id=bufete.id) }}" class="btn btn-primary">+ Nuevo Usuario</a>
+    <h2>Usuarios {{'del Bufete ' ~ bufete_id if bufete_id else '(Global)'}} </h2>
+    <a href="{{ url_for('superadmin_bp.crear_usuario') }}"
+       class="btn btn-primary"
+       title="Registrar un nuevo usuario">+ Nuevo Usuario</a>
   </div>
 
   <form class="mt-3 mb-3" method="get">
     <div class="input-group">
-      <select name="rol" class="form-select">
-        <option value="">-- Todos los roles --</option>
-        <option value="NOTARIO" {{ 'selected' if rol_filtro=='NOTARIO' }}>Notario</option>
-        <option value="PROCURADOR" {{ 'selected' if rol_filtro=='PROCURADOR' }}>Procurador</option>
-        <option value="ASISTENTE" {{ 'selected' if rol_filtro=='ASISTENTE' }}>Asistente</option>
-        <option value="ADMINISTRADOR" {{ 'selected' if rol_filtro=='ADMINISTRADOR' }}>Administrador Local</option>
-      </select>
-      <button class="btn btn-outline-secondary" type="submit">Filtrar</button>
+      <input type="text" class="form-control" name="q" placeholder="Buscar por nombre/correo..." value="{{ q or '' }}" title="Escribe nombre o correo">
+      <button class="btn btn-outline-secondary" type="submit" title="Filtrar listado">Buscar</button>
     </div>
   </form>
 
@@ -31,32 +20,38 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Username</th>
         <th>Nombre</th>
+        <th>Correo</th>
         <th>Rol</th>
-        <th>Estado</th>
-        <th></th>
+        <th>Bufete</th>
+        <th>Activo</th>
+        <th class="text-end">Acciones</th>
       </tr>
     </thead>
     <tbody>
       {% for u in usuarios %}
       <tr>
         <td>{{ u.id }}</td>
-        <td>{{ u.username }}</td>
-        <td>{{ u.nombres }} {{ u.apellidos }}</td>
-        <td>{{ u.rol.value }}</td>
+        <td>{{ (u.nombres or '') ~ ' ' ~ (u.apellidos or '') }}</td>
+        <td>{{ u.correo or '-' }}</td>
+        <td>{{ u.rol.name if u.rol and u.rol.name is defined else (u.rol or '-') }}</td>
+        <td>{{ u.bufete.nombre_bufete if u.bufete is defined and u.bufete else '-' }}</td>
         <td>
-          {% if u.estado.value == 'Activo' %}
-          <span class="badge bg-success">Activo</span>
+          {% if u.activo %}
+          <span class="badge bg-success">Sí</span>
           {% else %}
-          <span class="badge bg-secondary">Inactivo</span>
+          <span class="badge bg-secondary">No</span>
           {% endif %}
         </td>
         <td class="text-end">
-          <a class="btn btn-sm btn-outline-primary" href="{{ url_for('superadmin_bp.editar_usuario', bufete_id=bufete.id, usuario_id=u.id) }}">Editar</a>
-          <form action="{{ url_for('superadmin_bp.toggle_usuario', bufete_id=bufete.id, usuario_id=u.id) }}" method="post" style="display:inline-block">
-            <button class="btn btn-sm btn-outline-warning" type="submit">
-              {{ 'Desactivar' if u.estado.value == 'Activo' else 'Activar' }}
+          <a class="btn btn-sm btn-outline-primary"
+             href="{{ url_for('superadmin_bp.editar_usuario', usuario_id=u.id) }}"
+             title="Editar datos del usuario">Editar</a>
+          <form action="{{ url_for('superadmin_bp.toggle_usuario', usuario_id=u.id) }}"
+                method="post" style="display:inline-block">
+            <button class="btn btn-sm btn-outline-warning" type="submit"
+                    title="{{ 'Desactivar' if u.activo else 'Activar' }} usuario">
+              {{ 'Desactivar' if u.activo else 'Activar' }}
             </button>
           </form>
         </td>

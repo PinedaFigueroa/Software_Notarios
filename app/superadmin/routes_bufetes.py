@@ -1,25 +1,19 @@
 # archivo: app/superadmin/routes_bufetes.py
 # fecha de creación: 09 / 08 / 25
 # cantidad de lineas originales: 220
-# última actualización: 12 / 08 / 25 hora 01:32
+# última actualización: 12 / 08 / 25 hora 03:25
 # motivo de la actualización: CRUD real de Bufetes (listar/buscar, crear, editar, toggle activo)
 # autor: Giancarlo + Tars-90
 # -*- coding: utf-8 -*-
 
-"""
-Rutas de gestión de Bufetes para el panel del SuperAdmin.
-Incluye:
-- Listado con filtro por nombre (?q=...)
-- Crear y Editar conectados a WTForms
-- Activar/Desactivar (borrado lógico) vía POST
-"""
+"""Rutas de gestión de Bufetes para SuperAdmin."""
 
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required
 from app.utils.roles_required import rol_required
 from . import superadmin_bp
 
-from app.core_ext import db
+from app.core_ext import db  # alias estable
 
 # Modelos con import flexible
 BufeteJuridico = None
@@ -37,7 +31,6 @@ from .forms_bufetes import BufeteForm
 @login_required
 @rol_required(['SUPERADMIN'])
 def listar_bufetes():
-    """Listado de bufetes con búsqueda opcional por nombre_bufete."""
     q = request.args.get('q', type=str, default='')
     query = BufeteJuridico.query if BufeteJuridico else None
     bufetes = []
@@ -51,7 +44,6 @@ def listar_bufetes():
 @login_required
 @rol_required(['SUPERADMIN'])
 def crear_bufete():
-    """Formulario de creación de bufete (WTForms)."""
     form = BufeteForm()
     form.refresh_choices()
     if request.method == 'POST':
@@ -76,7 +68,6 @@ def crear_bufete():
 @login_required
 @rol_required(['SUPERADMIN'])
 def editar_bufete(bufete_id):
-    """Editar un bufete existente (WTForms)."""
     bufete = BufeteJuridico.query.get_or_404(bufete_id)
     form = BufeteForm(obj=bufete)
     form.refresh_choices()
@@ -94,7 +85,6 @@ def editar_bufete(bufete_id):
             return redirect(url_for('superadmin_bp.listar_bufetes'))
         else:
             flash('Por favor corrige los errores del formulario.', 'danger')
-    # Pre-cargar choice seleccionado:
     form.plan_id.data = str(bufete.plan_id) if bufete.plan_id else ''
     return render_template('superadmin/bufetes/form_bufete.html', titulo=f'Editar: {bufete.nombre_bufete}', form=form, bufete=bufete)
 
@@ -102,7 +92,6 @@ def editar_bufete(bufete_id):
 @login_required
 @rol_required(['SUPERADMIN'])
 def toggle_estado_bufete(bufete_id):
-    """Activa/Desactiva (borrado lógico) el bufete."""
     bufete = BufeteJuridico.query.get_or_404(bufete_id)
     bufete.activo = not bool(bufete.activo)
     db.session.add(bufete)
