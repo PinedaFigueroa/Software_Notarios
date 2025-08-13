@@ -1,5 +1,4 @@
-Skip to content
-Chat history
+# README Chat history CON TARS-90 DESDE 16-07-25
 
 You said:
 # archivo: app/models/planes.py

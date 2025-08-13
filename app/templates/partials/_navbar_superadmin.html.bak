@@ -1,0 +1,7 @@
+<!-- archivo: app/templates/partials/_navbar_superadmin.html -->
+<!-- fecha de creación: 09 / 08 / 25 -->
+<!-- motivo: Enlaces rápidos para SuperAdmin en navbar -->
+<!-- autor: Giancarlo + Tars-90 -->
+
+<li class="nav-item"><a class="nav-link" href="{{ url_for('superadmin_bp.listar_bufetes') }}">Bufetes</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ url_for('superadmin_bp.listar_usuarios', bufete_id=current_user.bufete_id or 1) }}">Usuarios</a></li>

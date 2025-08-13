@@ -1,64 +1,29 @@
-<!-- archivo: app/superadmin/templates/superadmin/dashboard.html -->
-<!-- última actualización: 09 / 08 / 25 hora 20:20 -->
-<!-- motivo: aplicar paleta azul formal en tarjetas -->
+<! # archivo: app/superadmin/templates/superadmin/dashboard.html 
+# última actualización: 13/08/25 hora 00:46 COSA
+# motivo de la actualización: enlaces a endpoints canónicos 'superadmin.*'
+# autor: Giancarlo + Tars-90
+# -*- coding: utf-8 -*-
+> 
 {% extends 'base.html' %}
-{% block title %}Dashboard SuperAdmin{% endblock %}
 {% block content %}
-<div class="container mt-4">
-  <h1 class="mb-4 text-primary">
-    <i class="fa-solid fa-user-shield"></i> Panel de Control - SuperAdmin
-  </h1>
-
-  <div class="row g-4">
-    <!-- Bufetes -->
-    <div class="col-md-3">
-      <div class="card shadow-sm border-0">
-        <div class="card-body text-center bg-primary text-white rounded">
-          <h6 class="text-white-50 mb-1">Bufetes Registrados</h6>
-          <div class="display-6 fw-bold">{{ total_bufetes }}</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Usuarios -->
-    <div class="col-md-3">
-      <div class="card shadow-sm border-0">
-        <div class="card-body text-center bg-info text-white rounded">
-          <h6 class="text-white-50 mb-1">Usuarios Totales</h6>
-          <div class="display-6 fw-bold">{{ total_usuarios }}</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SuperAdmins -->
-    <div class="col-md-3">
-      <div class="card shadow-sm border-0">
-        <div class="card-body text-center bg-secondary text-white rounded">
-          <h6 class="text-white-50 mb-1">SuperAdmins</h6>
-          <div class="display-6 fw-bold">{{ total_superadmins }}</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Espacio -->
-    <div class="col-md-3">
-      <div class="card shadow-sm border-0">
-        <div class="card-body text-center bg-dark text-white rounded">
-          <h6 class="text-white-50 mb-1">Espacio Usado</h6>
-          <div class="display-6 fw-bold">{{ espacio_usado }}</div>
-        </div>
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">Gestión de Bufetes</h5>
+        <p class="card-text">Crear, editar, ver y eliminar (lógico) bufetes.</p>
+        <a class="btn btn-primary" href="{{ url_for('superadmin.listar_bufetes') }}">Ir a Bufetes</a>
       </div>
     </div>
   </div>
-
-  <!-- Accesos rápidos -->
-  <div class="mt-4 d-flex gap-2">
-    <a href="{{ url_for('superadmin_bp.listar_bufetes') }}" class="btn btn-outline-primary">
-      <i class="fa-solid fa-building"></i> Bufetes
-    </a>
-    <a href="{{ url_for('superadmin_bp.listar_usuarios_root') }}" class="btn btn-outline-primary">
-      <i class="fa-regular fa-user"></i> Usuarios
-    </a>
+  <div class="col-md-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">Gestión de Usuarios</h5>
+        <p class="card-text">Crear, editar, ver y eliminar (lógico) usuarios.</p>
+        <a class="btn btn-primary" href="{{ url_for('superadmin.listar_usuarios') }}">Ir a Usuarios</a>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

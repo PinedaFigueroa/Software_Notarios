@@ -1,141 +1,115 @@
 # archivo: app/superadmin/routes_usuarios.py
-# fecha de creación: 09 / 08 / 25
-# cantidad de lineas originales: 260
-# última actualización: 12 / 08 / 25 hora 03:25
-# motivo de la actualización: CRUD real de Usuarios (listar/buscar, crear, editar, toggle activo)
+# fecha de creación: 13/08/25
+# cantidad de lineas originales: ____
+# última actualización: 13/08/25 hora 00:09
+# motivo de la actualización: CRUD Usuarios alineado: enums y borrado lógico en borrado_logico
 # autor: Giancarlo + Tars-90
 # -*- coding: utf-8 -*-
 
-"""Rutas de gestión de Usuarios para SuperAdmin."""
-
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from flask_login import login_required
-from app.utils.roles_required import rol_required
-from . import superadmin_bp
-
-from app.core_ext import db
-
+from werkzeug.security import generate_password_hash
+from . import superadmin
 from .forms_usuarios import UsuarioForm
 
-from app.models.usuarios import Usuario
+# db import robusto
 try:
-    from app.models.usuarios import RolUsuarioEnum
-except Exception:
-    RolUsuarioEnum = None
-
-BufeteJuridico = None
-try:
-    from app.models.usuarios import BufeteJuridico
+    from app.models.core import db
 except Exception:
     try:
-        from app.models.bufetes import BufeteJuridico
+        from app.core_ext import db
     except Exception:
-        pass
+        db = None
 
-def _apply_user_search(query, q: str):
-    if q:
-        like = f"%{q}%"
-        try:
-            query = query.filter(
-                (Usuario.nombres.ilike(like)) |
-                (Usuario.apellidos.ilike(like)) |
-                (Usuario.correo.ilike(like))
-            )
-        except Exception:
-            pass
-    return query
+try:
+    from app.models.usuarios import Usuario
+    from app.models.bufetes import BufeteJuridico
+    from app.models.enums import RolUsuarioEnum
+except Exception:
+    Usuario = None
+    BufeteJuridico = None
+    RolUsuarioEnum = None
 
-@superadmin_bp.route('/superadmin/usuarios')
+def _choices_bufetes():
+    if not BufeteJuridico:
+        return []
+    return [(b.id, b.nombre_bufete) for b in BufeteJuridico.query.filter_by(activo=True).all()]
+
+def _choices_roles():
+    if not RolUsuarioEnum:
+        return []
+    # Usamos NAMES como 'SUPERADMIN', 'NOTARIO'...
+    return [(m.name, m.value) for m in RolUsuarioEnum]
+
+@superadmin.route('/superadmin/usuarios')
 @login_required
-@rol_required(['SUPERADMIN'])
-def listar_usuarios_root():
-    q = request.args.get('q', type=str, default='')
-    query = Usuario.query.order_by(Usuario.id.asc())
-    query = _apply_user_search(query, q)
-    usuarios = query.all()
-    return render_template('superadmin/usuarios/listar_usuarios.html', usuarios=usuarios, bufete_id=None, q=q)
+def listar_usuarios():
+    usuarios = Usuario.query.filter_by(borrado_logico=False).all() if Usuario else []
+    return render_template('superadmin/usuarios/listar_usuarios.html', usuarios=usuarios)
 
-@superadmin_bp.route('/superadmin/bufetes/<int:bufete_id>/usuarios')
+@superadmin.route('/superadmin/usuarios/nuevo', methods=['GET', 'POST'])
 @login_required
-@rol_required(['SUPERADMIN'])
-def listar_usuarios(bufete_id):
-    q = request.args.get('q', type=str, default='')
-    query = Usuario.query.filter(Usuario.bufete_id == bufete_id).order_by(Usuario.id.asc())
-    query = _apply_user_search(query, q)
-    usuarios = query.all()
-    return render_template('superadmin/usuarios/listar_usuarios.html', usuarios=usuarios, bufete_id=bufete_id, q=q)
-
-@superadmin_bp.route('/superadmin/usuarios/nuevo', methods=['GET', 'POST'])
-@login_required
-@rol_required(['SUPERADMIN'])
 def crear_usuario():
     form = UsuarioForm()
-    form.refresh_choices()
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            rol_value = form.rol.data
-            rol_obj = None
-            if RolUsuarioEnum:
-                try:
-                    rol_obj = getattr(RolUsuarioEnum, rol_value)
-                except Exception:
-                    rol_obj = None
-            usuario = Usuario(
-                nombres=form.nombres.data.strip(),
-                apellidos=(form.apellidos.data or '').strip(),
-                correo=(form.correo.data or '').strip() or None,
-                rol=rol_obj if rol_obj else rol_value,
-                bufete_id=int(form.bufete_id.data) if form.bufete_id.data else None,
-                activo=bool(form.activo.data),
-            )
-            db.session.add(usuario)
-            db.session.commit()
-            flash('Usuario creado correctamente.', 'success')
-            return redirect(url_for('superadmin_bp.listar_usuarios_root'))
-        else:
-            flash('Por favor corrige los errores del formulario.', 'danger')
-    return render_template('superadmin/usuarios/form_usuario.html', titulo='Crear Usuario', form=form)
+    form.bufete_id.choices = _choices_bufetes()
+    form.rol.choices = _choices_roles()
+    if form.validate_on_submit() and Usuario and db:
+        if Usuario.query.filter_by(username=form.username.data).first():
+            flash('Ya existe un usuario con ese username.', 'warning')
+            return render_template('superadmin/usuarios/form_usuario.html', form=form, modo='crear')
+        u = Usuario(
+            username=form.username.data,
+            correo=form.correo.data or None,
+            rol=RolUsuarioEnum[form.rol.data] if RolUsuarioEnum else form.rol.data,
+            bufete_id=form.bufete_id.data,
+            borrado_logico=False,
+            password_hash=generate_password_hash(form.password.data or 'Cambiar123!')
+        )
+        db.session.add(u)
+        db.session.commit()
+        flash('Usuario creado', 'success')
+        return redirect(url_for('superadmin.listar_usuarios'))
+    return render_template('superadmin/usuarios/form_usuario.html', form=form, modo='crear')
 
-@superadmin_bp.route('/superadmin/usuarios/<int:usuario_id>/editar', methods=['GET', 'POST'])
+@superadmin.route('/superadmin/usuarios/<int:usuario_id>/editar', methods=['GET', 'POST'])
 @login_required
-@rol_required(['SUPERADMIN'])
 def editar_usuario(usuario_id):
+    if not (Usuario and db):
+        return redirect(url_for('superadmin.listar_usuarios'))
     usuario = Usuario.query.get_or_404(usuario_id)
     form = UsuarioForm(obj=usuario)
-    form.refresh_choices()
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            rol_value = form.rol.data
-            rol_obj = None
-            if RolUsuarioEnum:
-                try:
-                    rol_obj = getattr(RolUsuarioEnum, rol_value)
-                except Exception:
-                    rol_obj = None
-            usuario.nombres = form.nombres.data.strip()
-            usuario.apellidos = (form.apellidos.data or '').strip()
-            usuario.correo = (form.correo.data or '').strip() or None
-            usuario.rol = rol_obj if rol_obj else rol_value
-            usuario.bufete_id = int(form.bufete_id.data) if form.bufete_id.data else None
-            usuario.activo = bool(form.activo.data)
-            db.session.add(usuario)
-            db.session.commit()
-            flash('Usuario actualizado correctamente.', 'success')
-            return redirect(url_for('superadmin_bp.listar_usuarios_root'))
-        else:
-            flash('Por favor corrige los errores del formulario.', 'danger')
-    form.rol.data = usuario.rol.name if hasattr(usuario.rol, 'name') else str(usuario.rol)
-    form.bufete_id.data = str(usuario.bufete_id) if usuario.bufete_id else ''
-    return render_template('superadmin/usuarios/form_usuario.html', titulo=f'Editar: {usuario.nombres}', form=form, usuario=usuario)
+    form.bufete_id.choices = _choices_bufetes()
+    form.rol.choices = _choices_roles()
+    # Valor inicial del rol en NAME
+    try:
+        form.rol.data = usuario.rol.name
+    except Exception:
+        pass
+    if form.validate_on_submit():
+        # Validar username único
+        existe = Usuario.query.filter(Usuario.id != usuario.id, Usuario.username == form.username.data).first()
+        if existe:
+            flash('Ese username ya está en uso por otro usuario.', 'warning')
+            return render_template('superadmin/usuarios/form_usuario.html', form=form, modo='editar', usuario=usuario)
+        usuario.username = form.username.data
+        usuario.correo = form.correo.data or None
+        usuario.rol = RolUsuarioEnum[form.rol.data] if RolUsuarioEnum else form.rol.data
+        usuario.bufete_id = form.bufete_id.data
+        # Cambiar password si se envía
+        if form.password.data:
+            usuario.password_hash = generate_password_hash(form.password.data)
+        db.session.commit()
+        flash('Usuario actualizado', 'success')
+        return redirect(url_for('superadmin.listar_usuarios'))
+    return render_template('superadmin/usuarios/form_usuario.html', form=form, modo='editar', usuario=usuario)
 
-@superadmin_bp.route('/superadmin/usuarios/<int:usuario_id>/toggle', methods=['POST'])
+@superadmin.route('/superadmin/usuarios/<int:usuario_id>/eliminar', methods=['POST'])
 @login_required
-@rol_required(['SUPERADMIN'])
-def toggle_usuario(usuario_id):
+def eliminar_usuario(usuario_id):
+    if not (Usuario and db):
+        return redirect(url_for('superadmin.listar_usuarios'))
     usuario = Usuario.query.get_or_404(usuario_id)
-    usuario.activo = not bool(usuario.activo)
-    db.session.add(usuario)
+    usuario.borrado_logico = True
     db.session.commit()
-    flash(f"Usuario '{usuario.nombres}' ahora está {'activo' if usuario.activo else 'inactivo'}.", 'success')
-    next_url = request.args.get('next') or url_for('superadmin_bp.listar_usuarios_root')
-    return redirect(next_url)
+    flash('Usuario eliminado (lógico)', 'warning')
+    return redirect(url_for('superadmin.listar_usuarios'))

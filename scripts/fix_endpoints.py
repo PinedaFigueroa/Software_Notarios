@@ -1,0 +1,108 @@
+# -*- coding: utf-8 -*-
+# archivo: scripts/fix_endpoints.py
+# última actualización: 13/08/25 hora 01:09
+# autor: Giancarlo + Tars-90
+
+"""
+Corrige referencias legacy de endpoints del SuperAdmin (por ejemplo
+'superadmin.listar_usuarios') y las reemplaza por los canónicos
+'superadmin.*'. Apunta principalmente a llamadas url_for('...') en .py y .html.
+Uso:
+  python scripts/fix_endpoints.py .
+"""
+import os, re, sys
+
+EXCLUDE_DIRS = {'.git', '__pycache__', 'node_modules', 'env', 'venv', '.venv', 'Lib', 'migrations', 'swnot'}
+
+# Reemplazos específicos conocidos
+REPLACEMENTS = [
+    (re.compile(r"['\"]superadmin_bp\.listar_usuarios_root['\"]"), "'superadmin.listar_usuarios'"),
+    (re.compile(r"['\"]superadmin\.listar_usuarios_root['\"]"), "'superadmin.listar_usuarios'"),
+
+    (re.compile(r"['\"]superadmin_bp\.listar_usuarios['\"]"), "'superadmin.listar_usuarios'"),
+    (re.compile(r"['\"]superadmin_bp\.crear_usuarios['\"]"), "'superadmin.crear_usuario'"),
+    (re.compile(r"['\"]superadmin_bp\.editar_usuarios['\"]"), "'superadmin.editar_usuario'"),
+    (re.compile(r"['\"]superadmin_bp\.eliminar_usuarios['\"]"), "'superadmin.eliminar_usuario'"),
+
+    (re.compile(r"['\"]superadmin_bp\.listar_bufetes['\"]"), "'superadmin.listar_bufetes'"),
+    (re.compile(r"['\"]superadmin_bp\.crear_bufetes['\"]"), "'superadmin.crear_bufete'"),
+    (re.compile(r"['\"]superadmin_bp\.editar_bufetes['\"]"), "'superadmin.editar_bufete'"),
+    (re.compile(r"['\"]superadmin_bp\.eliminar_bufetes['\"]"), "'superadmin.eliminar_bufete'"),
+
+    (re.compile(r"['\"]superadmin_bp\.dashboard_global['\"]"), "'superadmin.dashboard_global'"),
+]
+
+# Reemplazo dirigido dentro de url_for('superadmin.*')
+URL_FOR_TARGETED = (re.compile(r"url_for\(\s*['\"]superadmin_bp\."), "url_for('superadmin.")
+
+LEFTOVER_PATTERNS = [
+    re.compile(r"superadmin_bp\."),
+    re.compile(r"listar_usuarios_root"),
+]
+
+def should_skip_dir(dname: str) -> bool:
+    low = dname.lower()
+    return low in {x.lower() for x in EXCLUDE_DIRS}
+
+def process_file(path: str):
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            content = f.read()
+    except Exception:
+        return 0, False
+
+    orig = content
+    changes = 0
+
+    for rx, rep in REPLACEMENTS:
+        content, n = rx.subn(rep, content)
+        changes += n
+
+    content, n = URL_FOR_TARGETED[0].subn(URL_FOR_TARGETED[1], content)
+    changes += n
+
+    if changes > 0:
+        try:
+            with open(path + '.bak', 'w', encoding='utf-8') as b:
+                b.write(orig)
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(content)
+        except Exception as e:
+            print(f"[ERROR] No se pudo escribir {path}: {e}")
+            return 0, None
+
+    leftover = any(rx.search(content) for rx in LEFTOVER_PATTERNS)
+    return changes, leftover
+
+def main(root: str):
+    exts = {'.py', '.html'}
+    changed = 0
+    total_changes = 0
+    leftovers = []
+
+    for dirpath, dirnames, filenames in os.walk(root):
+        dirnames[:] = [d for d in dirnames if not should_skip_dir(d)]
+        for fn in filenames:
+            if os.path.splitext(fn)[1].lower() in exts:
+                full = os.path.join(dirpath, fn)
+                c, l = process_file(full)
+                if c:
+                    print(f"  • {full} (+{c} cambios)")
+                    changed += 1
+                    total_changes += c
+                if l:
+                    leftovers.append(full)
+
+    print("\n[RESUMEN]")
+    print(f"  Archivos modificados: {changed}")
+    print(f"  Reemplazos totales:   {total_changes}")
+    if leftovers:
+        print("  Posibles referencias restantes:")
+        for p in sorted(set(leftovers)):
+            print(f"   - {p}")
+    else:
+        print("  ✓ Sin referencias legacy detectadas.")
+
+if __name__ == '__main__':
+    root = sys.argv[1] if len(sys.argv) > 1 else '.'
+    main(os.path.abspath(root))

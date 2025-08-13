@@ -1,3 +1,11 @@
+# archivo: app/__init__.py
+# fecha de creación: 
+# cantidad de lineas originales: ____
+# última actualización: 13/08/25 hora 00:18
+# motivo de la actualización:  
+# autor: Giancarlo + Tars-90
+# -*- coding: utf-8 -*-
+
 # -*- coding: utf-8 -*-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -10,6 +18,8 @@ login_manager = LoginManager()
 
 def create_app():
     app = Flask(__name__)
+    # Configuración (SECRET_KEY, SQLALCHEMY_DATABASE_URI, etc.)
+    # app.config.from_object('config.Config')
     app.config.from_object('app.config.Config')
 
     # Extensiones
@@ -31,7 +41,7 @@ def create_app():
     # Blueprints
     from app.dashboard import dashboard_bp
     app.register_blueprint(dashboard_bp)
-
+    
     from app.auth import auth_bp
     app.register_blueprint(auth_bp)
 

@@ -47,7 +47,7 @@
                     </li>
 
                     <!-- Ítems comunes -->
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('superadmin.listar_usuarios') }}"><i class="fa-regular fa-user"></i> Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('superadmin_bp.listar_usuarios_root') }}"><i class="fa-regular fa-user"></i> Usuarios</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-file-lines"></i> Documentos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="fa-regular fa-folder-open"></i> Librería</a></li>
 
@@ -118,7 +118,7 @@
 
     <!-- Contenido principal -->
     <main class="container my-4 flex-grow-1">
-        {{% block content %}}{{% endblock %}}
+        {% block content %}}{% endblock %}
     </main>
 
     <!-- Footer -->

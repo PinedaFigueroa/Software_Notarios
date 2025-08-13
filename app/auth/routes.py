@@ -1,8 +1,8 @@
 # archivo: app/auth/routes.py
 # fecha de creación: 09 / 08 / 25
 # cantidad de líneas originales: 90
-# última actualización: 09 / 08 / 25 hora 17:05
-# motivo de la actualización: fix paréntesis faltante + limpieza de bloque innecesario
+# última actualización: 13/08/25 hora 00:37
+# motivo de la actualización: corregir endpoint a 'superadmin.dashboard_global'
 # autor: Giancarlo + Tars-90
 # -*- coding: utf-8 -*-
 
@@ -14,7 +14,7 @@ Redirige por rol:
 """
 
 from flask import render_template, redirect, url_for, flash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import check_password_hash
 from . import auth_bp
 from .forms import LoginForm
@@ -27,13 +27,12 @@ def login():
     if form.validate_on_submit():
         usuario = Usuario.query.filter_by(username=form.username.data.strip()).first()
         if usuario and check_password_hash(usuario.password_hash, form.password.data):
-            # si tu modelo no tiene UserMixin, añade get_id() o hereda UserMixin (recomendado)
             if hasattr(usuario, "is_active") and not usuario.is_active:
                 flash('Tu usuario está inactivo. Contacta al administrador.', 'warning')
                 return render_template('auth/login.html', form=form)
-            login_user(usuario, remember=form.remember.data)
+            login_user(usuario, remember=getattr(form, 'remember', False))
             if usuario.rol == RolUsuarioEnum.SUPERADMIN:
-                return redirect(url_for('superadmin_bp.dashboard_global'))
+                return redirect(url_for('superadmin.dashboard_global'))
             return redirect(url_for('dashboard.mostrar_dashboard'))
         flash('Credenciales incorrectas.', 'danger')
     return render_template('auth/login.html', form=form)
