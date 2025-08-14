@@ -1,0 +1,44 @@
+{# archivo: app/superadmin/templates/superadmin/planes/listar_planes.html | actualizado: 13/08/25 18:59 #}
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4 class="mb-0">Planes</h4>
+  <a class="btn btn-success" href="{{ url_for('superadmin.plan_nuevo') }}" data-bs-toggle="tooltip" title="Crear nuevo plan">Nuevo Plan</a>
+</div>
+<table class="table table-striped table-hover">
+  <thead><tr>
+    <th>Nombre</th><th>Descripción</th><th>Precio</th><th>Personalizado</th><th>Activo</th><th>Acciones</th>
+  </tr></thead>
+  <tbody>
+  {% for p in planes.items %}
+    <tr>
+      <td>{{ p.nombre }}</td>
+      <td>{{ p.descripcion or '' }}</td>
+      <td>Q {{ '%.2f' % p.precio_mensual }}</td>
+      <td>{% if p.es_personalizado %}<span class="badge text-bg-secondary">Sí</span>{% else %}<span class="badge text-bg-light">No</span>{% endif %}</td>
+      <td>{% if p.activo %}<span class="badge text-bg-success">Activo</span>{% else %}<span class="badge text-bg-danger">Inactivo</span>{% endif %}</td>
+      <td>
+        <a class="btn btn-sm btn-primary" href="{{ url_for('superadmin.plan_editar', plan_id=p.id) }}" data-bs-toggle="tooltip" title="Editar">Editar</a>
+        <form action="{{ url_for('superadmin.plan_eliminar', plan_id=p.id) }}" method="post" class="d-inline" onsubmit="return confirm('¿Eliminar o desactivar este plan?');">
+          <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<nav aria-label="Paginación">
+  <ul class="pagination">
+    {% if planes.has_prev %}
+      <li class="page-item"><a class="page-link" href="{{ url_for('superadmin.planes_listar', page=planes.prev_num) }}">Anterior</a></li>
+    {% endif %}
+    <li class="page-item disabled"><span class="page-link">Página {{ planes.page }} de {{ planes.pages }}</span></li>
+    {% if planes.has_next %}
+      <li class="page-item"><a class="page-link" href="{{ url_for('superadmin.planes_listar', page=planes.next_num) }}">Siguiente</a></li>
+    {% endif %}
+  </ul>
+</nav>
+<script>
+  var tt = document.querySelectorAll('[data-bs-toggle="tooltip"]');[...tt].map(e=>new bootstrap.Tooltip(e));
+</script>
+{% endblock %}

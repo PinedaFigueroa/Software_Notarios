@@ -1,0 +1,35 @@
+{# archivo: app/templates/auth/login.html | actualizado: 13/08/25 18:59 #}
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-4" style="max-width:480px;">
+  <h4 class="mb-3">Iniciar Sesión</h4>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ 'warning' if category=='message' else category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <form method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.username.label(class_='form-label') }}
+      {{ form.username(class_='form-control', placeholder='Usuario') }}
+      {% for e in form.username.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+    </div>
+    <div class="mb-3">
+      {{ form.password.label(class_='form-label') }}
+      {{ form.password(class_='form-control', placeholder='Contraseña') }}
+      {% for e in form.password.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+    </div>
+    <div class="form-check mb-3">
+      {{ form.remember(class_='form-check-input', id='remember') }}
+      <label for="remember" class="form-check-label">Recordarme</label>
+    </div>
+    {{ form.submit(class_='btn btn-primary w-100') }}
+  </form>
+</div>
+{% endblock %}

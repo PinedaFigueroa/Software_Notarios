@@ -1,0 +1,49 @@
+:root {
+  --brand-600: #0d6efd;
+  --nav-bg: #f8f9fb;
+  --nav-border: #e5e7eb;
+  --text-900: #0b132b;
+}
+
+.navbar {
+  background: var(--nav-bg) !important;
+  border-bottom: 1px solid var(--nav-border);
+}
+
+.navbar .nav-link {
+  color: var(--text-900);
+  padding: 0.5rem 0.9rem;
+}
+
+.navbar .nav-link.active {
+  font-weight: 600;
+}
+
+.container,
+.container-fluid {
+  max-width: 1200px;
+}
+
+.card {
+  border-radius: 0.8rem;
+}
+
+.btn {
+  border-radius: 0.6rem;
+}
+
+/* navbar: espaciado y alineación */
+.navbar .navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  padding: .5rem .85rem;
+}
+
+.navbar .navbar-nav .nav-link i {
+  font-size: 1rem;
+  margin-right: .4rem;
+}
+
+.navbar .navbar-nav .nav-item+.nav-item {
+  margin-left: .15rem;
+}

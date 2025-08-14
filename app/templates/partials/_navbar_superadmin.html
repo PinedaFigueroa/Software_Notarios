@@ -1,7 +1,34 @@
-<!-- archivo: app/templates/partials/_navbar_superadmin.html -->
-<!-- fecha de creación: 09 / 08 / 25 -->
-<!-- motivo: Enlaces rápidos para SuperAdmin en navbar -->
-<!-- autor: Giancarlo + Tars-90 -->
+{# archivo: app/templates/partials/_navbar_superadmin.html
+# fecha de creación: 2025-08-13
+# última actualización: 2025-08-14 01:31 | motivo: ordenar items + iconos + estado activo por ruta
+# autor: Giancarlo + Tars-90
+# -*- coding: utf-8 -*- #}
+{% set path = request.path %}
 
-<li class="nav-item"><a class="nav-link" href="{{ url_for('superadmin.listar_bufetes') }}">Bufetes</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ url_for('superadmin.listar_usuarios', bufete_id=current_user.bufete_id or 1) }}">Usuarios</a></li>
+<li class="nav-item">
+  <a class="nav-link {{ 'active' if path.startswith('/superadmin/dashboard') else '' }}"
+     href="{{ url_for('superadmin.dashboard_global') }}">
+    <i class="bi bi-speedometer2 me-1"></i><span>Panel</span>
+  </a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link {{ 'active' if path.startswith('/superadmin/planes') else '' }}"
+     href="{{ url_for('superadmin.planes_listar') }}">
+    <i class="bi bi-diagram-3 me-1"></i><span>Planes</span>
+  </a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link {{ 'active' if path.startswith('/superadmin/bufetes') else '' }}"
+     href="{{ url_for('superadmin.listar_bufetes') }}">
+    <i class="bi bi-building me-1"></i><span>Bufetes</span>
+  </a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link {{ 'active' if path.startswith('/superadmin/usuarios') else '' }}"
+     href="{{ url_for('superadmin.listar_usuarios') }}">
+    <i class="bi bi-people me-1"></i><span>Usuarios</span>
+  </a>
+</li>
