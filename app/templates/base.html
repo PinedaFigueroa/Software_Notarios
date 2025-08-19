@@ -1,53 +1,38 @@
-<!DOCTYPE html>
+{# archivo: app/templates/base.html #}
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Software Notarios{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Software Notarial Hubsa{% endblock %}</title>
 
-    <!-- Bootstrap local -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
-    <!-- Estilos propios -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <!-- Font Awesome para íconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Bootstrap local -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+  <!-- Estilos del proyecto -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  {% block head_extra %}{% endblock %}
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('dashboard.mostrar_dashboard') }}">
-                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo-navbar me-2">
-                Software Notarial Hubsa
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard.mostrar_dashboard') }}">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Usuarios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Documentos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Librería</a></li>
-                </ul>
+  {% include 'partials/_navbar_superadmin.html' ignore missing %}
+
+  <main class="container py-4">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="mb-3">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
             </div>
+          {% endfor %}
         </div>
-    </nav>
+      {% endif %}
+    {% endwith %}
 
-    <!-- Contenido principal -->
-    <main class="container my-4">
-        {% block content %}{% endblock %}
-    </main>
+    {% block content %}{% endblock %}
+  </main>
 
-    <!-- Bootstrap JS -->
-    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-    <!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-light">
-        <div class="container text-center">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo App" class="logo-footer me-2">
-            <span class="text-muted">© 2025 Sistema Notarial Hubsa / Todos los derechos reservados.</span>
-        </div>
-    </footer>
+  <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  {% block scripts %}{% endblock %}
 </body>
 </html>

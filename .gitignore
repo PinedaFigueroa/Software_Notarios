@@ -33,3 +33,6 @@ Thumbs.db
 # Build y static folders si no son necesarias en control de versiones
 _build/
 _static/
+__pycache__/
+*.pyc
+.DS_Store

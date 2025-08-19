@@ -1,0 +1,337 @@
+country_iso2,admin1_code,admin1_name,admin1_type,admin2_code,admin2_name,admin2_type
+GT,01,,Departamento,03,San José Pinula,Municipio
+GT,01,,Departamento,04,San José del Golfo,Municipio
+GT,01,,Departamento,05,Palencia,Municipio
+GT,01,,Departamento,06,Chinautla,Municipio
+GT,01,,Departamento,07,San Pedro Ayampuc,Municipio
+GT,01,,Departamento,08,Mixco,Municipio
+GT,01,,Departamento,09,San Pedro Sacatepéquez,Municipio
+GT,01,,Departamento,10,San Juan Sacatepéquez,Municipio
+GT,01,,Departamento,11,San Raymundo,Municipio
+GT,01,,Departamento,12,Chuarrancho,Municipio
+GT,01,,Departamento,13,Fraijanes,Municipio
+GT,01,,Departamento,14,Amatitlán,Municipio
+GT,01,,Departamento,15,Villa Nueva,Municipio
+GT,01,,Departamento,16,Villa Canales,Municipio
+GT,01,,Departamento,17,Petapa,Municipio
+GT,02,El Progreso,Departamento,01,Guastatoya,Municipio
+GT,02,El Progreso,Departamento,02,Morazán,Municipio
+GT,02,El Progreso,Departamento,03,San Agustín Acasaguastlán,Municipio
+GT,02,El Progreso,Departamento,04,San Cristóbal Acasaguastlán,Municipio
+GT,02,El Progreso,Departamento,05,El Jícaro,Municipio
+GT,02,El Progreso,Departamento,06,Sansare,Municipio
+GT,02,El Progreso,Departamento,07,Sanarate,Municipio
+GT,02,El Progreso,Departamento,08,San Antonio la Paz,Municipio
+GT,03,Sacatepéquez,Departamento,01,Antigua Guatemala,Municipio
+GT,03,Sacatepéquez,Departamento,02,Jocotenango,Municipio
+GT,03,Sacatepéquez,Departamento,03,Pastores,Municipio
+GT,03,Sacatepéquez,Departamento,04,Sumpango,Municipio
+GT,03,Sacatepéquez,Departamento,05,Santo Domingo Xenacoj,Municipio
+GT,03,Sacatepéquez,Departamento,06,Santiago Sacatepéquez,Municipio
+GT,03,Sacatepéquez,Departamento,07,San Bartolomé Milpas Altas,Municipio
+GT,03,Sacatepéquez,Departamento,08,San Lucas Sacatepéquez,Municipio
+GT,03,Sacatepéquez,Departamento,09,Santa Lucía Milpas Altas,Municipio
+GT,03,Sacatepéquez,Departamento,10,Magdalena Milpas Altas,Municipio
+GT,03,Sacatepéquez,Departamento,11,Santa María de Jesús,Municipio
+GT,03,Sacatepéquez,Departamento,12,Ciudad Vieja,Municipio
+GT,03,Sacatepéquez,Departamento,13,San Miguel Dueñas,Municipio
+GT,03,Sacatepéquez,Departamento,14,Alotenango,Municipio
+GT,03,Sacatepéquez,Departamento,15,San Antonio Aguas Calientes,Municipio
+GT,03,Sacatepéquez,Departamento,16,Santa Catarina Barahona,Municipio
+GT,04,Chimaltenango,Departamento,01,Chimaltenango,Municipio
+GT,04,Chimaltenango,Departamento,02,San José Poaquil,Municipio
+GT,04,Chimaltenango,Departamento,03,San Martín Jilotepeque,Municipio
+GT,04,Chimaltenango,Departamento,04,Comalapa,Municipio
+GT,04,Chimaltenango,Departamento,05,Santa Apolonia,Municipio
+GT,04,Chimaltenango,Departamento,06,Tecpán Guatemala,Municipio
+GT,04,Chimaltenango,Departamento,07,Patzún,Municipio
+GT,04,Chimaltenango,Departamento,08,Pochuta,Municipio
+GT,04,Chimaltenango,Departamento,09,Patzicía,Municipio
+GT,04,Chimaltenango,Departamento,10,Santa Cruz Balanyá,Municipio
+GT,04,Chimaltenango,Departamento,11,Acatenango,Municipio
+GT,04,Chimaltenango,Departamento,12,Yepocapa,Municipio
+GT,04,Chimaltenango,Departamento,13,San Andrés Itzapa,Municipio
+GT,04,Chimaltenango,Departamento,14,Parramos,Municipio
+GT,04,Chimaltenango,Departamento,15,Zaragoza,Municipio
+GT,04,Chimaltenango,Departamento,16,El Tejar,Municipio
+GT,05,Escuintla,Departamento,01,Escuintla,Municipio
+GT,05,Escuintla,Departamento,02,Santa Lucía Cotzumalguapa,Municipio
+GT,05,Escuintla,Departamento,03,La Democracia,Municipio
+GT,05,Escuintla,Departamento,04,Siquinalá,Municipio
+GT,05,Escuintla,Departamento,05,Masagua,Municipio
+GT,05,Escuintla,Departamento,06,Tiquisate,Municipio
+GT,05,Escuintla,Departamento,07,La Gomera,Municipio
+GT,05,Escuintla,Departamento,08,Guanagazapa,Municipio
+GT,05,Escuintla,Departamento,09,San José,Municipio
+GT,05,Escuintla,Departamento,10,Iztapa,Municipio
+GT,05,Escuintla,Departamento,11,Palín,Municipio
+GT,05,Escuintla,Departamento,12,San Vicente Pacaya,Municipio
+GT,05,Escuintla,Departamento,13,Nueva Concepción,Municipio
+GT,06,Santa Rosa,Departamento,01,Cuilapa,Municipio
+GT,06,Santa Rosa,Departamento,02,Barberena,Municipio
+GT,06,Santa Rosa,Departamento,03,Santa Rosa de Lima,Municipio
+GT,06,Santa Rosa,Departamento,04,Casillas,Municipio
+GT,06,Santa Rosa,Departamento,05,San Rafael las Flores,Municipio
+GT,06,Santa Rosa,Departamento,06,Oratorio,Municipio
+GT,06,Santa Rosa,Departamento,07,San Juan Tecuaco,Municipio
+GT,06,Santa Rosa,Departamento,08,Chiquimulilla,Municipio
+GT,06,Santa Rosa,Departamento,09,Taxisco,Municipio
+GT,06,Santa Rosa,Departamento,10,Santa María Ixhuatán,Municipio
+GT,06,Santa Rosa,Departamento,11,Guazacapán,Municipio
+GT,06,Santa Rosa,Departamento,12,Santa Cruz Naranjo,Municipio
+GT,06,Santa Rosa,Departamento,13,Pueblo Nuevo Viñas,Municipio
+GT,06,Santa Rosa,Departamento,14,Nueva Santa Rosa,Municipio
+GT,07,Sololá,Departamento,01,Sololá,Municipio
+GT,07,Sololá,Departamento,02,San José Chacayá,Municipio
+GT,07,Sololá,Departamento,03,Santa María Visitación,Municipio
+GT,07,Sololá,Departamento,04,Santa Lucía Utatlán,Municipio
+GT,07,Sololá,Departamento,05,Nahualá,Municipio
+GT,07,Sololá,Departamento,06,Santa Catarina Ixtahuacán,Municipio
+GT,07,Sololá,Departamento,07,Santa Clara la Laguna,Municipio
+GT,07,Sololá,Departamento,08,Concepción,Municipio
+GT,07,Sololá,Departamento,09,San Andrés Semetabaj,Municipio
+GT,07,Sololá,Departamento,10,Panajachel,Municipio
+GT,07,Sololá,Departamento,11,Santa Catarina Palopó,Municipio
+GT,07,Sololá,Departamento,12,San Antonio Palopó,Municipio
+GT,07,Sololá,Departamento,13,San Lucas Tolimán,Municipio
+GT,07,Sololá,Departamento,14,Santa Cruz la Laguna,Municipio
+GT,07,Sololá,Departamento,15,San Pablo la Laguna,Municipio
+GT,07,Sololá,Departamento,16,San Marcos la Laguna,Municipio
+GT,07,Sololá,Departamento,17,San Juan la Laguna,Municipio
+GT,07,Sololá,Departamento,18,San Pedro la Laguna,Municipio
+GT,07,Sololá,Departamento,19,Santiago Atitlán,Municipio
+GT,08,Totonicapán,Departamento,01,Totonicapán,Municipio
+GT,08,Totonicapán,Departamento,02,San Cristóbal Totonicapán,Municipio
+GT,08,Totonicapán,Departamento,03,San Francisco el Alto,Municipio
+GT,08,Totonicapán,Departamento,04,San Andrés Xecul,Municipio
+GT,08,Totonicapán,Departamento,05,Momostenango,Municipio
+GT,08,Totonicapán,Departamento,06,Santa María Chiquimula,Municipio
+GT,08,Totonicapán,Departamento,07,Santa Lucía la Reforma,Municipio
+GT,08,Totonicapán,Departamento,08,San Bartolo,Municipio
+GT,09,Quetzaltenango,Departamento,01,Quetzaltenango,Municipio
+GT,09,Quetzaltenango,Departamento,02,Salcajá,Municipio
+GT,09,Quetzaltenango,Departamento,03,Olintepeque,Municipio
+GT,09,Quetzaltenango,Departamento,04,San Carlos Sija,Municipio
+GT,09,Quetzaltenango,Departamento,05,Sibilia,Municipio
+GT,09,Quetzaltenango,Departamento,06,Cabricán,Municipio
+GT,09,Quetzaltenango,Departamento,07,Cajolá,Municipio
+GT,09,Quetzaltenango,Departamento,08,San Miguel Siguilá,Municipio
+GT,09,Quetzaltenango,Departamento,09,Ostuncalco,Municipio
+GT,09,Quetzaltenango,Departamento,10,San Mateo,Municipio
+GT,09,Quetzaltenango,Departamento,11,Concepción Chiquirichapa,Municipio
+GT,09,Quetzaltenango,Departamento,12,San Martín Sacatepéquez,Municipio
+GT,09,Quetzaltenango,Departamento,13,Almolonga,Municipio
+GT,09,Quetzaltenango,Departamento,14,Cantel,Municipio
+GT,09,Quetzaltenango,Departamento,15,Huitán,Municipio
+GT,09,Quetzaltenango,Departamento,16,Zunil,Municipio
+GT,09,Quetzaltenango,Departamento,17,Colomba,Municipio
+GT,09,Quetzaltenango,Departamento,18,San Francisco la Unión,Municipio
+GT,09,Quetzaltenango,Departamento,19,El Palmar,Municipio
+GT,09,Quetzaltenango,Departamento,20,Coatepeque,Municipio
+GT,09,Quetzaltenango,Departamento,21,Génova,Municipio
+GT,09,Quetzaltenango,Departamento,22,Flores Costa Cuca,Municipio
+GT,09,Quetzaltenango,Departamento,23,La Esperanza,Municipio
+GT,09,Quetzaltenango,Departamento,24,Palestina de los Altos,Municipio
+GT,10,Suchitepéquez,Departamento,01,Mazatenango,Municipio
+GT,10,Suchitepéquez,Departamento,02,Cuyotenango,Municipio
+GT,10,Suchitepéquez,Departamento,03,San Francisco Zapotitlán,Municipio
+GT,10,Suchitepéquez,Departamento,04,San Bernardino,Municipio
+GT,10,Suchitepéquez,Departamento,05,San José el Idolo,Municipio
+GT,10,Suchitepéquez,Departamento,06,Santo Domingo Suchitepéquez,Municipio
+GT,10,Suchitepéquez,Departamento,07,San Lorenzo,Municipio
+GT,10,Suchitepéquez,Departamento,08,Samayac,Municipio
+GT,10,Suchitepéquez,Departamento,09,San Pablo Jocopilas,Municipio
+GT,10,Suchitepéquez,Departamento,10,San Antonio Suchitepéquez,Municipio
+GT,10,Suchitepéquez,Departamento,11,San Miguel Panán,Municipio
+GT,10,Suchitepéquez,Departamento,12,San Gabriel,Municipio
+GT,10,Suchitepéquez,Departamento,13,Chicacao,Municipio
+GT,10,Suchitepéquez,Departamento,14,Patulul,Municipio
+GT,10,Suchitepéquez,Departamento,15,Santa Bárbara,Municipio
+GT,10,Suchitepéquez,Departamento,16,San Juan Bautista,Municipio
+GT,10,Suchitepéquez,Departamento,17,Santo Tomás la Unión,Municipio
+GT,10,Suchitepéquez,Departamento,18,Zunilito,Municipio
+GT,10,Suchitepéquez,Departamento,19,Pueblo Nuevo,Municipio
+GT,10,Suchitepéquez,Departamento,20,Río Bravo,Municipio
+GT,10,Suchitepéquez,Departamento,21,San José La Máquina,Municipio
+GT,11,Retalhuleu,Departamento,01,Retalhuleu,Municipio
+GT,11,Retalhuleu,Departamento,02,San Sebastián,Municipio
+GT,11,Retalhuleu,Departamento,03,Santa Cruz Muluá,Municipio
+GT,11,Retalhuleu,Departamento,04,San Martín Zapotitlán,Municipio
+GT,11,Retalhuleu,Departamento,05,San Felipe,Municipio
+GT,11,Retalhuleu,Departamento,06,San Andrés Villa Seca,Municipio
+GT,11,Retalhuleu,Departamento,07,Champerico,Municipio
+GT,11,Retalhuleu,Departamento,08,Nuevo San Carlos,Municipio
+GT,11,Retalhuleu,Departamento,09,El Asintal,Municipio
+GT,12,San Marcos,Departamento,01,San Marcos,Municipio
+GT,12,San Marcos,Departamento,02,San Pedro Sacatepéquez,Municipio
+GT,12,San Marcos,Departamento,03,San Antonio Sacatepéquez,Municipio
+GT,12,San Marcos,Departamento,04,Comitancillo,Municipio
+GT,12,San Marcos,Departamento,05,San Miguel Ixtahuacán,Municipio
+GT,12,San Marcos,Departamento,06,Concepción Tutuapa,Municipio
+GT,12,San Marcos,Departamento,07,Tacaná,Municipio
+GT,12,San Marcos,Departamento,08,Sibinal,Municipio
+GT,12,San Marcos,Departamento,09,Tajumulco,Municipio
+GT,12,San Marcos,Departamento,10,Tejutla,Municipio
+GT,12,San Marcos,Departamento,11,San Rafael Pié de la Cuesta,Municipio
+GT,12,San Marcos,Departamento,12,Nuevo Progreso,Municipio
+GT,12,San Marcos,Departamento,13,El Tumbador,Municipio
+GT,12,San Marcos,Departamento,14,El Rodeo,Municipio
+GT,12,San Marcos,Departamento,15,Malacatán,Municipio
+GT,12,San Marcos,Departamento,16,Catarina,Municipio
+GT,12,San Marcos,Departamento,17,Ayutla,Municipio
+GT,12,San Marcos,Departamento,18,Ocós,Municipio
+GT,12,San Marcos,Departamento,19,San Pablo,Municipio
+GT,12,San Marcos,Departamento,20,El Quetzal,Municipio
+GT,12,San Marcos,Departamento,21,La Reforma,Municipio
+GT,12,San Marcos,Departamento,22,Pajapita,Municipio
+GT,12,San Marcos,Departamento,23,Ixchiguán,Municipio
+GT,12,San Marcos,Departamento,24,San José Ojetenán,Municipio
+GT,12,San Marcos,Departamento,25,San Cristóbal Cucho,Municipio
+GT,12,San Marcos,Departamento,26,Sipacapa,Municipio
+GT,12,San Marcos,Departamento,27,Esquipulas Palo Gordo,Municipio
+GT,12,San Marcos,Departamento,28,Río Blanco,Municipio
+GT,12,San Marcos,Departamento,29,San Lorenzo,Municipio
+GT,12,San Marcos,Departamento,30,La Blanca,Municipio
+GT,13,Huehuetenango,Departamento,01,Huehuetenango,Municipio
+GT,13,Huehuetenango,Departamento,02,Chiantla,Municipio
+GT,13,Huehuetenango,Departamento,03,Malacatancito,Municipio
+GT,13,Huehuetenango,Departamento,04,Cuilco,Municipio
+GT,13,Huehuetenango,Departamento,05,Nentón,Municipio
+GT,13,Huehuetenango,Departamento,06,San Pedro Necta,Municipio
+GT,13,Huehuetenango,Departamento,07,Jacaltenango,Municipio
+GT,13,Huehuetenango,Departamento,08,Soloma,Municipio
+GT,13,Huehuetenango,Departamento,09,Ixtahuacán,Municipio
+GT,13,Huehuetenango,Departamento,10,Santa Bárbara,Municipio
+GT,13,Huehuetenango,Departamento,11,La Libertad,Municipio
+GT,13,Huehuetenango,Departamento,12,La Democracia,Municipio
+GT,13,Huehuetenango,Departamento,13,San Miguel Acatán,Municipio
+GT,13,Huehuetenango,Departamento,14,San Rafael la Independencia,Municipio
+GT,13,Huehuetenango,Departamento,15,Todos Santos Cuchumatán,Municipio
+GT,13,Huehuetenango,Departamento,16,San Juan Atitán,Municipio
+GT,13,Huehuetenango,Departamento,17,Santa Eulalia,Municipio
+GT,13,Huehuetenango,Departamento,18,San Mateo Ixtatán,Municipio
+GT,13,Huehuetenango,Departamento,19,Colotenango,Municipio
+GT,13,Huehuetenango,Departamento,20,San Sebastián Huehuetenango,Municipio
+GT,13,Huehuetenango,Departamento,21,Tectitán,Municipio
+GT,13,Huehuetenango,Departamento,22,Concepción Huista,Municipio
+GT,13,Huehuetenango,Departamento,23,San Juan Ixcoy,Municipio
+GT,13,Huehuetenango,Departamento,24,San Antonio Huista,Municipio
+GT,13,Huehuetenango,Departamento,25,San Sebastián Coatán,Municipio
+GT,13,Huehuetenango,Departamento,26,Barillas,Municipio
+GT,13,Huehuetenango,Departamento,27,Aguacatán,Municipio
+GT,13,Huehuetenango,Departamento,28,San Rafael Petzal,Municipio
+GT,13,Huehuetenango,Departamento,29,San Gaspar Ixchil,Municipio
+GT,13,Huehuetenango,Departamento,30,Santiago Chimaltenango,Municipio
+GT,13,Huehuetenango,Departamento,31,Santa Ana Huista,Municipio
+GT,13,Huehuetenango,Departamento,32,Unión Cantinil,Municipio
+GT,14,Quiché,Departamento,01,Santa Cruz del Quiché,Municipio
+GT,14,Quiché,Departamento,02,Chiché,Municipio
+GT,14,Quiché,Departamento,03,Chinique,Municipio
+GT,14,Quiché,Departamento,04,Zacualpa,Municipio
+GT,14,Quiché,Departamento,05,Chajul,Municipio
+GT,14,Quiché,Departamento,06,Chichicastenango,Municipio
+GT,14,Quiché,Departamento,07,Patzité,Municipio
+GT,14,Quiché,Departamento,08,San Antonio Ilotenango,Municipio
+GT,14,Quiché,Departamento,09,San Pedro Jocopilas,Municipio
+GT,14,Quiché,Departamento,10,Cunén,Municipio
+GT,14,Quiché,Departamento,11,San Juan Cotzal,Municipio
+GT,14,Quiché,Departamento,12,Joyabaj,Municipio
+GT,14,Quiché,Departamento,13,Nebaj,Municipio
+GT,14,Quiché,Departamento,14,San Andrés Sajcabajá,Municipio
+GT,14,Quiché,Departamento,15,Uspantán,Municipio
+GT,14,Quiché,Departamento,16,Sacapulas,Municipio
+GT,14,Quiché,Departamento,17,San Bartolomé Jocotenango,Municipio
+GT,14,Quiché,Departamento,18,Canillá,Municipio
+GT,14,Quiché,Departamento,19,Chicamán,Municipio
+GT,14,Quiché,Departamento,20,Ixcán,Municipio
+GT,14,Quiché,Departamento,21,Pachalum,Municipio
+GT,15,Baja Verapaz,Departamento,01,Salamá,Municipio
+GT,15,Baja Verapaz,Departamento,02,San Miguel Chicaj,Municipio
+GT,15,Baja Verapaz,Departamento,03,Rabinal,Municipio
+GT,15,Baja Verapaz,Departamento,04,Cubulco,Municipio
+GT,15,Baja Verapaz,Departamento,05,Granados,Municipio
+GT,15,Baja Verapaz,Departamento,06,El Chol,Municipio
+GT,15,Baja Verapaz,Departamento,07,San Jerónimo,Municipio
+GT,15,Baja Verapaz,Departamento,08,Purulhá,Municipio
+GT,16,Alta Verapaz,Departamento,01,Cobán,Municipio
+GT,16,Alta Verapaz,Departamento,02,Santa Cruz Verapaz,Municipio
+GT,16,Alta Verapaz,Departamento,03,San Cristóbal Verapaz,Municipio
+GT,16,Alta Verapaz,Departamento,04,Tactic,Municipio
+GT,16,Alta Verapaz,Departamento,05,Tamahú,Municipio
+GT,16,Alta Verapaz,Departamento,06,Tucurú,Municipio
+GT,16,Alta Verapaz,Departamento,07,Panzós,Municipio
+GT,16,Alta Verapaz,Departamento,08,Senahú,Municipio
+GT,16,Alta Verapaz,Departamento,09,San Pedro Carchá,Municipio
+GT,16,Alta Verapaz,Departamento,10,San Juan Chamelco,Municipio
+GT,16,Alta Verapaz,Departamento,11,Lanquín,Municipio
+GT,16,Alta Verapaz,Departamento,12,Cahabón,Municipio
+GT,16,Alta Verapaz,Departamento,13,Chisec,Municipio
+GT,16,Alta Verapaz,Departamento,14,Chahal,Municipio
+GT,16,Alta Verapaz,Departamento,15,Fray Bartolomé de las Casas,Municipio
+GT,16,Alta Verapaz,Departamento,16,Santa Catalina la Tinta,Municipio
+GT,16,Alta Verapaz,Departamento,17,Raxruhá,Municipio
+GT,17,Petén,Departamento,01,Flores,Municipio
+GT,17,Petén,Departamento,02,San José,Municipio
+GT,17,Petén,Departamento,03,San Benito,Municipio
+GT,17,Petén,Departamento,04,San Andrés,Municipio
+GT,17,Petén,Departamento,05,La Libertad,Municipio
+GT,17,Petén,Departamento,06,San Francisco,Municipio
+GT,17,Petén,Departamento,07,Santa Ana,Municipio
+GT,17,Petén,Departamento,08,Dolores,Municipio
+GT,17,Petén,Departamento,09,San Luis,Municipio
+GT,17,Petén,Departamento,10,Sayaxché,Municipio
+GT,17,Petén,Departamento,11,Melchor de Mencos,Municipio
+GT,17,Petén,Departamento,12,Poptún,Municipio
+GT,17,Petén,Departamento,13,Las Cruces,Municipio
+GT,17,Petén,Departamento,14,El Chal,Municipio
+GT,18,Izabal,Departamento,01,Puerto Barrios,Municipio
+GT,18,Izabal,Departamento,02,Livingston,Municipio
+GT,18,Izabal,Departamento,03,El Estor,Municipio
+GT,18,Izabal,Departamento,04,Morales,Municipio
+GT,18,Izabal,Departamento,05,Los Amates,Municipio
+GT,19,Zacapa,Departamento,01,Zacapa,Municipio
+GT,19,Zacapa,Departamento,02,Estanzuela,Municipio
+GT,19,Zacapa,Departamento,03,Río Hondo,Municipio
+GT,19,Zacapa,Departamento,04,Gualán,Municipio
+GT,19,Zacapa,Departamento,05,Teculután,Municipio
+GT,19,Zacapa,Departamento,06,Usumatlán,Municipio
+GT,19,Zacapa,Departamento,07,Cabañas,Municipio
+GT,19,Zacapa,Departamento,08,San Diego,Municipio
+GT,19,Zacapa,Departamento,09,La Unión,Municipio
+GT,19,Zacapa,Departamento,10,Huité,Municipio
+GT,19,Zacapa,Departamento,11,San Jorge,Municipio
+GT,20,Chiquimula,Departamento,01,Chiquimula,Municipio
+GT,20,Chiquimula,Departamento,02,San José La Arada,Municipio
+GT,20,Chiquimula,Departamento,03,San Juan Ermita,Municipio
+GT,20,Chiquimula,Departamento,04,Jocotán,Municipio
+GT,20,Chiquimula,Departamento,05,Camotán,Municipio
+GT,20,Chiquimula,Departamento,06,Olopa,Municipio
+GT,20,Chiquimula,Departamento,07,Esquipulas,Municipio
+GT,20,Chiquimula,Departamento,08,Concepción Las Minas,Municipio
+GT,20,Chiquimula,Departamento,09,Quetzaltepeque,Municipio
+GT,20,Chiquimula,Departamento,10,San Jacinto,Municipio
+GT,20,Chiquimula,Departamento,11,Ipala,Municipio
+GT,21,Jalapa,Departamento,01,Jalapa,Municipio
+GT,21,Jalapa,Departamento,02,San Pedro Pinula,Municipio
+GT,21,Jalapa,Departamento,03,San Luis Jilotepeque,Municipio
+GT,21,Jalapa,Departamento,04,San Manuel Chaparrón,Municipio
+GT,21,Jalapa,Departamento,05,San Carlos Alzatate,Municipio
+GT,21,Jalapa,Departamento,06,Monjas,Municipio
+GT,21,Jalapa,Departamento,07,Mataquescuintla,Municipio
+GT,22,Jutiapa,Departamento,01,Jutiapa,Municipio
+GT,22,Jutiapa,Departamento,02,El Progreso,Municipio
+GT,22,Jutiapa,Departamento,03,Santa Catarina Mita,Municipio
+GT,22,Jutiapa,Departamento,04,Agua Blanca,Municipio
+GT,22,Jutiapa,Departamento,05,Asunción Mita,Municipio
+GT,22,Jutiapa,Departamento,06,Yupiltepeque,Municipio
+GT,22,Jutiapa,Departamento,07,Atescatempa,Municipio
+GT,22,Jutiapa,Departamento,08,Jerez,Municipio
+GT,22,Jutiapa,Departamento,09,El Adelanto,Municipio
+GT,22,Jutiapa,Departamento,10,Zapotitlán,Municipio
+GT,22,Jutiapa,Departamento,11,Comapa,Municipio
+GT,22,Jutiapa,Departamento,12,Jalpatagua,Municipio
+GT,22,Jutiapa,Departamento,13,Conguaco,Municipio
+GT,22,Jutiapa,Departamento,14,Moyuta,Municipio
+GT,22,Jutiapa,Departamento,15,Pasaco,Municipio
+GT,22,Jutiapa,Departamento,16,San José Acatempa,Municipio
+GT,22,Jutiapa,Departamento,17,Quesada,Municipio

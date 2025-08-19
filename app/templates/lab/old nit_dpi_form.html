@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Lab NIT/DPI{% endblock %}
+{% block content %}
+  <h3 class="mb-3">Lab: Validación NIT / DPI</h3>
+
+  <form method="post" novalidate class="mb-4">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+      {{ form.name.label(class_='form-label') }}
+      {{ form.name(class_='form-control', placeholder='Nombre') }}
+      {% for e in form.name.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.nit.label(class_='form-label') }}
+      {{ form.nit(class_='form-control', placeholder='NIT (ej: 1234567-8 o CF)') }}
+      {% for e in form.nit.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.dpi.label(class_='form-label') }}
+      {{ form.dpi(class_='form-control', placeholder='DPI (13 dígitos)') }}
+      {% for e in form.dpi.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+    </div>
+
+    <div class="d-grid">
+      {{ form.submit(class_='btn btn-primary') }}
+    </div>
+  </form>
+
+  <h5>Últimos registros</h5>
+  <div class="table-responsive">
+    <table class="table table-sm">
+      <thead><tr><th>ID</th><th>Nombre</th><th>NIT</th><th>DPI</th><th>Creado</th></tr></thead>
+      <tbody>
+        {% for r in last %}
+          <tr>
+            <td>{{ r.id }}</td>
+            <td>{{ r.name }}</td>
+            <td>{{ r.nit }}</td>
+            <td>{{ r.dpi }}</td>
+            <td>{{ r.created_at.strftime('%Y-%m-%d %H:%M') if r.created_at else '' }}</td>
+          </tr>
+        {% else %}
+          <tr><td colspan="5" class="text-muted">Sin datos aún.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

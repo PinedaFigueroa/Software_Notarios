@@ -1,9 +1,9 @@
 # archivo: app/__init__.py
-# fecha de creación: 26 / 07 / 25
-# cantidad de líneas originales: 40 aprox.
-# última actualización: 27 / 07 / 25 hora 21:40
-# motivo de la actualización: registrar correctamente blueprint del dashboard
-# autor: Giancarlo F. + Tars-90
+# fecha de creación: 
+# cantidad de lineas originales: ____
+# última actualización: 13/08/25 hora 00:18
+# motivo de la actualización:  
+# autor: Giancarlo + Tars-90
 # -*- coding: utf-8 -*-
 
 from flask import Flask
@@ -19,16 +19,41 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object('app.config.Config')
 
-    # Registrar blueprints
+    # Extensiones
+    db.init_app(app)
+    migrate.init_app(app, db)
+    login_manager.init_app(app)
+    login_manager.login_view = 'auth.login'
+    login_manager.login_message_category = 'warning'
+
+    # User loader
+    from app.models.usuarios import Usuario
+    @login_manager.user_loader
+    def load_user(user_id):
+        try:
+            return Usuario.query.get(int(user_id))
+        except Exception:
+            return None
+
+    # Blueprints
     from app.dashboard import dashboard_bp
     app.register_blueprint(dashboard_bp)
 
-    # Inicializar extensiones
-    db.init_app(app)
-    migrate.init_app(app, db)
+    from app.auth import auth_bp
+    app.register_blueprint(auth_bp)
 
-    # Registrar comandos personalizados
-    from app.cli import cli
-    app.cli.add_command(cli)
+    from app.superadmin import superadmin_bp
+    app.register_blueprint(superadmin_bp)
+
+    # Importa modelos para que Alembic los detecte
+    from app.models import testpersona  # noqa: F401
+
+    # Blueprint de laboratorio (para /lab/ping y /lab/nit-dpi)
+    from app.lab import lab_bp
+    app.register_blueprint(lab_bp)
+    
+    # 👇 Importa modelos para que Alembic los “vea”
+    from app.models import geo as _geo   # ← ESTE
+    from app.models import testpersona as _test  # si lo usas en el lab
 
     return app

@@ -1,0 +1,9 @@
+/* archivo: app/static/css/theme_navbar_addon.css
+   última actualización: 2025-08-14 01:31 | motivo: espaciado y legibilidad navbar superadmin
+   autor: Giancarlo + Tars-90 */
+.navbar .navbar-nav .nav-link{
+  display:flex; align-items:center;
+  padding:.5rem .9rem;
+}
+.navbar .navbar-nav .nav-link i{ font-size:1rem; margin-right:.4rem; }
+.navbar .navbar-nav .nav-item + .nav-item{ margin-left:.2rem; }

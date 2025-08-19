@@ -1,0 +1,28 @@
+<!-- archivo: app/auth/templates/auth/login.html -->
+<!-- fecha de creación: 09 / 08 / 25 -->
+<!-- motivo: plantilla de login FUNCIONANDO 14 08 25 A LAS 19.28 -->
+<!-- autor: Giancarlo + Tars-90 -->
+
+{% extends 'base.html' %}
+{% block title %}Iniciar sesión{% endblock %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h4 class="mb-3">Iniciar sesión</h4>
+        <form method="POST">
+          {{ form.hidden_tag() }}
+          <div class="mb-3">{{ form.username.label }} {{ form.username(class="form-control") }}</div>
+          <div class="mb-3">{{ form.password.label }} {{ form.password(class="form-control") }}</div>
+          <div class="form-check mb-3">
+            {{ form.remember(class="form-check-input", id="rememberCheck") }}
+            <label class="form-check-label" for="rememberCheck">RECORDARME EN ESTE EQUIPO</label>
+          </div>
+          {{ form.submit(class="btn btn-primary") }}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

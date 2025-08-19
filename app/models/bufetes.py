@@ -35,16 +35,21 @@ class BufeteJuridico(db.Model):
     # app_copyright = db.Column(db.String(255), nullable=True)
     # nombre_aplicacion = db.Column(db.String(255), nullable=True)
 
-    # Configuración y permisos
+    # Configuración y permisos para lo que ha elegido
+    # feature flags, 
     maneja_inventario_timbres_papel = db.Column(Boolean, default=True, nullable=False)
     incluye_libreria_plantillas_inicial = db.Column(Boolean, default=True, nullable=False)
     habilita_auditoria_borrado_logico = db.Column(Boolean, default=True, nullable=False)
     habilita_dashboard_avanzado = db.Column(Boolean, default=True, nullable=False)
+    # esta ayuda deben tenerla todos, se puso acá pero es parte de lo necesario
     habilita_ayuda_contextual = db.Column(Boolean, default=True, nullable=False)
+    # esto digital servirá cuando se exporte el sw o cambie la ley en Guatemala
     habilita_papeleria_digital = db.Column(Boolean, default=True, nullable=False)
+    
+    # este campo hizo falta en determinado momento, como contactar al bufete
     forma_contacto = db.Column(db.String(255), nullable=True)
 
-    # Facturación
+    # Facturación por uso de la apliación
     facturacion_nombre = db.Column(db.String(255), nullable=True)
     facturacion_nit = db.Column(db.String(50), nullable=True)
     facturacion_direccion = db.Column(db.String(255), nullable=True)
@@ -53,7 +58,7 @@ class BufeteJuridico(db.Model):
     formas_pago = db.Column(db.String(150), nullable=True)  # ejemplo: "efectivo,tarjeta,transferencia"
     metodo_pago_preferido = db.Column(db.String(50), nullable=True)
 
-    # Control
+    # Control si no ha pagado, si se borra lógicamente
     activo = db.Column(Boolean, default=True)
     fecha_creacion = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 

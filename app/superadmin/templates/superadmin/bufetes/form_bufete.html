@@ -1,0 +1,121 @@
+{# archivo: app/superadmin/templates/superadmin/bufetes/form_bufete.html
+   fecha de creación: 2025-08-13
+   última actualización: 2025-08-13 | motivo: corregir comentarios Jinja + render correcto del form
+   autor: Giancarlo + Tars-90
+   -*- coding: utf-8 -*- #}
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-3">
+  <h4 class="mb-3">{{ 'Crear Bufete' if modo=='crear' else 'Editar Bufete' }}</h4>
+  <form method="post" novalidate>
+    {{ form.hidden_tag() }}
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        {{ form.nombre_bufete.label(class_='form-label') }}
+        {{ form.nombre_bufete(class_='form-control') }}
+      </div>
+
+      <div class="col-md-6">
+        {{ form.plan_id.label(class_='form-label') }}
+        {{ form.plan_id(class_='form-select') }}
+      </div>
+
+      <div class="col-md-6">
+        {{ form.direccion.label(class_='form-label') }}
+        {{ form.direccion(class_='form-control') }}
+      </div>
+
+      <div class="col-md-3">
+        {{ form.telefono.label(class_='form-label') }}
+        {{ form.telefono(class_='form-control') }}
+      </div>
+
+      <div class="col-md-3">
+        {{ form.email.label(class_='form-label') }}
+        {{ form.email(class_='form-control') }}
+      </div>
+
+      <div class="col-md-3">
+        {{ form.nit.label(class_='form-label') }}
+        {{ form.nit(class_='form-control') }}
+      </div>
+
+      <div class="col-md-3">
+        {{ form.pais.label(class_='form-label') }}
+        {{ form.pais(class_='form-control') }}
+      </div>
+
+      <div class="col-md-6">
+        {{ form.forma_contacto.label(class_='form-label') }}
+        {{ form.forma_contacto(class_='form-control') }}
+      </div>
+
+      <div class="col-12"><strong>Facturación</strong></div>
+
+      <div class="col-md-4">
+        {{ form.facturacion_nombre.label(class_='form-label') }}
+        {{ form.facturacion_nombre(class_='form-control') }}
+      </div>
+
+      <div class="col-md-4">
+        {{ form.facturacion_nit.label(class_='form-label') }}
+        {{ form.facturacion_nit(class_='form-control') }}
+      </div>
+
+      <div class="col-md-4">
+        {{ form.facturacion_direccion.label(class_='form-label') }}
+        {{ form.facturacion_direccion(class_='form-control') }}
+      </div>
+
+      <div class="col-md-6">
+        {{ form.formas_pago.label(class_='form-label') }}
+        {{ form.formas_pago(class_='form-control', placeholder='efectivo,tarjeta,transferencia') }}
+      </div>
+
+      <div class="col-md-6">
+        {{ form.metodo_pago_preferido.label(class_='form-label') }}
+        {{ form.metodo_pago_preferido(class_='form-control') }}
+      </div>
+
+      <div class="col-12"><strong>Características</strong></div>
+
+      <div class="col-md-4 form-check ms-2">
+        {{ form.maneja_inventario_timbres_papel(class_='form-check-input', id='inv_timbres') }}
+        <label class="form-check-label" for="inv_timbres">{{ form.maneja_inventario_timbres_papel.label.text }}</label>
+      </div>
+
+      <div class="col-md-4 form-check ms-2">
+        {{ form.incluye_libreria_plantillas_inicial(class_='form-check-input', id='lib_inicial') }}
+        <label class="form-check-label" for="lib_inicial">{{ form.incluye_libreria_plantillas_inicial.label.text }}</label>
+      </div>
+
+      <div class="col-md-4 form-check ms-2">
+        {{ form.habilita_auditoria_borrado_logico(class_='form-check-input', id='aud_borrado') }}
+        <label class="form-check-label" for="aud_borrado">{{ form.habilita_auditoria_borrado_logico.label.text }}</label>
+      </div>
+
+      <div class="col-md-4 form-check ms-2">
+        {{ form.habilita_dashboard_avanzado(class_='form-check-input', id='dash_avz') }}
+        <label class="form-check-label" for="dash_avz">{{ form.habilita_dashboard_avanzado.label.text }}</label>
+      </div>
+
+      <div class="col-md-4 form-check ms-2">
+        {{ form.habilita_ayuda_contextual(class_='form-check-input', id='ayuda_ctx') }}
+        <label class="form-check-label" for="ayuda_ctx">{{ form.habilita_ayuda_contextual.label.text }}</label>
+      </div>
+
+      <div class="col-md-4 form-check ms-2">
+        {{ form.habilita_papeleria_digital(class_='form-check-input', id='papel_dig') }}
+        <label class="form-check-label" for="papel_dig">{{ form.habilita_papeleria_digital.label.text }}</label>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      {{ form.submit(class_='btn btn-primary') }}
+      <a class="btn btn-secondary" href="{{ url_for('superadmin.listar_bufetes') }}">Volver</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

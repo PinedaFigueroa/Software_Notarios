@@ -1,0 +1,31 @@
+{# 
+archivo: app/superadmin/templates/superadmin/usuarios/form_usuario.html
+última actualización: 13/08/25 hora 01:21
+motivo: usar form.hidden_tag(); comentarios Jinja; enlaces canónicos
+autor: Giancarlo + Tars-90
+#}
+{% extends 'base.html' %}
+{% block content %}
+<h4 class="mb-3">{{ 'Crear Usuario' if modo=='crear' else 'Editar Usuario' }}</h4>
+<form method="post">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">
+    {% for e in form.username.errors %}<div class="text-danger">{{ e }}</div>{% endfor %}
+    {{ form.username(class_='form-control', placeholder='Usuario único') }}
+  </div>
+  <div class="mb-3">
+    {{ form.correo(class_='form-control', placeholder='correo@dominio.com') }}
+  </div>
+  <div class="mb-3">
+    {{ form.password(class_='form-control', placeholder='Contraseña (dejar vacío para no cambiar)') }}
+  </div>
+  <div class="mb-3">
+    {{ form.rol(class_='form-select') }}
+  </div>
+  <div class="mb-3">
+    {{ form.bufete_id(class_='form-select') }}
+  </div>
+  {{ form.submit(class_='btn btn-primary') }}
+  <a class="btn btn-secondary" href="{{ url_for('superadmin.listar_usuarios') }}">Volver</a>
+</form>
+{% endblock %}
