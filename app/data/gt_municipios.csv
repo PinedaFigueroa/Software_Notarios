@@ -1,19 +1,19 @@
 country_iso2,admin1_code,admin1_name,admin1_type,admin2_code,admin2_name,admin2_type
-GT,01,,Departamento,03,San José Pinula,Municipio
-GT,01,,Departamento,04,San José del Golfo,Municipio
-GT,01,,Departamento,05,Palencia,Municipio
-GT,01,,Departamento,06,Chinautla,Municipio
-GT,01,,Departamento,07,San Pedro Ayampuc,Municipio
-GT,01,,Departamento,08,Mixco,Municipio
-GT,01,,Departamento,09,San Pedro Sacatepéquez,Municipio
-GT,01,,Departamento,10,San Juan Sacatepéquez,Municipio
-GT,01,,Departamento,11,San Raymundo,Municipio
-GT,01,,Departamento,12,Chuarrancho,Municipio
-GT,01,,Departamento,13,Fraijanes,Municipio
-GT,01,,Departamento,14,Amatitlán,Municipio
-GT,01,,Departamento,15,Villa Nueva,Municipio
-GT,01,,Departamento,16,Villa Canales,Municipio
-GT,01,,Departamento,17,Petapa,Municipio
+GT,01,Guatemala,Departamento,03,San José Pinula,Municipio
+GT,01,Guatemala,Departamento,04,San José del Golfo,Municipio
+GT,01,Guatemala,Departamento,05,Palencia,Municipio
+GT,01,Guatemala,Departamento,06,Chinautla,Municipio
+GT,01,Guatemala,Departamento,07,San Pedro Ayampuc,Municipio
+GT,01,Guatemala,Departamento,08,Mixco,Municipio
+GT,01,Guatemala,Departamento,09,San Pedro Sacatepéquez,Municipio
+GT,01,Guatemala,Departamento,10,San Juan Sacatepéquez,Municipio
+GT,01,Guatemala,Departamento,11,San Raymundo,Municipio
+GT,01,Guatemala,Departamento,12,Chuarrancho,Municipio
+GT,01,Guatemala,Departamento,13,Fraijanes,Municipio
+GT,01,Guatemala,Departamento,14,Amatitlán,Municipio
+GT,01,Guatemala,Departamento,15,Villa Nueva,Municipio
+GT,01,Guatemala,Departamento,16,Villa Canales,Municipio
+GT,01,Guatemala,Departamento,17,Petapa,Municipio
 GT,02,El Progreso,Departamento,01,Guastatoya,Municipio
 GT,02,El Progreso,Departamento,02,Morazán,Municipio
 GT,02,El Progreso,Departamento,03,San Agustín Acasaguastlán,Municipio
