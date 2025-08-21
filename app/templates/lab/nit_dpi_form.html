@@ -1,52 +1,68 @@
 {% extends 'base.html' %}
 {% block title %}Lab NIT/DPI{% endblock %}
+{% block head_extra %}
+<style>
+  .fade-slow { opacity: 0; transition: opacity 450ms ease; }
+  .fade-slow.show { opacity: 1; }
+  .mono { font-family: ui-monospace, Menlo, Consolas, "Liberation Mono", monospace; }
+</style>
+{% endblock %}
 {% block content %}
-  <h3 class="mb-3">Lab: Validación NIT / DPI</h3>
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    <h3 class="mb-0">Lab: Validación NIT / DPI</h3>
+    <a class="btn btn-outline-secondary btn-sm" href="/lab/test-personas">Ver listado rápido</a>
+  </div>
 
   <form method="post" novalidate class="mb-3">
     {{ form.hidden_tag() }}
+
     <div class="mb-3">
       {{ form.name.label(class_='form-label') }}
       {{ form.name(class_='form-control', placeholder='Nombre') }}
       {% for e in form.name.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
     </div>
+
     <div class="mb-3">
       {{ form.nit.label(class_='form-label') }}
-      {{ form.nit(class_='form-control', placeholder='NIT (ej: 1234567-8 o CF)') }}
+      {{ form.nit(class_='form-control mono', placeholder='NIT (ej: 1234567-8 o CF)') }}
+      <div class="form-text">Se normaliza: <span class="mono">1234567-8</span> o <span class="mono">CF</span>.</div>
       {% for e in form.nit.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
     </div>
+
     <div class="mb-1">
       {{ form.dpi.label(class_='form-label') }}
-      {{ form.dpi(class_='form-control', placeholder='DPI (13 dígitos)') }}
+      {{ form.dpi(class_='form-control mono', placeholder='DPI (13 dígitos)') }}
+      <div class="form-text">Últimos 4: <strong>2</strong> depto + <strong>2</strong> muni.</div>
       {% for e in form.dpi.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
     </div>
 
-    {% if found.dept_code or found.muni_code %}
-      <div class="alert alert-info py-2 my-2">
+    <div id="resultCard" class="card border-info mt-3 fade-slow" data-has-results="{{ 1 if found.dept_code or found.muni_code else 0 }}">
+      <div class="card-body py-2">
         <strong>Extraído:</strong>
         Depto {{ found.dept_code or '??' }} — {{ found.dept_name or 'desconocido' }},
         Muni {{ found.muni_code or '??' }} — {{ found.muni_name or 'desconocido' }}
       </div>
-    {% endif %}
+    </div>
 
-    <div class="d-grid">
+    <div class="d-grid mt-3">
       {{ form.submit(class_='btn btn-primary') }}
     </div>
   </form>
 
   <h5>Últimos registros</h5>
-  <!-- tabla igual a la que ya tienes -->
-    <div class="table-responsive">
-    <table class="table table-sm">
-      <thead><tr><th>ID</th><th>Nombre</th><th>NIT</th><th>DPI</th><th>Creado</th></tr></thead>
+  <div class="table-responsive">
+    <table class="table table-sm align-middle">
+      <thead><tr>
+        <th>ID</th><th>Nombre</th><th>NIT</th><th>DPI</th><th>Creado</th>
+      </tr></thead>
       <tbody>
         {% for r in last %}
           <tr>
-            <td>{{ r.id }}</td>
+            <td class="text-muted">{{ r.id }}</td>
             <td>{{ r.name }}</td>
-            <td>{{ r.nit }}</td>
-            <td>{{ r.dpi }}</td>
-            <td>{{ r.created_at.strftime('%Y-%m-%d %H:%M') if r.created_at else '' }}</td>
+            <td class="mono">{{ r.nit }}</td>
+            <td class="mono">{{ r.dpi }}</td>
+            <td class="text-muted">{{ r.created_at.strftime('%Y-%m-%d %H:%M') if r.created_at else '' }}</td>
           </tr>
         {% else %}
           <tr><td colspan="5" class="text-muted">Sin datos aún.</td></tr>
@@ -54,4 +70,17 @@
       </tbody>
     </table>
   </div>
+
+{% endblock %}
+{% block scripts %}
+<script>
+  (function() {
+    const card = document.getElementById('resultCard');
+    if (!card) return;
+    if (card.dataset.hasResults === "1") {
+      // leve delay para un despliegue "más lento" y agradable
+      setTimeout(() => { card.classList.add('show'); }, 220);
+    }
+  })();
+</script>
 {% endblock %}

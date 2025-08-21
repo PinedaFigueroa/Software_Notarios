@@ -53,7 +53,7 @@ def create_app():
     app.register_blueprint(lab_bp)
     
     # 👇 Importa modelos para que Alembic los “vea”
-    from app.models import geo as _geo   # ← ESTE
-    from app.models import testpersona as _test  # si lo usas en el lab
+    from app.models import geo as _geo   
+    from app.models import testpersona as _test 
 
     return app

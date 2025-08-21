@@ -60,11 +60,14 @@ def _dpi_extract_with_rule(country_iso2: str, id_type: str, id_value: str):
 
     d_start = len(digits) - rule.dept_from_end
     m_start = len(digits) - rule.muni_from_end
-    dept_code = digits[d_start:d_start + rule.dept_len]
-    muni_code = digits[m_start:m_start + rule.muni_len]
+    
+# Asegura padding exacto (2 dígitos para GT)
+    dept_code = digits[d_start:d_start + rule.dept_len].zfill(rule.dept_len)
+    muni_code = digits[m_start:m_start + rule.muni_len].zfill(rule.muni_len)
 
     a1 = Admin1Division.query.filter_by(country_id=country.id, code=dept_code).first()
     a2 = Admin2Division.query.filter_by(country_id=country.id, admin1_id=a1.id if a1 else None, code=muni_code).first()
+    
     return dept_code, muni_code, (a1.name if a1 else None), (a2.name if a2 else None)
 
 # -------------------------------
@@ -106,3 +109,37 @@ def lab_nit_dpi():
 
     last = TestPersona.query.order_by(TestPersona.id.desc()).limit(10).all()
     return render_template("lab/nit_dpi_form.html", form=form, last=last, found=found)
+
+from flask import request
+
+@lab_bp.route("/lab/test-personas")
+def lab_test_personas():
+    # límite rápido por defecto; usa ?all=1 para traer todo
+    q = TestPersona.query.order_by(TestPersona.id.desc())
+    if request.args.get("all"):
+        rows = q.all()
+        showing = len(rows)
+    else:
+        limit = request.args.get("limit", "200")
+        try:
+            n = max(1, min(2000, int(limit)))
+        except Exception:
+            n = 200
+        rows = q.limit(n).all()
+        showing = len(rows)
+
+    items = []
+    for r in rows:
+        dc, mc, dn, mn = _dpi_extract_with_rule("GT", "DPI", r.dpi)
+        items.append({
+            "id": r.id,
+            "name": r.name,
+            "nit": r.nit,
+            "dpi": r.dpi,
+            "dept_code": dc, "dept_name": dn,
+            "muni_code": mc, "muni_name": mn,
+            "created_at": r.created_at,
+        })
+
+    total = q.count()
+    return render_template("lab/test_personas_list.html", items=items, total=total, showing=showing)

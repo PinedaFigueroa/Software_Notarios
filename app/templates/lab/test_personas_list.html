@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Listado rápido TestPersona{% endblock %}
+{% block content %}
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">Listado rápido: TestPersona</h3>
+    <div class="btn-group">
+      <a class="btn btn-outline-secondary btn-sm" href="/lab/nit-dpi">Volver al lab</a>
+      <a class="btn btn-outline-primary btn-sm" href="/lab/test-personas?all=1">Ver todo</a>
+    </div>
+  </div>
+  <p class="text-muted">Mostrando {{ showing }} registros (total: {{ total }}).</p>
+
+  <div class="table-responsive">
+    <table class="table table-sm table-hover align-middle">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>NIT</th>
+          <th>DPI</th>
+          <th>Depto</th>
+          <th>Municipio</th>
+          <th>Creado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for it in items %}
+          <tr>
+            <td class="text-muted">{{ it.id }}</td>
+            <td>{{ it.name }}</td>
+            <td class="mono">{{ it.nit }}</td>
+            <td class="mono">{{ it.dpi }}</td>
+            <td>
+              <span class="mono">{{ it.dept_code or '??' }}</span>
+              — {{ it.dept_name or 'desconocido' }}
+            </td>
+            <td>
+              <span class="mono">{{ it.muni_code or '??' }}</span>
+              — {{ it.muni_name or 'desconocido' }}
+            </td>
+            <td class="text-muted">{{ it.created_at.strftime('%Y-%m-%d %H:%M') if it.created_at else '' }}</td>
+          </tr>
+        {% else %}
+          <tr><td colspan="7" class="text-muted">No hay registros.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
