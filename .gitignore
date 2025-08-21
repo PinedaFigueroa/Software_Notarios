@@ -36,3 +36,11 @@ _static/
 __pycache__/
 *.pyc
 .DS_Store
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.bat
+db_docs/Diagramas/_tile_*
+app/templates/lab/*funciona*.html
+app/data/old_*.csv
